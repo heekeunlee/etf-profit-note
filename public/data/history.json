@@ -1,23 +1,53 @@
 {
-    "last_updated": "2026-01-15T16:30:00",
+    "last_updated": "2026-01-15T17:30:00",
     "total_equity": 28803982,
     "total_profit": 4792327,
-    "history": [
-        {
-            "date": "2026-01-05",
-            "equity": 26440412,
-            "daily_profit": 2428757,
-            "cumulative_profit": 2428757,
-            "trade_count": 2,
-            "roi": 10.11
-        },
+    "records": [
         {
             "date": "2026-01-13",
             "equity": 25668930,
             "daily_profit": 2363570,
-            "cumulative_profit": 4792327,
-            "trade_count": 3,
-            "roi": 10.13
+            "daily_roi": 10.13,
+            "trades": [
+                {
+                    "name": "KODEX 친환경조선해운액티브",
+                    "sell_amount": 9000140,
+                    "profit": 1090351,
+                    "roi": 13.78
+                },
+                {
+                    "name": "HANARO 원자력iSelect",
+                    "sell_amount": 9813600,
+                    "profit": 1038065,
+                    "roi": 11.83
+                },
+                {
+                    "name": "한화솔루션",
+                    "sell_amount": 6872800,
+                    "profit": 235154,
+                    "roi": 3.54
+                }
+            ]
+        },
+        {
+            "date": "2026-01-05",
+            "equity": 26440412,
+            "daily_profit": 2428757,
+            "daily_roi": 10.11,
+            "trades": [
+                {
+                    "name": "KODEX 200",
+                    "sell_amount": 9571170,
+                    "profit": 1287806,
+                    "roi": 15.55
+                },
+                {
+                    "name": "PLUS K방산",
+                    "sell_amount": 16871075,
+                    "profit": 1140951,
+                    "roi": 7.25
+                }
+            ]
         }
     ]
 }
