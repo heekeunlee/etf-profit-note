@@ -1,0 +1,23 @@
+{
+    "last_updated": "2026-01-15T16:30:00",
+    "total_equity": 28803982,
+    "total_profit": 4792327,
+    "history": [
+        {
+            "date": "2026-01-05",
+            "equity": 26440412,
+            "daily_profit": 2428757,
+            "cumulative_profit": 2428757,
+            "trade_count": 2,
+            "roi": 10.11
+        },
+        {
+            "date": "2026-01-13",
+            "equity": 25668930,
+            "daily_profit": 2363570,
+            "cumulative_profit": 4792327,
+            "trade_count": 3,
+            "roi": 10.13
+        }
+    ]
+}
