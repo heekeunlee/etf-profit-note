@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { AreaChart, Area, Tooltip, ResponsiveContainer } from 'recharts'
+import { BarChart, Bar, Tooltip, ResponsiveContainer, XAxis } from 'recharts'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 
 const Dashboard = () => {
@@ -45,13 +45,13 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="min-h-screen bg-white text-gray-900 pb-10 font-sans">
+        <div className="min-h-screen bg-gray-50 text-gray-900 pb-10 font-sans">
             <div className="max-w-md mx-auto sm:max-w-2xl bg-white min-h-screen shadow-2xl shadow-gray-200/50">
 
                 {/* 1. Header & Big Total Profit (Apple/Toss Style) */}
-                <div className="pt-12 pb-8 px-6 text-center bg-white sticky top-0 z-20">
+                <div className="pt-12 pb-8 px-6 text-center bg-white sticky top-0 z-20 transition-all">
                     <h1 className="text-sm font-semibold text-gray-500 mb-2 uppercase tracking-wide">
-                        Total Realized Profit
+                        실현 손익 현황
                     </h1>
                     <div className="text-4xl font-extrabold text-gray-900 tracking-tight flex items-center justify-center gap-1">
                         <span className="text-2xl text-gray-400 font-bold self-start mt-1">₩</span>
@@ -63,32 +63,33 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                {/* 2. Cumulative Profit Chart (Money Growing Feeling) */}
-                <div className="h-48 w-full mb-8 relative">
-                    <div className="absolute top-0 left-6 text-xs text-gray-400 font-bold z-10">Accumulated Profit Curve</div>
+                {/* 2. Cumulative Profit Chart (Bar Visualization) */}
+                <div className="h-56 w-full mb-8 relative px-4">
+                    <div className="absolute top-0 left-6 text-xs text-gray-400 font-bold z-10">Accumulated Profit Steps</div>
                     <ResponsiveContainer width="100%" height="100%">
-                        <AreaChart data={chartData} margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
+                        <BarChart data={chartData} margin={{ top: 20, right: 0, left: 0, bottom: 0 }}>
                             <defs>
-                                <linearGradient id="colorProfit" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor="#f43f5e" stopOpacity={0.2} />
-                                    <stop offset="95%" stopColor="#f43f5e" stopOpacity={0} />
+                                <linearGradient id="colorProfitBar" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stopColor="#f43f5e" stopOpacity={1} />
+                                    <stop offset="100%" stopColor="#fb7185" stopOpacity={0.8} />
                                 </linearGradient>
                             </defs>
                             <Tooltip
+                                cursor={{ fill: '#f1f5f9' }}
                                 contentStyle={{ backgroundColor: '#ffffff', borderColor: '#f43f5e', borderRadius: '12px', color: '#1f2937', fontSize: '13px', fontWeight: 'bold', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }}
                                 itemStyle={{ color: '#f43f5e' }}
                                 labelStyle={{ display: 'none' }}
-                                formatter={(value) => [`+₩${value.toLocaleString()}`, 'Profit']}
+                                formatter={(value) => [`+₩${value.toLocaleString()}`, 'Accumulated']}
                             />
-                            <Area
-                                type="monotone"
+                            <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#9ca3af' }} />
+                            <Bar
                                 dataKey="profit"
-                                stroke="#f43f5e"
-                                strokeWidth={3}
-                                fillOpacity={1}
-                                fill="url(#colorProfit)"
+                                fill="url(#colorProfitBar)"
+                                radius={[8, 8, 0, 0]}
+                                barSize={40}
+                                animationDuration={1500}
                             />
-                        </AreaChart>
+                        </BarChart>
                     </ResponsiveContainer>
                 </div>
 
@@ -97,14 +98,14 @@ const Dashboard = () => {
                     <h3 className="text-lg font-bold text-gray-900 border-b-2 border-gray-100 pb-2 mb-4">Trading History</h3>
                 </div>
 
-                <div className="space-y-3 px-4 pb-12">
+                <div className="space-y-4 px-4 pb-12">
                     {data.records.map((record, idx) => (
-                        <div key={idx} className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden transition-all duration-200">
+                        <div key={idx} className={`border rounded-2xl overflow-hidden transition-all duration-300 ${expandedDate === record.date ? 'border-rose-100 shadow-lg bg-white box-border' : 'border-gray-100 bg-white shadow-sm'}`}>
 
                             {/* Card Header (Daily Summary) */}
                             <div
                                 onClick={() => toggleExpand(record.date)}
-                                className="p-5 flex items-center justify-between cursor-pointer active:bg-gray-50 select-none"
+                                className={`p-5 flex items-center justify-between cursor-pointer select-none transition-colors ${expandedDate === record.date ? 'bg-white' : 'hover:bg-gray-50'}`}
                             >
                                 <div>
                                     <div className="text-gray-400 text-xs font-semibold mb-0.5">{record.date}</div>
@@ -116,21 +117,21 @@ const Dashboard = () => {
                                     <div className={`text-xs font-bold px-2 py-1 rounded-md ${record.daily_roi >= 0 ? 'bg-rose-50 text-rose-600' : 'bg-blue-50 text-blue-600'}`}>
                                         {record.daily_roi > 0 ? '+' : ''}{record.daily_roi}% ROI
                                     </div>
-                                    {expandedDate === record.date ? <ChevronUp size={16} className="text-gray-300" /> : <ChevronDown size={16} className="text-gray-300" />}
+                                    {expandedDate === record.date ? <ChevronUp size={16} className="text-rose-400" /> : <ChevronDown size={16} className="text-gray-300" />}
                                 </div>
                             </div>
 
                             {/* Card Body (Detailed Trades) */}
                             {expandedDate === record.date && (
-                                <div className="bg-slate-50/50 px-4 py-4 border-t border-gray-100 animate-in slide-in-from-top-1 duration-200">
-                                    <div className="relative ml-2 pl-5 border-l-2 border-gray-200 space-y-3">
+                                <div className="bg-indigo-50/40 px-4 py-6 border-t border-rose-100 animate-in slide-in-from-top-1 duration-200">
+                                    <div className="relative ml-2 pl-5 border-l-2 border-indigo-200 space-y-4">
                                         {/* Visual node for better connection */}
-                                        <div className="absolute -left-[5px] -top-0 w-2 h-2 rounded-full bg-gray-300"></div>
+                                        <div className="absolute -left-[5px] -top-0 w-2 h-2 rounded-full bg-indigo-300"></div>
 
                                         {record.trades.map((trade, tIdx) => (
-                                            <div key={tIdx} className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm relative">
+                                            <div key={tIdx} className="bg-white border border-indigo-100 rounded-xl p-4 shadow-sm relative hover:border-indigo-300 transition-colors">
                                                 {/* Little connector line item */}
-                                                <div className="absolute -left-[22px] top-6 w-5 h-[2px] bg-gray-200"></div>
+                                                <div className="absolute -left-[22px] top-6 w-5 h-[2px] bg-indigo-200"></div>
 
                                                 {/* Trade Header: Name & Profit */}
                                                 <div className="flex justify-between items-start mb-3 border-b border-gray-100 pb-2">
