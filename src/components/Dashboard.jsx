@@ -122,16 +122,32 @@ const Dashboard = () => {
 
                             {/* Card Body (Detailed Trades) */}
                             {expandedDate === record.date && (
-                                <div className="bg-gray-50 px-5 py-4 space-y-4 border-t border-gray-100 animate-in slide-in-from-top-2 duration-200">
+                                <div className="bg-gray-50/80 px-5 py-4 space-y-6 border-t border-gray-100 animate-in slide-in-from-top-2 duration-200">
                                     {record.trades.map((trade, tIdx) => (
-                                        <div key={tIdx} className="flex justify-between items-center">
-                                            <div className="flex flex-col">
-                                                <span className="text-gray-800 font-bold text-sm tracking-tight">{trade.name}</span>
-                                                <span className="text-gray-400 text-[11px] font-medium">Sell: ₩{trade.sell_amount.toLocaleString()}</span>
+                                        <div key={tIdx} className="border-b border-gray-200 pb-4 last:border-0 last:pb-0">
+                                            {/* Trade Header: Name & Profit */}
+                                            <div className="flex justify-between items-start mb-2">
+                                                <span className="text-gray-900 font-bold text-base tracking-tight">{trade.name}</span>
+                                                <div className="text-right">
+                                                    <div className="text-rose-500 font-bold text-base">+₩{trade.profit.toLocaleString()}</div>
+                                                    <div className="text-rose-500 text-xs font-semibold">+{trade.roi}%</div>
+                                                </div>
                                             </div>
-                                            <div className="text-right">
-                                                <span className="block text-rose-500 font-bold text-sm">+₩{trade.profit.toLocaleString()}</span>
-                                                <span className="text-[10px] text-rose-400 font-semibold">+{trade.roi}%</span>
+
+                                            {/* Trade Details Grid */}
+                                            <div className="grid grid-cols-2 gap-y-1 text-xs text-xs text-gray-500">
+                                                <div>
+                                                    <span className="block text-gray-400 text-[10px]">Avg Price</span>
+                                                    <span className="font-medium text-gray-700">₩{trade.avg_price.toLocaleString()}</span>
+                                                </div>
+                                                <div className="text-right">
+                                                    <span className="block text-gray-400 text-[10px]">Buy Amount</span>
+                                                    <span className="font-medium text-gray-700">₩{trade.buy_amount.toLocaleString()}</span>
+                                                </div>
+                                                <div className="col-span-2 text-right mt-1 pt-1 border-t border-dashed border-gray-200">
+                                                    <span className="text-gray-400 text-[10px] mr-2">Sell Amount</span>
+                                                    <span className="font-bold text-gray-900">₩{trade.sell_amount.toLocaleString()}</span>
+                                                </div>
                                             </div>
                                         </div>
                                     ))}

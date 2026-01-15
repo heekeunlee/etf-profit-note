@@ -1,5 +1,5 @@
 {
-    "last_updated": "2026-01-15T17:30:00",
+    "last_updated": "2026-01-15T18:00:00",
     "total_equity": 28803982,
     "total_profit": 4792327,
     "records": [
@@ -11,19 +11,25 @@
             "trades": [
                 {
                     "name": "KODEX 친환경조선해운액티브",
+                    "buy_amount": 7909789,
                     "sell_amount": 9000140,
+                    "avg_price": 30766,
                     "profit": 1090351,
                     "roi": 13.78
                 },
                 {
                     "name": "HANARO 원자력iSelect",
+                    "buy_amount": 8775535,
                     "sell_amount": 9813600,
+                    "avg_price": 48749,
                     "profit": 1038065,
                     "roi": 11.83
                 },
                 {
                     "name": "한화솔루션",
+                    "buy_amount": 6637646,
                     "sell_amount": 6872800,
+                    "avg_price": 27369,
                     "profit": 235154,
                     "roi": 3.54
                 }
@@ -37,13 +43,17 @@
             "trades": [
                 {
                     "name": "KODEX 200",
+                    "buy_amount": 8283364,
                     "sell_amount": 9571170,
+                    "avg_price": 56345,
                     "profit": 1287806,
                     "roi": 15.55
                 },
                 {
                     "name": "PLUS K방산",
+                    "buy_amount": 15730124,
                     "sell_amount": 16871075,
+                    "avg_price": 0,
                     "profit": 1140951,
                     "roi": 7.25
                 }
