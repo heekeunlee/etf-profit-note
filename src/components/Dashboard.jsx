@@ -50,8 +50,8 @@ const Dashboard = () => {
 
                 {/* 1. Header & Big Total Profit (Apple/Toss Style) */}
                 <div className="pt-12 pb-8 px-6 text-center bg-white sticky top-0 z-20 transition-all">
-                    <h1 className="text-sm font-semibold text-gray-500 mb-2 uppercase tracking-wide">
-                        실현 손익 현황
+                    <h1 className="text-base font-bold text-gray-600 mb-2 uppercase tracking-wide">
+                        ETF 퀀트투자 실현손익 현황
                     </h1>
                     <div className="text-4xl font-extrabold text-gray-900 tracking-tight flex items-center justify-center gap-1">
                         <span className="text-2xl text-gray-400 font-bold self-start mt-1">₩</span>
@@ -105,10 +105,10 @@ const Dashboard = () => {
                             {/* Card Header (Daily Summary) */}
                             <div
                                 onClick={() => toggleExpand(record.date)}
-                                className={`p-5 flex items-center justify-between cursor-pointer select-none transition-colors ${expandedDate === record.date ? 'bg-white' : 'hover:bg-gray-50'}`}
+                                className={`p-5 flex items-center justify-between cursor-pointer select-none transition-colors ${expandedDate === record.date ? 'bg-white' : 'hover:bg-amber-50'}`}
                             >
                                 <div>
-                                    <div className="text-gray-400 text-xs font-semibold mb-0.5">{record.date}</div>
+                                    <div className="text-gray-500 text-sm font-bold mb-0.5">{record.date}</div>
                                     <div className="text-gray-900 font-bold text-lg">
                                         +₩{record.daily_profit.toLocaleString()}
                                     </div>
