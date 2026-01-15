@@ -1,8 +1,32 @@
 {
     "last_updated": "2026-01-15T18:00:00",
-    "total_equity": 28803982,
-    "total_profit": 4792327,
+    "total_equity": 26691913,
+    "total_profit": 5815310,
     "records": [
+        {
+            "date": "2026-01-15",
+            "equity": 26691913,
+            "daily_profit": 1022983,
+            "daily_roi": 19.42,
+            "trades": [
+                {
+                    "name": "KODEX 우량주",
+                    "buy_amount": 4001086,
+                    "sell_amount": 5005370,
+                    "avg_price": 14762,
+                    "profit": 1004284,
+                    "roi": 25.10
+                },
+                {
+                    "name": "TIGER TDF2045",
+                    "buy_amount": 1267201,
+                    "sell_amount": 1285900,
+                    "avg_price": 0,
+                    "profit": 18699,
+                    "roi": 1.48
+                }
+            ]
+        },
         {
             "date": "2026-01-13",
             "equity": 25668930,
