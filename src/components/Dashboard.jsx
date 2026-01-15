@@ -173,6 +173,13 @@ const Dashboard = () => {
                     ))}
                 </div>
 
+                {/* Footer Signature */}
+                <div className="pb-8 pt-4 text-center">
+                    <p className="text-[10px] text-gray-400 font-medium tracking-wide uppercase">
+                        Engineered by Heekeun Lee <span className="mx-1 text-gray-300">|</span> Co-piloted by DeepMind AI
+                    </p>
+                </div>
+
             </div>
         </div>
     )
