@@ -64,7 +64,7 @@ const Dashboard = () => {
                 </div>
 
                 {/* 2. Cumulative Profit Chart (Bar Visualization) */}
-                <div className="h-56 w-full mb-8 relative px-4">
+                <div className="h-28 w-full mb-8 relative px-4">
                     <div className="absolute top-0 left-6 text-xs text-gray-400 font-bold z-10">Accumulated Profit Steps</div>
                     <ResponsiveContainer width="100%" height="100%">
                         <BarChart data={chartData} margin={{ top: 20, right: 0, left: 0, bottom: 0 }}>
@@ -175,7 +175,7 @@ const Dashboard = () => {
 
                 {/* Footer Signature */}
                 <div className="pb-8 pt-4 text-center">
-                    <p className="text-[10px] text-gray-400 font-medium tracking-wide uppercase">
+                    <p className="text-[10px] text-gray-400 font-medium tracking-wide">
                         Engineered by Heekeun Lee <span className="mx-1 text-gray-300">|</span> Co-piloted by DeepMind AI
                     </p>
                 </div>
