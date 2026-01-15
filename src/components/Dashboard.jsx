@@ -122,13 +122,16 @@ const Dashboard = () => {
 
                             {/* Card Body (Detailed Trades) */}
                             {expandedDate === record.date && (
-                                <div className="bg-slate-50 px-4 py-4 border-t border-gray-100 animate-in slide-in-from-top-1 duration-200">
-                                    <div className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-3 px-1">
-                                        Detailed Breakdown
-                                    </div>
-                                    <div className="space-y-3">
+                                <div className="bg-slate-50/50 px-4 py-4 border-t border-gray-100 animate-in slide-in-from-top-1 duration-200">
+                                    <div className="relative ml-2 pl-5 border-l-2 border-gray-200 space-y-3">
+                                        {/* Visual node for better connection */}
+                                        <div className="absolute -left-[5px] -top-0 w-2 h-2 rounded-full bg-gray-300"></div>
+
                                         {record.trades.map((trade, tIdx) => (
-                                            <div key={tIdx} className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+                                            <div key={tIdx} className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm relative">
+                                                {/* Little connector line item */}
+                                                <div className="absolute -left-[22px] top-6 w-5 h-[2px] bg-gray-200"></div>
+
                                                 {/* Trade Header: Name & Profit */}
                                                 <div className="flex justify-between items-start mb-3 border-b border-gray-100 pb-2">
                                                     <span className="text-gray-900 font-bold text-sm tracking-tight">{trade.name}</span>
