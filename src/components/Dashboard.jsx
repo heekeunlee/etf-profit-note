@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { AreaChart, Area, XAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
-import { TrendingUp, ChevronDown, ChevronUp } from 'lucide-react'
+import { AreaChart, Area, Tooltip, ResponsiveContainer } from 'recharts'
+import { ChevronDown, ChevronUp } from 'lucide-react'
 
 const Dashboard = () => {
     const [data, setData] = useState(null)
@@ -12,7 +12,6 @@ const Dashboard = () => {
             .then(res => res.json())
             .then(data => {
                 setData(data)
-                // All collapsed by default
                 setLoading(false)
             })
             .catch(err => {
@@ -24,11 +23,18 @@ const Dashboard = () => {
     if (loading) return <div className="flex h-screen items-center justify-center text-gray-400 bg-gray-50">Loading Profit Note...</div>
     if (!data) return <div className="flex h-screen items-center justify-center text-rose-500 bg-gray-50">Error loading data.</div>
 
-    // Prepare chart data
-    const chartData = [...data.records].reverse().map(record => ({
-        date: record.date.slice(5),
-        equity: record.equity
-    }));
+    // Prepare chart data: Calculate Cumulative Profit
+    // 1. Sort records chronologically (oldest first)
+    const sortedRecords = [...data.records].reverse();
+
+    let runningTotal = 0;
+    const chartData = sortedRecords.map(record => {
+        runningTotal += record.daily_profit;
+        return {
+            date: record.date.slice(5), // "MM-DD"
+            profit: runningTotal
+        };
+    });
 
     const toggleExpand = (date) => {
         if (expandedDate === date) {
@@ -39,65 +45,93 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 text-gray-900 pb-10 font-sans">
-            <div className="max-w-md mx-auto sm:max-w-2xl">
+        <div className="min-h-screen bg-white text-gray-900 pb-10 font-sans">
+            <div className="max-w-md mx-auto sm:max-w-2xl bg-white min-h-screen shadow-2xl shadow-gray-200/50">
 
-                {/* Header */}
-                <header className="px-6 py-6 flex justify-between items-center bg-white/80 backdrop-blur-md sticky top-0 z-20 border-b border-gray-200">
-                    <h1 className="text-xl font-bold text-gray-900 bg-clip-text">
-                        Profit Note
+                {/* 1. Header & Big Total Profit (Apple/Toss Style) */}
+                <div className="pt-12 pb-8 px-6 text-center bg-white sticky top-0 z-20">
+                    <h1 className="text-sm font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+                        Total Realized Profit
                     </h1>
-                    <span className="text-[10px] bg-gray-100 border border-gray-200 text-gray-500 px-2 py-1 rounded-full">
-                        Last: {data.last_updated.split('T')[0]}
-                    </span>
-                </header>
+                    <div className="text-4xl font-extrabold text-gray-900 tracking-tight flex items-center justify-center gap-1">
+                        <span className="text-2xl text-gray-400 font-bold self-start mt-1">₩</span>
+                        {data.total_profit.toLocaleString()}
+                    </div>
 
-                {/* 1. Daily Records List (Moved to Top) */}
-                <div className="px-6 mt-6 mb-2 flex items-center justify-between">
-                    <h3 className="text-lg font-bold text-gray-800">Trading History</h3>
-                    <span className="text-xs text-gray-500 font-medium">Total Profit: +₩{data.total_profit.toLocaleString()}</span>
+                    <div className="mt-2 inline-flex items-center px-3 py-1 rounded-full bg-rose-50 text-rose-600 text-xs font-bold">
+                        <span className="mr-1">🚀</span> Growing Wealth
+                    </div>
                 </div>
 
-                <div className="space-y-4 px-4 mb-8">
+                {/* 2. Cumulative Profit Chart (Money Growing Feeling) */}
+                <div className="h-48 w-full mb-8 relative">
+                    <div className="absolute top-0 left-6 text-xs text-gray-400 font-bold z-10">Accumulated Profit Curve</div>
+                    <ResponsiveContainer width="100%" height="100%">
+                        <AreaChart data={chartData} margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
+                            <defs>
+                                <linearGradient id="colorProfit" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="5%" stopColor="#f43f5e" stopOpacity={0.2} />
+                                    <stop offset="95%" stopColor="#f43f5e" stopOpacity={0} />
+                                </linearGradient>
+                            </defs>
+                            <Tooltip
+                                contentStyle={{ backgroundColor: '#ffffff', borderColor: '#f43f5e', borderRadius: '12px', color: '#1f2937', fontSize: '13px', fontWeight: 'bold', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }}
+                                itemStyle={{ color: '#f43f5e' }}
+                                labelStyle={{ display: 'none' }}
+                                formatter={(value) => [`+₩${value.toLocaleString()}`, 'Profit']}
+                            />
+                            <Area
+                                type="monotone"
+                                dataKey="profit"
+                                stroke="#f43f5e"
+                                strokeWidth={3}
+                                fillOpacity={1}
+                                fill="url(#colorProfit)"
+                            />
+                        </AreaChart>
+                    </ResponsiveContainer>
+                </div>
+
+                {/* 3. Daily Records List */}
+                <div className="px-6 pb-2">
+                    <h3 className="text-lg font-bold text-gray-900 border-b-2 border-gray-100 pb-2 mb-4">Trading History</h3>
+                </div>
+
+                <div className="space-y-3 px-4 pb-12">
                     {data.records.map((record, idx) => (
-                        <div key={idx} className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div key={idx} className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden transition-all duration-200">
 
                             {/* Card Header (Daily Summary) */}
                             <div
                                 onClick={() => toggleExpand(record.date)}
-                                className="p-5 flex items-center justify-between cursor-pointer active:bg-gray-50 transition-colors"
+                                className="p-5 flex items-center justify-between cursor-pointer active:bg-gray-50 select-none"
                             >
                                 <div>
-                                    <div className="text-gray-400 text-xs font-bold uppercase mb-1">{record.date}</div>
+                                    <div className="text-gray-400 text-xs font-semibold mb-0.5">{record.date}</div>
                                     <div className="text-gray-900 font-bold text-lg">
                                         +₩{record.daily_profit.toLocaleString()}
                                     </div>
                                 </div>
-                                <div className="text-right">
-                                    <div className={`text-sm font-bold px-3 py-1 rounded-lg inline-block mb-1 ${record.daily_roi >= 0 ? 'bg-rose-100 text-rose-600' : 'bg-blue-100 text-blue-600'}`}>
-                                        {record.daily_roi > 0 ? '+' : ''}{record.daily_roi}%
+                                <div className="text-right flex flex-col items-end gap-1">
+                                    <div className={`text-xs font-bold px-2 py-1 rounded-md ${record.daily_roi >= 0 ? 'bg-rose-50 text-rose-600' : 'bg-blue-50 text-blue-600'}`}>
+                                        {record.daily_roi > 0 ? '+' : ''}{record.daily_roi}% ROI
                                     </div>
-                                    <div className="text-gray-400 text-xs flex items-center justify-end gap-1">
-                                        {expandedDate === record.date ? 'Hide Details' : 'View Details'}
-                                        {expandedDate === record.date ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-                                    </div>
+                                    {expandedDate === record.date ? <ChevronUp size={16} className="text-gray-300" /> : <ChevronDown size={16} className="text-gray-300" />}
                                 </div>
                             </div>
 
                             {/* Card Body (Detailed Trades) */}
                             {expandedDate === record.date && (
-                                <div className="bg-gray-50/50 border-t border-gray-100 p-4 space-y-3">
+                                <div className="bg-gray-50 px-5 py-4 space-y-4 border-t border-gray-100 animate-in slide-in-from-top-2 duration-200">
                                     {record.trades.map((trade, tIdx) => (
-                                        <div key={tIdx} className="flex justify-between items-start py-2 border-b border-gray-200 last:border-0 last:pb-0">
-                                            <div>
-                                                <div className="text-gray-800 font-bold text-sm mb-1">{trade.name}</div>
-                                                <div className="text-gray-500 text-xs">Sell: ₩{trade.sell_amount.toLocaleString()}</div>
+                                        <div key={tIdx} className="flex justify-between items-center">
+                                            <div className="flex flex-col">
+                                                <span className="text-gray-800 font-bold text-sm tracking-tight">{trade.name}</span>
+                                                <span className="text-gray-400 text-[11px] font-medium">Sell: ₩{trade.sell_amount.toLocaleString()}</span>
                                             </div>
                                             <div className="text-right">
-                                                <div className="text-rose-500 font-bold text-sm">+₩{trade.profit.toLocaleString()}</div>
-                                                <div className="text-rose-600 text-xs bg-rose-100 px-1.5 py-0.5 rounded inline-block mt-1">
-                                                    +{trade.roi}%
-                                                </div>
+                                                <span className="block text-rose-500 font-bold text-sm">+₩{trade.profit.toLocaleString()}</span>
+                                                <span className="text-[10px] text-rose-400 font-semibold">+{trade.roi}%</span>
                                             </div>
                                         </div>
                                     ))}
@@ -106,41 +140,6 @@ const Dashboard = () => {
 
                         </div>
                     ))}
-                </div>
-
-                {/* 2. Asset Growth Chart (Moved to Bottom) */}
-                <div className="mx-4 mb-8 bg-white border border-gray-200 rounded-3xl p-5 shadow-sm">
-                    <div className="flex items-center gap-2 mb-4 px-1">
-                        <TrendingUp size={16} className="text-gray-400" />
-                        <h3 className="text-sm font-bold text-gray-700">Asset Growth</h3>
-                    </div>
-                    <div className="h-40 w-full">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <AreaChart data={chartData}>
-                                <defs>
-                                    <linearGradient id="colorEquity" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor="#6366f1" stopOpacity={0.2} />
-                                        <stop offset="95%" stopColor="#6366f1" stopOpacity={0} />
-                                    </linearGradient>
-                                </defs>
-                                <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" vertical={false} />
-                                <Tooltip
-                                    contentStyle={{ backgroundColor: '#ffffff', borderColor: '#e5e7eb', borderRadius: '12px', color: '#1f2937', fontSize: '12px', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                                    itemStyle={{ color: '#6366f1' }}
-                                    labelStyle={{ color: '#9ca3af', marginBottom: '4px' }}
-                                    formatter={(value) => [`₩${value.toLocaleString()}`, 'Equity']}
-                                />
-                                <Area
-                                    type="monotone"
-                                    dataKey="equity"
-                                    stroke="#6366f1"
-                                    strokeWidth={2}
-                                    fillOpacity={1}
-                                    fill="url(#colorEquity)"
-                                />
-                            </AreaChart>
-                        </ResponsiveContainer>
-                    </div>
                 </div>
 
             </div>
