@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { BarChart, Bar, Tooltip, ResponsiveContainer, XAxis } from 'recharts'
-import { ChevronDown, ChevronUp } from 'lucide-react'
+import { ChevronDown, ChevronUp, ArrowRight } from 'lucide-react'
 
 const Dashboard = () => {
     const [data, setData] = useState(null)
@@ -134,7 +134,7 @@ const Dashboard = () => {
                                                 <div className="absolute -left-[22px] top-6 w-5 h-[2px] bg-indigo-200"></div>
 
                                                 {/* Trade Header: Name & Profit */}
-                                                <div className="flex justify-between items-start mb-3 border-b border-gray-100 pb-2">
+                                                <div className="flex justify-between items-start mb-4 border-b border-gray-100 pb-2">
                                                     <span className="text-gray-900 font-bold text-sm tracking-tight">{trade.name}</span>
                                                     <div className="text-right">
                                                         <div className="text-rose-500 font-bold text-sm">+₩{trade.profit.toLocaleString()}</div>
@@ -144,21 +144,25 @@ const Dashboard = () => {
                                                     </div>
                                                 </div>
 
-                                                {/* Trade Details Grid */}
-                                                <div className="grid grid-cols-2 gap-y-2 text-xs">
-                                                    <div>
-                                                        <span className="block text-gray-400 text-[10px] mb-0.5">Avg Price</span>
-                                                        <span className="font-semibold text-gray-700">₩{trade.avg_price.toLocaleString()}</span>
-                                                    </div>
-                                                    <div className="text-right">
-                                                        <span className="block text-gray-400 text-[10px] mb-0.5">Buy Amount</span>
-                                                        <span className="font-semibold text-gray-700">₩{trade.buy_amount.toLocaleString()}</span>
-                                                    </div>
-                                                    <div className="col-span-2 text-right mt-1 pt-2 border-t border-dashed border-gray-100">
-                                                        <span className="text-gray-400 text-[10px] mr-2">Total Sell Amount</span>
-                                                        <span className="font-bold text-gray-900">₩{trade.sell_amount.toLocaleString()}</span>
+                                                {/* Trade Details Flow (Buy -> Sell) */}
+                                                <div className="relative">
+                                                    <div className="text-[10px] text-gray-400 mb-2 font-medium">Avg Price: ₩{trade.avg_price.toLocaleString()}</div>
+
+                                                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-100">
+                                                        <div className="flex flex-col">
+                                                            <span className="text-[10px] text-gray-400 uppercase font-semibold">Buy Amount</span>
+                                                            <span className="text-xs font-medium text-gray-600">₩{trade.buy_amount.toLocaleString()}</span>
+                                                        </div>
+
+                                                        <ArrowRight size={14} className="text-indigo-300" />
+
+                                                        <div className="flex flex-col items-end">
+                                                            <span className="text-[10px] text-rose-500 font-bold uppercase">Sell Amount</span>
+                                                            <span className="text-sm font-bold text-gray-900">₩{trade.sell_amount.toLocaleString()}</span>
+                                                        </div>
                                                     </div>
                                                 </div>
+
                                             </div>
                                         ))}
                                     </div>
