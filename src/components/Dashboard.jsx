@@ -75,7 +75,7 @@ const Dashboard = () => {
                     </div>
 
                     <h1 className="text-base font-bold text-gray-600 mb-2 uppercase tracking-wide">
-                        ETF 퀀트투자 실현손익 현황
+                        {activeUser === 'heekeun' ? 'ETF 퀀트투자 실현손익 현황' : '주식투자 실현손익 현황'}
                     </h1>
                     <div className="text-4xl font-extrabold text-gray-900 tracking-tight flex items-center justify-center gap-1">
                         <span className="text-2xl text-gray-400 font-bold self-start mt-1">₩</span>
