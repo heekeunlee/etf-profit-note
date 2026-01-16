@@ -2,6 +2,39 @@ import { useState, useEffect } from 'react'
 import { BarChart, Bar, Tooltip, ResponsiveContainer, XAxis } from 'recharts'
 import { ChevronDown, ChevronUp, ArrowRight } from 'lucide-react'
 
+// Utility Component for Number Animation
+const CountUp = ({ end, duration = 1000 }) => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        let startTime = null;
+        let animationFrame;
+
+        const animate = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+            const progress = timestamp - startTime;
+            const progressRatio = Math.min(progress / duration, 1);
+
+            // Ease-out expo function for smooth landing
+            const easeOut = (x) => 1 - Math.pow(2, -10 * x);
+
+            setCount(Math.floor(easeOut(progressRatio) * end));
+
+            if (progress < duration) {
+                animationFrame = requestAnimationFrame(animate);
+            } else {
+                setCount(end);
+            }
+        };
+
+        animationFrame = requestAnimationFrame(animate);
+
+        return () => cancelAnimationFrame(animationFrame);
+    }, [end, duration]);
+
+    return <>{count.toLocaleString()}</>;
+};
+
 const Dashboard = () => {
     const [activeUser, setActiveUser] = useState('heekeun') // 'heekeun' or 'geonkyung'
     const [data, setData] = useState(null)
@@ -108,7 +141,7 @@ const Dashboard = () => {
                     </h1>
                     <div className="relative z-10 text-4xl font-extrabold text-gray-900 tracking-tight flex items-center justify-center gap-1">
                         <span className="text-2xl text-gray-400 font-bold self-start mt-1">₩</span>
-                        {data.total_profit.toLocaleString()}
+                        <CountUp end={data.total_profit} />
                     </div>
 
                     <div className="relative z-10 mt-2 inline-flex items-center px-3 py-1 rounded-full bg-rose-50 text-rose-600 text-xs font-bold">
