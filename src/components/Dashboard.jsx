@@ -83,33 +83,33 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 text-gray-900 pb-10 font-sans">
-            <div className="max-w-md mx-auto sm:max-w-2xl bg-white min-h-screen shadow-2xl shadow-gray-200/50">
+        <div className={`min-h-screen transition-colors duration-700 ease-in-out pb-10 font-sans ${activeUser === 'heekeun' ? 'bg-blue-50/30' : 'bg-rose-50/30'}`}>
+            <div className={`max-w-md mx-auto sm:max-w-2xl min-h-screen shadow-2xl transition-colors duration-700 ease-in-out ${activeUser === 'heekeun' ? 'bg-white shadow-blue-200/50' : 'bg-white shadow-rose-200/50'}`}>
 
                 {/* 1. Header & Big Total Profit (Apple/Toss Style) */}
-                <div className="relative pt-8 pb-8 px-6 text-center bg-white sticky top-0 z-20 transition-all overflow-hidden">
+                <div className={`relative pt-6 pb-6 px-6 text-center sticky top-0 z-20 transition-all overflow-hidden duration-700 ${activeUser === 'heekeun' ? 'bg-white/90 backdrop-blur-md' : 'bg-white/90 backdrop-blur-md'}`}>
 
                     {/* Massive Emojis (Background/Side) */}
                     {activeUser === 'heekeun' && (
-                        <div className="absolute left-[-10px] top-1/2 -translate-y-1/2 text-[500%] leading-none filter drop-shadow-xl animate-in slide-in-from-left duration-500 hover:scale-110 transition-transform cursor-default z-0">
+                        <div className="absolute left-[-10px] top-1/2 -translate-y-1/2 text-[500%] leading-none filter drop-shadow-xl animate-in slide-in-from-left duration-500 hover:scale-110 transition-transform cursor-default z-0 opacity-10">
                             🤴
                         </div>
                     )}
                     {activeUser === 'geonkyung' && (
-                        <div className="absolute right-[-10px] top-1/2 -translate-y-1/2 text-[500%] leading-none filter drop-shadow-xl animate-in slide-in-from-right duration-500 hover:scale-110 transition-transform cursor-default z-0">
+                        <div className="absolute right-[-10px] top-1/2 -translate-y-1/2 text-[500%] leading-none filter drop-shadow-xl animate-in slide-in-from-right duration-500 hover:scale-110 transition-transform cursor-default z-0 opacity-10">
                             👸
                         </div>
                     )}
 
-                    {/* User Tab Navigation - FIGHTING GAME STYLE */}
-                    <div className="relative z-10 flex justify-center items-center mb-8 pt-4">
-                        <div className="flex items-center gap-6">
+                    {/* User Tab Navigation - FIGHTING GAME STYLE (Mini Version) */}
+                    <div className="relative z-10 flex justify-center items-center mb-6 pt-2">
+                        <div className="flex items-center gap-4 scale-75 origin-top">
                             {/* Player 1 Button */}
                             <button
                                 onClick={() => setActiveUser('heekeun')}
-                                className={`px-6 py-3 rounded-2xl text-lg font-black italic tracking-tighter transition-all transform duration-300 border-2 ${activeUser === 'heekeun'
-                                    ? 'bg-blue-600 text-white border-blue-500 shadow-[0_0_20px_rgba(37,99,235,0.6)] scale-110 -rotate-2'
-                                    : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
+                                className={`px-4 py-2 rounded-xl text-base font-black italic tracking-tighter transition-all transform duration-300 border-2 ${activeUser === 'heekeun'
+                                        ? 'bg-blue-600 text-white border-blue-500 shadow-[0_0_15px_rgba(37,99,235,0.5)] scale-110 -rotate-2'
+                                        : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
                                     }`}
                             >
                                 이희근
@@ -118,7 +118,7 @@ const Dashboard = () => {
                             {/* THE FIERY VS */}
                             <div className="relative">
                                 <span className="absolute -inset-1 blur-sm bg-gradient-to-br from-yellow-400 via-orange-500 to-red-600 rounded-full opacity-75 animate-pulse"></span>
-                                <span className="relative text-5xl font-[900] italic leading-none bg-clip-text text-transparent bg-gradient-to-b from-yellow-300 to-red-600 filter drop-shadow hover:scale-125 transition-transform cursor-crosshair select-none" style={{ fontFamily: 'Impact, sans-serif' }}>
+                                <span className="relative text-3xl font-[900] italic leading-none bg-clip-text text-transparent bg-gradient-to-b from-yellow-300 to-red-600 filter drop-shadow hover:scale-125 transition-transform cursor-crosshair select-none" style={{ fontFamily: 'Impact, sans-serif' }}>
                                     VS
                                 </span>
                             </div>
@@ -126,9 +126,9 @@ const Dashboard = () => {
                             {/* Player 2 Button */}
                             <button
                                 onClick={() => setActiveUser('geonkyung')}
-                                className={`px-6 py-3 rounded-2xl text-lg font-black italic tracking-tighter transition-all transform duration-300 border-2 ${activeUser === 'geonkyung'
-                                    ? 'bg-rose-600 text-white border-rose-500 shadow-[0_0_20px_rgba(225,29,72,0.6)] scale-110 rotate-2'
-                                    : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
+                                className={`px-4 py-2 rounded-xl text-base font-black italic tracking-tighter transition-all transform duration-300 border-2 ${activeUser === 'geonkyung'
+                                        ? 'bg-rose-600 text-white border-rose-500 shadow-[0_0_15px_rgba(225,29,72,0.5)] scale-110 rotate-2'
+                                        : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
                                     }`}
                             >
                                 이건경
