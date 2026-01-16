@@ -54,11 +54,23 @@ const Dashboard = () => {
             <div className="max-w-md mx-auto sm:max-w-2xl bg-white min-h-screen shadow-2xl shadow-gray-200/50">
 
                 {/* 1. Header & Big Total Profit (Apple/Toss Style) */}
-                <div className="pt-8 pb-8 px-6 text-center bg-white sticky top-0 z-20 transition-all">
+                <div className="relative pt-8 pb-8 px-6 text-center bg-white sticky top-0 z-20 transition-all overflow-hidden">
+
+                    {/* Massive Emojis (Background/Side) */}
+                    {activeUser === 'heekeun' && (
+                        <div className="absolute left-[-10px] top-1/2 -translate-y-1/2 text-[500%] leading-none filter drop-shadow-xl animate-in slide-in-from-left duration-500 hover:scale-110 transition-transform cursor-default z-0">
+                            🤴
+                        </div>
+                    )}
+                    {activeUser === 'geonkyung' && (
+                        <div className="absolute right-[-10px] top-1/2 -translate-y-1/2 text-[500%] leading-none filter drop-shadow-xl animate-in slide-in-from-right duration-500 hover:scale-110 transition-transform cursor-default z-0">
+                            👸
+                        </div>
+                    )}
 
                     {/* User Tab Navigation */}
-                    <div className="flex justify-center mb-6">
-                        <div className="bg-gray-100 p-1 rounded-xl inline-flex">
+                    <div className="relative z-10 flex justify-center mb-6">
+                        <div className="bg-gray-100 p-1 rounded-xl inline-flex shadow-sm">
                             <button
                                 onClick={() => setActiveUser('heekeun')}
                                 className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${activeUser === 'heekeun' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}
@@ -74,17 +86,15 @@ const Dashboard = () => {
                         </div>
                     </div>
 
-                    <h1 className="flex items-center justify-center gap-2 text-base font-bold text-gray-600 mb-2 uppercase tracking-wide">
-                        {activeUser === 'heekeun' && <span className="text-xl filter drop-shadow-sm transform hover:scale-110 transition-transform">🤴</span>}
-                        <span>{activeUser === 'heekeun' ? 'ETF 퀀트투자 실현손익 현황' : '주식투자 실현손익 현황'}</span>
-                        {activeUser === 'geonkyung' && <span className="text-xl filter drop-shadow-sm transform hover:scale-110 transition-transform">👸</span>}
+                    <h1 className="relative z-10 text-base font-bold text-gray-600 mb-2 uppercase tracking-wide">
+                        {activeUser === 'heekeun' ? 'ETF 퀀트투자 실현손익 현황' : '주식투자 실현손익 현황'}
                     </h1>
-                    <div className="text-4xl font-extrabold text-gray-900 tracking-tight flex items-center justify-center gap-1">
+                    <div className="relative z-10 text-4xl font-extrabold text-gray-900 tracking-tight flex items-center justify-center gap-1">
                         <span className="text-2xl text-gray-400 font-bold self-start mt-1">₩</span>
                         {data.total_profit.toLocaleString()}
                     </div>
 
-                    <div className="mt-2 inline-flex items-center px-3 py-1 rounded-full bg-rose-50 text-rose-600 text-xs font-bold">
+                    <div className="relative z-10 mt-2 inline-flex items-center px-3 py-1 rounded-full bg-rose-50 text-rose-600 text-xs font-bold">
                         <span className="mr-1">🚀</span> Growing Wealth
                     </div>
                 </div>
