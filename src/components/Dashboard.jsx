@@ -68,18 +68,35 @@ const Dashboard = () => {
                         </div>
                     )}
 
-                    {/* User Tab Navigation */}
-                    <div className="relative z-10 flex justify-center mb-6">
-                        <div className="bg-gray-100 p-1 rounded-xl inline-flex shadow-sm">
+                    {/* User Tab Navigation - FIGHTING GAME STYLE */}
+                    <div className="relative z-10 flex justify-center items-center mb-8 pt-4">
+                        <div className="flex items-center gap-6">
+                            {/* Player 1 Button */}
                             <button
                                 onClick={() => setActiveUser('heekeun')}
-                                className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${activeUser === 'heekeun' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}
+                                className={`px-6 py-3 rounded-2xl text-lg font-black italic tracking-tighter transition-all transform duration-300 border-2 ${activeUser === 'heekeun'
+                                        ? 'bg-blue-600 text-white border-blue-500 shadow-[0_0_20px_rgba(37,99,235,0.6)] scale-110 -rotate-2'
+                                        : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
+                                    }`}
                             >
                                 이희근
                             </button>
+
+                            {/* THE FIERY VS */}
+                            <div className="relative">
+                                <span className="absolute -inset-1 blur-sm bg-gradient-to-br from-yellow-400 via-orange-500 to-red-600 rounded-full opacity-75 animate-pulse"></span>
+                                <span className="relative text-5xl font-[900] italic leading-none bg-clip-text text-transparent bg-gradient-to-b from-yellow-300 to-red-600 filter drop-shadow hover:scale-125 transition-transform cursor-crosshair select-none" style={{ fontFamily: 'Impact, sans-serif' }}>
+                                    VS
+                                </span>
+                            </div>
+
+                            {/* Player 2 Button */}
                             <button
                                 onClick={() => setActiveUser('geonkyung')}
-                                className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${activeUser === 'geonkyung' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}
+                                className={`px-6 py-3 rounded-2xl text-lg font-black italic tracking-tighter transition-all transform duration-300 border-2 ${activeUser === 'geonkyung'
+                                        ? 'bg-rose-600 text-white border-rose-500 shadow-[0_0_20px_rgba(225,29,72,0.6)] scale-110 rotate-2'
+                                        : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
+                                    }`}
                             >
                                 이건경
                             </button>
