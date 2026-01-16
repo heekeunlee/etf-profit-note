@@ -74,8 +74,10 @@ const Dashboard = () => {
                         </div>
                     </div>
 
-                    <h1 className="text-base font-bold text-gray-600 mb-2 uppercase tracking-wide">
-                        {activeUser === 'heekeun' ? 'ETF 퀀트투자 실현손익 현황' : '주식투자 실현손익 현황'}
+                    <h1 className="flex items-center justify-center gap-2 text-base font-bold text-gray-600 mb-2 uppercase tracking-wide">
+                        {activeUser === 'heekeun' && <span className="text-xl filter drop-shadow-sm transform hover:scale-110 transition-transform">🤴</span>}
+                        <span>{activeUser === 'heekeun' ? 'ETF 퀀트투자 실현손익 현황' : '주식투자 실현손익 현황'}</span>
+                        {activeUser === 'geonkyung' && <span className="text-xl filter drop-shadow-sm transform hover:scale-110 transition-transform">👸</span>}
                     </h1>
                     <div className="text-4xl font-extrabold text-gray-900 tracking-tight flex items-center justify-center gap-1">
                         <span className="text-2xl text-gray-400 font-bold self-start mt-1">₩</span>
