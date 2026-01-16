@@ -1,0 +1,87 @@
+{
+    "last_updated": "2026-01-15T18:00:00",
+    "total_equity": 26691913,
+    "total_profit": 5815310,
+    "records": [
+        {
+            "date": "2026-01-15",
+            "equity": 26691913,
+            "daily_profit": 1022983,
+            "daily_roi": 19.42,
+            "trades": [
+                {
+                    "name": "KODEX 우량주",
+                    "buy_amount": 4001086,
+                    "sell_amount": 5005370,
+                    "avg_price": 14762,
+                    "profit": 1004284,
+                    "roi": 25.10
+                },
+                {
+                    "name": "TIGER TDF2045",
+                    "buy_amount": 1267201,
+                    "sell_amount": 1285900,
+                    "avg_price": 0,
+                    "profit": 18699,
+                    "roi": 1.48
+                }
+            ]
+        },
+        {
+            "date": "2026-01-13",
+            "equity": 25668930,
+            "daily_profit": 2363570,
+            "daily_roi": 10.13,
+            "trades": [
+                {
+                    "name": "KODEX 친환경조선해운액티브",
+                    "buy_amount": 7909789,
+                    "sell_amount": 9000140,
+                    "avg_price": 30766,
+                    "profit": 1090351,
+                    "roi": 13.78
+                },
+                {
+                    "name": "HANARO 원자력iSelect",
+                    "buy_amount": 8775535,
+                    "sell_amount": 9813600,
+                    "avg_price": 48749,
+                    "profit": 1038065,
+                    "roi": 11.83
+                },
+                {
+                    "name": "한화솔루션",
+                    "buy_amount": 6637646,
+                    "sell_amount": 6872800,
+                    "avg_price": 27369,
+                    "profit": 235154,
+                    "roi": 3.54
+                }
+            ]
+        },
+        {
+            "date": "2026-01-05",
+            "equity": 26440412,
+            "daily_profit": 2428757,
+            "daily_roi": 10.11,
+            "trades": [
+                {
+                    "name": "KODEX 200",
+                    "buy_amount": 8283364,
+                    "sell_amount": 9571170,
+                    "avg_price": 56345,
+                    "profit": 1287806,
+                    "roi": 15.55
+                },
+                {
+                    "name": "PLUS K방산",
+                    "buy_amount": 15730124,
+                    "sell_amount": 16871075,
+                    "avg_price": 0,
+                    "profit": 1140951,
+                    "roi": 7.25
+                }
+            ]
+        }
+    ]
+}

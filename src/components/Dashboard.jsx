@@ -3,22 +3,27 @@ import { BarChart, Bar, Tooltip, ResponsiveContainer, XAxis } from 'recharts'
 import { ChevronDown, ChevronUp, ArrowRight } from 'lucide-react'
 
 const Dashboard = () => {
+    const [activeUser, setActiveUser] = useState('heekeun') // 'heekeun' or 'geonkyung'
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(true)
     const [expandedDate, setExpandedDate] = useState(null)
 
     useEffect(() => {
-        fetch('./data/history.json')
+        setLoading(true)
+        const fileName = activeUser === 'heekeun' ? 'history_heekeun.json' : 'history_geonkyung.json'
+
+        fetch(`./data/${fileName}`)
             .then(res => res.json())
             .then(data => {
                 setData(data)
                 setLoading(false)
+                setExpandedDate(null) // Reset expanded state when switching user
             })
             .catch(err => {
                 console.error("Failed to load data", err)
                 setLoading(false)
             })
-    }, [])
+    }, [activeUser])
 
     if (loading) return <div className="flex h-screen items-center justify-center text-gray-400 bg-gray-50">Loading Profit Note...</div>
     if (!data) return <div className="flex h-screen items-center justify-center text-rose-500 bg-gray-50">Error loading data.</div>
@@ -49,7 +54,26 @@ const Dashboard = () => {
             <div className="max-w-md mx-auto sm:max-w-2xl bg-white min-h-screen shadow-2xl shadow-gray-200/50">
 
                 {/* 1. Header & Big Total Profit (Apple/Toss Style) */}
-                <div className="pt-12 pb-8 px-6 text-center bg-white sticky top-0 z-20 transition-all">
+                <div className="pt-8 pb-8 px-6 text-center bg-white sticky top-0 z-20 transition-all">
+
+                    {/* User Tab Navigation */}
+                    <div className="flex justify-center mb-6">
+                        <div className="bg-gray-100 p-1 rounded-xl inline-flex">
+                            <button
+                                onClick={() => setActiveUser('heekeun')}
+                                className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${activeUser === 'heekeun' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}
+                            >
+                                이희근
+                            </button>
+                            <button
+                                onClick={() => setActiveUser('geonkyung')}
+                                className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${activeUser === 'geonkyung' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}
+                            >
+                                이건경
+                            </button>
+                        </div>
+                    </div>
+
                     <h1 className="text-base font-bold text-gray-600 mb-2 uppercase tracking-wide">
                         ETF 퀀트투자 실현손익 현황
                     </h1>
