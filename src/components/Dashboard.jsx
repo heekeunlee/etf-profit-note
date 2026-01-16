@@ -75,8 +75,8 @@ const Dashboard = () => {
                             <button
                                 onClick={() => setActiveUser('heekeun')}
                                 className={`px-6 py-3 rounded-2xl text-lg font-black italic tracking-tighter transition-all transform duration-300 border-2 ${activeUser === 'heekeun'
-                                        ? 'bg-blue-600 text-white border-blue-500 shadow-[0_0_20px_rgba(37,99,235,0.6)] scale-110 -rotate-2'
-                                        : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
+                                    ? 'bg-blue-600 text-white border-blue-500 shadow-[0_0_20px_rgba(37,99,235,0.6)] scale-110 -rotate-2'
+                                    : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
                                     }`}
                             >
                                 이희근
@@ -94,8 +94,8 @@ const Dashboard = () => {
                             <button
                                 onClick={() => setActiveUser('geonkyung')}
                                 className={`px-6 py-3 rounded-2xl text-lg font-black italic tracking-tighter transition-all transform duration-300 border-2 ${activeUser === 'geonkyung'
-                                        ? 'bg-rose-600 text-white border-rose-500 shadow-[0_0_20px_rgba(225,29,72,0.6)] scale-110 rotate-2'
-                                        : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
+                                    ? 'bg-rose-600 text-white border-rose-500 shadow-[0_0_20px_rgba(225,29,72,0.6)] scale-110 rotate-2'
+                                    : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
                                     }`}
                             >
                                 이건경
@@ -161,7 +161,7 @@ const Dashboard = () => {
                                 className={`p-5 flex items-center justify-between cursor-pointer select-none transition-colors ${expandedDate === record.date ? 'bg-white' : 'hover:bg-amber-50'}`}
                             >
                                 <div>
-                                    <div className="text-gray-500 text-sm font-bold mb-0.5">{record.date}</div>
+                                    <div className="text-blue-500 text-sm font-bold mb-0.5">{record.date}</div>
                                     <div className="text-gray-900 font-bold text-lg">
                                         +₩{record.daily_profit.toLocaleString()}
                                     </div>
