@@ -1,8 +1,24 @@
 {
-    "last_updated": "2026-01-15T18:00:00",
-    "total_equity": 26691913,
-    "total_profit": 5815310,
+    "last_updated": "2026-01-23T17:30:00",
+    "total_equity": 27730683,
+    "total_profit": 6854080,
     "records": [
+        {
+            "date": "2026-01-23",
+            "equity": 27730683,
+            "daily_profit": 1038770,
+            "daily_roi": 20.88,
+            "trades": [
+                {
+                    "name": "PLUS 글로벌희토류&전략자원생산기업",
+                    "buy_amount": 4975970,
+                    "sell_amount": 6014740,
+                    "avg_price": 9670,
+                    "profit": 1038770,
+                    "roi": 20.88
+                }
+            ]
+        },
         {
             "date": "2026-01-15",
             "equity": 26691913,
