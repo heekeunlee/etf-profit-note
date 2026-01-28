@@ -1,8 +1,40 @@
 {
-    "last_updated": "2026-01-23T17:30:00",
-    "total_equity": 27730683,
-    "total_profit": 6854080,
+    "last_updated": "2026-01-28T18:00:00",
+    "total_equity": 30389665,
+    "total_profit": 9513062,
     "records": [
+        {
+            "date": "2026-01-28",
+            "equity": 30389665,
+            "daily_profit": 2658982,
+            "daily_roi": 31.99,
+            "trades": [
+                {
+                    "name": "TIGER 구리실물",
+                    "buy_amount": 2847900,
+                    "sell_amount": 3282215,
+                    "avg_price": 15675,
+                    "profit": 434315,
+                    "roi": 15.28
+                },
+                {
+                    "name": "PLUS 글로벌희토류&전략자원생산기업",
+                    "buy_amount": 2498113,
+                    "sell_amount": 3317830,
+                    "avg_price": 9495,
+                    "profit": 819717,
+                    "roi": 32.87
+                },
+                {
+                    "name": "ACE AI반도체포커스",
+                    "buy_amount": 2982050,
+                    "sell_amount": 4387000,
+                    "avg_price": 36030,
+                    "profit": 1404950,
+                    "roi": 47.20
+                }
+            ]
+        },
         {
             "date": "2026-01-23",
             "equity": 27730683,
