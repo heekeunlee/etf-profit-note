@@ -47,9 +47,6 @@ Error generating stack: `+c.message+`
 `,E+=`💰 1월 누적 실현손익
 `,E+=`   +${r.total_profit.toLocaleString()} 원
 
-`,E+=`🏦 총 평가금액 (Equity)
-`,E+=`   ${r.total_equity.toLocaleString()} 원
-
 `,E+=`━━━━━━━━━━━━━━━━━━━━━━━━━━
 `,E+=`[ 일자별 상세 실현손익 ]
 
