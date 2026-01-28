@@ -262,6 +262,30 @@ const Dashboard = () => {
                 <div className="px-6 mb-8 mt-4">
                     <button
                         onClick={() => {
+                            // Helper: Get visual width (Korean=2, English=1)
+                            const getVisualLength = (str) => {
+                                let length = 0;
+                                for (let i = 0; i < str.length; i++) {
+                                    const charCode = str.charCodeAt(i);
+                                    // Korean characters range
+                                    if ((charCode >= 0x1100 && charCode <= 0x11FF) ||
+                                        (charCode >= 0x3130 && charCode <= 0x318F) ||
+                                        (charCode >= 0xAC00 && charCode <= 0xD7A3)) {
+                                        length += 2;
+                                    } else {
+                                        length += 1;
+                                    }
+                                }
+                                return length;
+                            };
+
+                            // Helper: Pad string to specific visual length
+                            const padText = (str, targetLength) => {
+                                const currentLength = getVisualLength(str);
+                                if (currentLength >= targetLength) return str;
+                                return str + ' '.repeat(targetLength - currentLength);
+                            };
+
                             // 1. Generate Report Text
                             const userName = activeUser === 'heekeun' ? '이희근' : '이건경';
                             const now = new Date();
@@ -287,16 +311,25 @@ const Dashboard = () => {
                                 const dayName = ['일', '월', '화', '수', '목', '금', '토'][dateObj.getDay()];
                                 const shortDate = record.date.slice(5).replace('-', '.'); // 01.28
 
-                                // Emoji number 1-9 (optional, or just use simple bullets)
+                                // Emoji number 1-9
                                 const numEmoji = index < 9 ? ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣'][index] : '#️⃣';
 
+                                // Date Header
                                 report += `${numEmoji} ${shortDate} (${dayName}) | +${record.daily_profit.toLocaleString()}원 (${record.daily_roi}%)\n`;
 
-                                // Sort trades by profit descending if not already
+                                // Trades
                                 const sortedTrades = [...record.trades].sort((a, b) => b.profit - a.profit);
-
                                 sortedTrades.forEach(trade => {
-                                    report += `   ▪️ ${trade.name.replace('PLUS ', '').replace('KODEX ', '').replace('TIGER ', '').replace('ACE ', '').replace('HANARO ', '')}: +${trade.profit.toLocaleString()}\n`;
+                                    let cleanName = trade.name.replace('PLUS ', '').replace('KODEX ', '').replace('TIGER ', '').replace('ACE ', '').replace('HANARO ', '');
+                                    // Truncate if too long (optional)
+                                    if (getVisualLength(cleanName) > 16) {
+                                        cleanName = cleanName.slice(0, 8) + '..'; // Simple truncate approximation
+                                    }
+
+                                    const paddedName = padText(cleanName, 18); // Target visual width 18
+                                    const profitStr = `+${trade.profit.toLocaleString()}`;
+
+                                    report += `   ▪️ ${paddedName} ${profitStr}\n`;
                                 });
                                 report += `\n`;
                             });
