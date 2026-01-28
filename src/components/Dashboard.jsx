@@ -116,10 +116,9 @@ const Dashboard = () => {
                             </button>
 
                             {/* THE FIERY VS */}
-                            <div className="relative">
-                                <span className="absolute -inset-1 blur-sm bg-gradient-to-br from-yellow-400 via-orange-500 to-red-600 rounded-full opacity-75 animate-pulse"></span>
-                                <span className="relative text-3xl font-[900] italic leading-none bg-clip-text text-transparent bg-gradient-to-b from-yellow-300 to-red-600 filter drop-shadow hover:scale-125 transition-transform cursor-crosshair select-none" style={{ fontFamily: 'Impact, sans-serif' }}>
-                                    VS
+                            <div className="relative mx-2">
+                                <span className="text-5xl font-[900] italic leading-none text-gray-800 tracking-tighter cursor-default select-none transition-transform hover:scale-110" style={{ fontFamily: 'Impact, sans-serif' }}>
+                                    VS.
                                 </span>
                             </div>
 
