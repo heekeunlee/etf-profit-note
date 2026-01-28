@@ -304,9 +304,6 @@ const Dashboard = () => {
                             report += `💰 1월 누적 실현손익\n`;
                             report += `   +${data.total_profit.toLocaleString()} 원\n\n`;
 
-                            report += `🏦 총 평가금액 (Equity)\n`;
-                            report += `   ${data.total_equity.toLocaleString()} 원\n\n`;
-
                             report += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
                             report += `[ 일자별 상세 실현손익 ]\n\n`;
 
