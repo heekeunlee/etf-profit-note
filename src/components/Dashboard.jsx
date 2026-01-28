@@ -279,11 +279,15 @@ const Dashboard = () => {
                                 return length;
                             };
 
-                            // Helper: Pad string to specific visual length
+                            // Helper: Pad string with compensation for narrow spaces
                             const padText = (str, targetLength) => {
                                 const currentLength = getVisualLength(str);
                                 if (currentLength >= targetLength) return str;
-                                return str + ' '.repeat(targetLength - currentLength);
+                                // In many mobile fonts, space is narrower than half a CJK char.
+                                // We add a bit more padding to compensate.
+                                const paddingNeeded = targetLength - currentLength;
+                                // Simple heuristic: just use spaces. 
+                                return str + ' '.repeat(paddingNeeded);
                             };
 
                             // 1. Generate Report Text
@@ -309,7 +313,7 @@ const Dashboard = () => {
                             data.records.forEach((record, index) => {
                                 const dateObj = new Date(record.date);
                                 const dayName = ['일', '월', '화', '수', '목', '금', '토'][dateObj.getDay()];
-                                const shortDate = record.date.slice(5).replace('-', '.'); // 01.28
+                                const shortDate = record.date.slice(5).replace('-', '.');
 
                                 // Emoji number 1-9
                                 const numEmoji = index < 9 ? ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣'][index] : '#️⃣';
@@ -321,13 +325,18 @@ const Dashboard = () => {
                                 const sortedTrades = [...record.trades].sort((a, b) => b.profit - a.profit);
                                 sortedTrades.forEach(trade => {
                                     let cleanName = trade.name.replace('PLUS ', '').replace('KODEX ', '').replace('TIGER ', '').replace('ACE ', '').replace('HANARO ', '');
-                                    // Truncate if too long (optional)
-                                    if (getVisualLength(cleanName) > 16) {
-                                        cleanName = cleanName.slice(0, 8) + '..'; // Simple truncate approximation
+
+                                    // Aggressive truncation for better mobile column alignment
+                                    // Target ~6-7 CJK chars max
+                                    if (getVisualLength(cleanName) > 12) {
+                                        cleanName = cleanName.slice(0, 6) + '..';
                                     }
 
-                                    const paddedName = padText(cleanName, 18); // Target visual width 18
-                                    const profitStr = `+${trade.profit.toLocaleString()}`;
+                                    // Pad to fixed width (14 visual units)
+                                    const paddedName = padText(cleanName, 14);
+
+                                    // Right-align profit (width ~10)
+                                    const profitStr = `+${trade.profit.toLocaleString()}`.padStart(11, ' ');
 
                                     report += `   ▪️ ${paddedName} ${profitStr}\n`;
                                 });
