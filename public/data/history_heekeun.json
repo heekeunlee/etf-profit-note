@@ -1,8 +1,24 @@
 {
-    "last_updated": "2026-01-28T18:00:00",
-    "total_equity": 30389665,
-    "total_profit": 9513062,
+    "last_updated": "2026-01-29T18:00:00",
+    "total_equity": 31680163,
+    "total_profit": 10803560,
     "records": [
+        {
+            "date": "2026-01-29",
+            "equity": 31680163,
+            "daily_profit": 1290498,
+            "daily_roi": 6.19,
+            "trades": [
+                {
+                    "name": "PLUS 우주항공&UAM",
+                    "buy_amount": 20857598,
+                    "sell_amount": 22150920,
+                    "avg_price": 40190,
+                    "profit": 1290498,
+                    "roi": 6.19
+                }
+            ]
+        },
         {
             "date": "2026-01-28",
             "equity": 30389665,
