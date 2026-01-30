@@ -9,30 +9,27 @@ const VsModal = ({ comparisonData, onClose }) => {
     });
 
     useEffect(() => {
-        // Start with fluctuation ("Drumroll")
-        const interval = setInterval(() => {
-            setAnimState(prev => ({
-                ...prev,
-                heekeunHeight: Math.random() * 80 + 10, // Random 10-90%
-                geonkyungHeight: Math.random() * 80 + 10,
-                isFinished: false
-            }));
-        }, 80);
-
-        // Finish after 1.5s
-        const timeout = setTimeout(() => {
-            clearInterval(interval);
+        // Simple delay to allow render at 0 height, then trigger transition
+        const startTimeout = setTimeout(() => {
             const totalMax = Math.max(comparisonData.heekeun?.total_profit || 1, comparisonData.geonkyung?.total_profit || 1);
             setAnimState({
                 heekeunHeight: Math.min(((comparisonData.heekeun?.total_profit || 0) / totalMax) * 100, 100),
                 geonkyungHeight: Math.min(((comparisonData.geonkyung?.total_profit || 0) / totalMax) * 100, 100),
-                isFinished: true
+                isFinished: false
             });
-        }, 1500);
+        }, 100);
+
+        // Show text/results after bar animation completes (e.g. 1.5s)
+        const finishTimeout = setTimeout(() => {
+            setAnimState(prev => ({
+                ...prev,
+                isFinished: true
+            }));
+        }, 1600);
 
         return () => {
-            clearInterval(interval);
-            clearTimeout(timeout);
+            clearTimeout(startTimeout);
+            clearTimeout(finishTimeout);
         };
     }, [comparisonData]);
 
@@ -53,32 +50,32 @@ const VsModal = ({ comparisonData, onClose }) => {
                 </div>
 
                 <div className="p-6">
-                    <div className="flex justify-between items-end mb-8 relative h-64">
+                    <div className="flex justify-between items-end mb-8 relative h-72"> {/* Increased height for better spacing */}
                         {/* Player 1 (Blue) */}
                         <div className="text-center w-1/2 pr-2 relative flex flex-col justify-end h-full">
-                            {animState.isFinished && comparisonData.heekeun?.total_profit > comparisonData.geonkyung?.total_profit && (
-                                <div className="absolute top-[-30px] left-1/2 -translate-x-1/2 bg-yellow-400 text-black text-[10px] font-black px-2 py-0.5 rounded shadow-lg animate-bounce whitespace-nowrap z-20">
-                                    WINNER!
-                                </div>
-                            )}
 
-                            <div className="mb-2">
-                                <div className="text-4xl mb-1 filter drop-shadow-md">🤴</div>
-                                <div className="text-xs font-black text-gray-400 uppercase tracking-widest">Heekeun</div>
+                            <div className="mb-4 relative z-10"> {/* Added margin bottom and z-index */}
+                                <div className="text-4xl mb-2 filter drop-shadow-md">🤴</div>
+                                <div className="text-xs font-black text-gray-400 uppercase tracking-widest mb-1">Heekeun</div>
                                 <div className={`text-lg font-black text-blue-600 tracking-tight transition-opacity duration-500 ${animState.isFinished ? 'opacity-100' : 'opacity-0'}`}>
                                     +{animState.isFinished ? (comparisonData.heekeun?.total_profit / 10000).toFixed(0) : '???'}만
                                 </div>
+                                {animState.isFinished && comparisonData.heekeun?.total_profit > comparisonData.geonkyung?.total_profit && (
+                                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-yellow-400 text-black text-[10px] font-black px-2 py-0.5 rounded shadow-lg animate-bounce whitespace-nowrap z-20">
+                                        WINNER!
+                                    </div>
+                                )}
                             </div>
 
                             {/* Bar Track */}
                             <div className="h-full w-full flex items-end justify-center relative">
                                 {/* The Bar */}
                                 <div
-                                    className="w-8 bg-gradient-to-t from-blue-600 to-blue-400 rounded-t-lg shadow-blue-200 shadow-lg transition-all duration-300 ease-out relative"
+                                    className="w-10 bg-gradient-to-t from-blue-600 to-blue-400 rounded-t-lg shadow-blue-200 shadow-lg transition-all duration-[1500ms] ease-out relative"
                                     style={{ height: `${animState.heekeunHeight}%` }}
                                 >
                                     {animState.isFinished && (
-                                        <div className="absolute -top-6 left-1/2 -translate-x-1/2 font-bold text-xs text-blue-600 bg-white px-1 rounded shadow-sm">
+                                        <div className="absolute -top-7 left-1/2 -translate-x-1/2 font-bold text-xs text-blue-600 bg-white px-2 py-0.5 rounded-full shadow-md z-30">
                                             {Math.round(animState.heekeunHeight)}%
                                         </div>
                                     )}
@@ -87,37 +84,36 @@ const VsModal = ({ comparisonData, onClose }) => {
                         </div>
 
                         {/* VS Badge (Centered) */}
-                        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                            <div className={`bg-black text-white rounded-full p-3 border-4 border-white shadow-2xl transform transition-transform duration-700 ${animState.isFinished ? 'scale-100 rotate-0' : 'scale-110 rotate-180'}`}>
-                                <span className="text-2xl font-black italic block leading-none">VS</span>
-                            </div>
+                        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0 opacity-20 pointer-events-none">
+                            {/* Reduced visibility and z-index to avoid distraction/overlap */}
+                            <span className="text-[100px] font-black italic text-gray-200">VS</span>
                         </div>
 
                         {/* Player 2 (Red) */}
                         <div className="text-center w-1/2 pl-2 relative flex flex-col justify-end h-full">
-                            {animState.isFinished && comparisonData.geonkyung?.total_profit > comparisonData.heekeun?.total_profit && (
-                                <div className="absolute top-[-30px] left-1/2 -translate-x-1/2 bg-yellow-400 text-black text-[10px] font-black px-2 py-0.5 rounded shadow-lg animate-bounce whitespace-nowrap z-20">
-                                    WINNER!
-                                </div>
-                            )}
 
-                            <div className="mb-2">
-                                <div className="text-4xl mb-1 filter drop-shadow-md">👸</div>
-                                <div className="text-xs font-black text-gray-400 uppercase tracking-widest">Geonkyung</div>
+                            <div className="mb-4 relative z-10">
+                                <div className="text-4xl mb-2 filter drop-shadow-md">👸</div>
+                                <div className="text-xs font-black text-gray-400 uppercase tracking-widest mb-1">Geonkyung</div>
                                 <div className={`text-lg font-black text-rose-600 tracking-tight transition-opacity duration-500 ${animState.isFinished ? 'opacity-100' : 'opacity-0'}`}>
                                     +{animState.isFinished ? (comparisonData.geonkyung?.total_profit / 10000).toFixed(0) : '???'}만
                                 </div>
+                                {animState.isFinished && comparisonData.geonkyung?.total_profit > comparisonData.heekeun?.total_profit && (
+                                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-yellow-400 text-black text-[10px] font-black px-2 py-0.5 rounded shadow-lg animate-bounce whitespace-nowrap z-20">
+                                        WINNER!
+                                    </div>
+                                )}
                             </div>
 
                             {/* Bar Track */}
                             <div className="h-full w-full flex items-end justify-center relative">
                                 {/* The Bar */}
                                 <div
-                                    className="w-8 bg-gradient-to-t from-rose-600 to-rose-400 rounded-t-lg shadow-rose-200 shadow-lg transition-all duration-300 ease-out relative"
+                                    className="w-10 bg-gradient-to-t from-rose-600 to-rose-400 rounded-t-lg shadow-rose-200 shadow-lg transition-all duration-[1500ms] ease-out relative"
                                     style={{ height: `${animState.geonkyungHeight}%` }}
                                 >
                                     {animState.isFinished && (
-                                        <div className="absolute -top-6 left-1/2 -translate-x-1/2 font-bold text-xs text-rose-600 bg-white px-1 rounded shadow-sm">
+                                        <div className="absolute -top-7 left-1/2 -translate-x-1/2 font-bold text-xs text-rose-600 bg-white px-2 py-0.5 rounded-full shadow-md z-30">
                                             {Math.round(animState.geonkyungHeight)}%
                                         </div>
                                     )}
