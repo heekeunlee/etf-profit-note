@@ -111,7 +111,7 @@ const Dashboard = () => {
             <div className="w-full max-w-md bg-white rounded-3xl overflow-hidden shadow-2xl relative">
 
                 {/* 1. Header & Big Total Profit (Apple/Toss Style) */}
-                <div className={`relative pt - 6 pb - 6 px - 6 text - center sticky top - 0 z - 20 transition - all overflow - hidden duration - 700 ${activeUser === 'heekeun' ? 'bg-white/90 backdrop-blur-md' : 'bg-white/90 backdrop-blur-md'} `}>
+                <div className={`relative pt-6 pb-6 px-6 text-center sticky top-0 z-20 transition-all overflow-hidden duration-700 ${activeUser === 'heekeun' ? 'bg-white/90 backdrop-blur-md' : 'bg-white/90 backdrop-blur-md'} `}>
 
                     {/* Massive Emojis (Background/Side) */}
                     {activeUser === 'heekeun' && (
@@ -131,7 +131,7 @@ const Dashboard = () => {
                             {/* Player 1 Button */}
                             <button
                                 onClick={() => setActiveUser('heekeun')}
-                                className={`px - 4 py - 2 rounded - xl text - base font - black italic tracking - tighter transition - all transform duration - 300 border - 2 ${activeUser === 'heekeun'
+                                className={`px-4 py-2 rounded-xl text-base font-black italic tracking-tighter transition-all transform duration-300 border-2 ${activeUser === 'heekeun'
                                     ? 'bg-blue-600 text-white border-blue-500 shadow-[0_0_15px_rgba(37,99,235,0.5)] scale-110 -rotate-2'
                                     : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
                                     } `}
@@ -149,7 +149,7 @@ const Dashboard = () => {
                             {/* Player 2 Button */}
                             <button
                                 onClick={() => setActiveUser('geonkyung')}
-                                className={`px - 4 py - 2 rounded - xl text - base font - black italic tracking - tighter transition - all transform duration - 300 border - 2 ${activeUser === 'geonkyung'
+                                className={`px-4 py-2 rounded-xl text-base font-black italic tracking-tighter transition-all transform duration-300 border-2 ${activeUser === 'geonkyung'
                                     ? 'bg-rose-600 text-white border-rose-500 shadow-[0_0_15px_rgba(225,29,72,0.5)] scale-110 rotate-2'
                                     : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
                                     } `}
@@ -209,12 +209,12 @@ const Dashboard = () => {
 
                 <div className="space-y-4 px-4 pb-12">
                     {data.records.map((record, idx) => (
-                        <div key={idx} className={`border rounded - 2xl overflow - hidden transition - all duration - 300 ${expandedDate === record.date ? 'border-rose-100 shadow-lg bg-white box-border' : 'border-gray-100 bg-white shadow-sm'} `}>
+                        <div key={idx} className={`border rounded-2xl overflow-hidden transition-all duration-300 ${expandedDate === record.date ? 'border-rose-100 shadow-lg bg-white box-border' : 'border-gray-100 bg-white shadow-sm'} `}>
 
                             {/* Card Header (Daily Summary) */}
                             <div
                                 onClick={() => toggleExpand(record.date)}
-                                className={`p - 5 flex items - center justify - between cursor - pointer select - none transition - colors ${expandedDate === record.date ? 'bg-white' : 'hover:bg-amber-50'} `}
+                                className={`p-5 flex items-center justify-between cursor-pointer select-none transition-colors ${expandedDate === record.date ? 'bg-white' : 'hover:bg-amber-50'} `}
                             >
                                 <div>
                                     <div className="text-blue-500 text-sm font-bold mb-0.5">{record.date}</div>
@@ -223,7 +223,7 @@ const Dashboard = () => {
                                     </div>
                                 </div>
                                 <div className="text-right flex flex-col items-end gap-1">
-                                    <div className={`text - xs font - bold px - 2 py - 1 rounded - md ${record.daily_roi >= 0 ? 'bg-rose-50 text-rose-600' : 'bg-blue-50 text-blue-600'} `}>
+                                    <div className={`text-xs font-bold px-2 py-1 rounded-md ${record.daily_roi >= 0 ? 'bg-rose-50 text-rose-600' : 'bg-blue-50 text-blue-600'} `}>
                                         {record.daily_roi > 0 ? '+' : ''}{record.daily_roi}% ROI
                                     </div>
                                     {expandedDate === record.date ? <ChevronUp size={16} className="text-rose-400" /> : <ChevronDown size={16} className="text-gray-300" />}
@@ -382,7 +382,7 @@ const Dashboard = () => {
                                 navigator.share({
                                     title: `ETF Profit Report - ${userName} `,
                                     text: report,
-                                }).catch(console.error);
+                                });
                             } else {
                                 navigator.clipboard.writeText(report).then(() => {
                                     alert("📄 Report copied to clipboard!");
@@ -391,7 +391,7 @@ const Dashboard = () => {
                                 });
                             }
                         }}
-                        className={`col - span - 1 py - 4 rounded - xl flex items - center justify - center gap - 2 font - bold text - sm shadow - lg transition - all active: scale - 95 ${activeUser === 'heekeun'
+                        className={`col-span-1 py-4 rounded-xl flex items-center justify-center gap-2 font-bold text-sm shadow-lg transition-all active:scale-95 ${activeUser === 'heekeun'
                             ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-blue-200 hover:shadow-blue-300'
                             : 'bg-gradient-to-r from-rose-500 to-pink-600 text-white shadow-rose-200 hover:shadow-rose-300'
                             } `}
