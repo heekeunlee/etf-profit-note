@@ -128,11 +128,11 @@ const VsModal = ({ comparisonData, onClose }) => {
                             {(() => {
                                 const diff = (comparisonData.heekeun?.total_profit || 0) - (comparisonData.geonkyung?.total_profit || 0);
                                 if (diff > 0) {
-                                    return `Looks like Heekeun is buying dinner tonight! 🍣 (+${(diff / 10000).toFixed(0)}만 lead)`;
+                                    return `Heekeun's wallet is getting heavy! Pizza's on him! 🍕 (+${(diff / 10000).toFixed(0)}만 lead)`;
                                 } else if (diff < 0) {
-                                    return `Geonkyung takes the crown! Bow down to the Queen! 👑 (+${(Math.abs(diff) / 10000).toFixed(0)}만 lead)`;
+                                    return `Geonkyung is climbing the mountain! Can Heekeun hold the fort? 🏔️ (+${(Math.abs(diff) / 10000).toFixed(0)}만 lead)`;
                                 } else {
-                                    return "It's a tie! Incredible! What are the odds? 🤝";
+                                    return "It's a dead heat! Who will blink first? 👀";
                                 }
                             })()}
                         </p>

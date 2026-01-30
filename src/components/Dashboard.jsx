@@ -132,8 +132,8 @@ const Dashboard = () => {
                             <button
                                 onClick={() => setActiveUser('heekeun')}
                                 className={`px - 4 py - 2 rounded - xl text - base font - black italic tracking - tighter transition - all transform duration - 300 border - 2 ${activeUser === 'heekeun'
-                                        ? 'bg-blue-600 text-white border-blue-500 shadow-[0_0_15px_rgba(37,99,235,0.5)] scale-110 -rotate-2'
-                                        : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
+                                    ? 'bg-blue-600 text-white border-blue-500 shadow-[0_0_15px_rgba(37,99,235,0.5)] scale-110 -rotate-2'
+                                    : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
                                     } `}
                             >
                                 이희근
@@ -150,8 +150,8 @@ const Dashboard = () => {
                             <button
                                 onClick={() => setActiveUser('geonkyung')}
                                 className={`px - 4 py - 2 rounded - xl text - base font - black italic tracking - tighter transition - all transform duration - 300 border - 2 ${activeUser === 'geonkyung'
-                                        ? 'bg-rose-600 text-white border-rose-500 shadow-[0_0_15px_rgba(225,29,72,0.5)] scale-110 rotate-2'
-                                        : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
+                                    ? 'bg-rose-600 text-white border-rose-500 shadow-[0_0_15px_rgba(225,29,72,0.5)] scale-110 rotate-2'
+                                    : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
                                     } `}
                             >
                                 이건경
@@ -392,8 +392,8 @@ const Dashboard = () => {
                             }
                         }}
                         className={`col - span - 1 py - 4 rounded - xl flex items - center justify - center gap - 2 font - bold text - sm shadow - lg transition - all active: scale - 95 ${activeUser === 'heekeun'
-                                ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-blue-200 hover:shadow-blue-300'
-                                : 'bg-gradient-to-r from-rose-500 to-pink-600 text-white shadow-rose-200 hover:shadow-rose-300'
+                            ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-blue-200 hover:shadow-blue-300'
+                            : 'bg-gradient-to-r from-rose-500 to-pink-600 text-white shadow-rose-200 hover:shadow-rose-300'
                             } `}
                     >
                         <span>📄</span>
