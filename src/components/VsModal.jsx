@@ -50,11 +50,11 @@ const VsModal = ({ comparisonData, onClose }) => {
                 </div>
 
                 <div className="p-6">
-                    <div className="flex justify-between items-end mb-8 relative h-72"> {/* Increased height for better spacing */}
+                    <div className="flex justify-between items-end mb-4 relative min-h-[340px]">
                         {/* Player 1 (Blue) */}
                         <div className="text-center w-1/2 pr-2 relative flex flex-col justify-end h-full">
 
-                            <div className="mb-4 relative z-10"> {/* Added margin bottom and z-index */}
+                            <div className="mb-10 relative z-10 transition-transform duration-300"> {/* Increased margin to mb-10 for badge clearance */}
                                 <div className="text-4xl mb-2 filter drop-shadow-md">🤴</div>
                                 <div className="text-xs font-black text-gray-400 uppercase tracking-widest mb-1">Heekeun</div>
                                 <div className={`text-lg font-black text-blue-600 tracking-tight transition-opacity duration-500 ${animState.isFinished ? 'opacity-100' : 'opacity-0'}`}>
@@ -67,15 +67,15 @@ const VsModal = ({ comparisonData, onClose }) => {
                                 )}
                             </div>
 
-                            {/* Bar Track */}
-                            <div className="h-full w-full flex items-end justify-center relative">
+                            {/* Bar Track - Fixed Height */}
+                            <div className="h-48 w-full flex items-end justify-center relative">
                                 {/* The Bar */}
                                 <div
                                     className="w-10 bg-gradient-to-t from-blue-600 to-blue-400 rounded-t-lg shadow-blue-200 shadow-lg transition-all duration-[1500ms] ease-out relative"
                                     style={{ height: `${animState.heekeunHeight}%` }}
                                 >
                                     {animState.isFinished && (
-                                        <div className="absolute -top-7 left-1/2 -translate-x-1/2 font-bold text-xs text-blue-600 bg-white px-2 py-0.5 rounded-full shadow-md z-30">
+                                        <div className="absolute -top-8 left-1/2 -translate-x-1/2 font-bold text-xs text-blue-600 bg-white px-2 py-0.5 rounded-full shadow-md z-30 whitespace-nowrap">
                                             {Math.round(animState.heekeunHeight)}%
                                         </div>
                                     )}
@@ -84,15 +84,14 @@ const VsModal = ({ comparisonData, onClose }) => {
                         </div>
 
                         {/* VS Badge (Centered) */}
-                        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0 opacity-20 pointer-events-none">
-                            {/* Reduced visibility and z-index to avoid distraction/overlap */}
-                            <span className="text-[100px] font-black italic text-gray-200">VS</span>
+                        <div className="absolute left-1/2 top-[60%] -translate-x-1/2 -translate-y-1/2 z-0 opacity-10 pointer-events-none">
+                            <span className="text-[120px] font-black italic text-gray-200">VS</span>
                         </div>
 
                         {/* Player 2 (Red) */}
                         <div className="text-center w-1/2 pl-2 relative flex flex-col justify-end h-full">
 
-                            <div className="mb-4 relative z-10">
+                            <div className="mb-10 relative z-10 transition-transform duration-300"> {/* Increased margin to mb-10 */}
                                 <div className="text-4xl mb-2 filter drop-shadow-md">👸</div>
                                 <div className="text-xs font-black text-gray-400 uppercase tracking-widest mb-1">Geonkyung</div>
                                 <div className={`text-lg font-black text-rose-600 tracking-tight transition-opacity duration-500 ${animState.isFinished ? 'opacity-100' : 'opacity-0'}`}>
@@ -105,15 +104,15 @@ const VsModal = ({ comparisonData, onClose }) => {
                                 )}
                             </div>
 
-                            {/* Bar Track */}
-                            <div className="h-full w-full flex items-end justify-center relative">
+                            {/* Bar Track - Fixed Height */}
+                            <div className="h-48 w-full flex items-end justify-center relative">
                                 {/* The Bar */}
                                 <div
                                     className="w-10 bg-gradient-to-t from-rose-600 to-rose-400 rounded-t-lg shadow-rose-200 shadow-lg transition-all duration-[1500ms] ease-out relative"
                                     style={{ height: `${animState.geonkyungHeight}%` }}
                                 >
                                     {animState.isFinished && (
-                                        <div className="absolute -top-7 left-1/2 -translate-x-1/2 font-bold text-xs text-rose-600 bg-white px-2 py-0.5 rounded-full shadow-md z-30">
+                                        <div className="absolute -top-8 left-1/2 -translate-x-1/2 font-bold text-xs text-rose-600 bg-white px-2 py-0.5 rounded-full shadow-md z-30 whitespace-nowrap">
                                             {Math.round(animState.geonkyungHeight)}%
                                         </div>
                                     )}
