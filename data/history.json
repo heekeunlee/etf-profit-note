@@ -1,8 +1,72 @@
 {
-    "last_updated": "2026-01-28T18:00:00",
-    "total_equity": 30389665,
-    "total_profit": 9513062,
+    "last_updated": "2026-01-30T15:45:00",
+    "total_equity": 31591250,
+    "total_profit": 10714647,
     "records": [
+        {
+            "date": "2026-01-30",
+            "equity": 31591250,
+            "daily_profit": 1201585,
+            "daily_roi": 3.14,
+            "trades": [
+                {
+                    "name": "ACE 구글밸류체인액티브",
+                    "buy_amount": 15376932,
+                    "sell_amount": 16246620,
+                    "avg_price": 0,
+                    "profit": 869688,
+                    "roi": 5.66
+                },
+                {
+                    "name": "KODEX 200",
+                    "buy_amount": 9432876,
+                    "sell_amount": 9575550,
+                    "avg_price": 0,
+                    "profit": 142674,
+                    "roi": 1.51
+                },
+                {
+                    "name": "PLUS 우주항공&UAM",
+                    "buy_amount": 6680683,
+                    "sell_amount": 6794790,
+                    "avg_price": 0,
+                    "profit": 114107,
+                    "roi": 1.71
+                },
+                {
+                    "name": "RISE AI&로봇",
+                    "buy_amount": 3643955,
+                    "sell_amount": 3702395,
+                    "avg_price": 0,
+                    "profit": 58440,
+                    "roi": 1.60
+                },
+                {
+                    "name": "TIGER 2차전지TOP10",
+                    "buy_amount": 3087896,
+                    "sell_amount": 3103620,
+                    "avg_price": 0,
+                    "profit": 15724,
+                    "roi": 0.51
+                },
+                {
+                    "name": "KODEX 친환경조선해운액티브",
+                    "buy_amount": 67334,
+                    "sell_amount": 67960,
+                    "avg_price": 0,
+                    "profit": 626,
+                    "roi": 0.93
+                },
+                {
+                    "name": "한화솔루션",
+                    "buy_amount": 27424,
+                    "sell_amount": 27750,
+                    "avg_price": 0,
+                    "profit": 326,
+                    "roi": 1.19
+                }
+            ]
+        },
         {
             "date": "2026-01-28",
             "equity": 30389665,
