@@ -417,73 +417,101 @@ const Dashboard = () => {
 
                             {/* Header */}
                             <div className="bg-black text-white p-4 text-center relative overflow-hidden">
-                                <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-purple-900 to-red-900 opacity-50"></div>
-                                <h2 className="relative z-10 text-3xl font-black italic tracking-tighter uppercase" style={{ fontFamily: 'Impact' }}>
-                                    January Matchup
+                                <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-purple-900 to-red-900 opacity-50 animate-pulse"></div>
+                                <h2 className="relative z-10 text-3xl font-black italic tracking-tighter uppercase transform -rotate-2" style={{ fontFamily: 'Impact' }}>
+                                    🔥 MONEY WARS 🔥
                                 </h2>
+                                <div className="relative z-10 text-[10px] font-bold text-yellow-300 tracking-[0.5em] uppercase mt-1">
+                                    Round 1: January
+                                </div>
                                 <button className="absolute top-4 right-4 text-white/50 hover:text-white" onClick={() => setShowComparison(false)}>✕</button>
                             </div>
 
                             {/* VS Content */}
                             <div className="p-6">
-                                <div className="flex justify-between items-end mb-6 relative">
+                                <div className="flex justify-between items-end mb-8 relative">
                                     {/* Player 1 (Blue) */}
-                                    <div className="text-center w-1/2 pr-2">
-                                        <div className="text-4xl mb-2">🤴</div>
+                                    <div className="text-center w-1/2 pr-2 relative">
+                                        <div className="text-5xl mb-2 filter drop-shadow-md transform hover:scale-110 transition-transform">🤴</div>
+                                        {comparisonData.heekeun?.total_profit > comparisonData.geonkyung?.total_profit && (
+                                            <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-yellow-400 text-black text-[10px] font-black px-2 py-0.5 rounded shadow-lg animate-bounce whitespace-nowrap z-20">
+                                                WINNER!
+                                            </div>
+                                        )}
                                         <div className="text-sm font-black text-gray-400 uppercase tracking-widest mb-1">Heekeun</div>
-                                        <div className="text-xl font-bold text-blue-600">+{(comparisonData.heekeun?.total_profit / 10000).toFixed(0)}만</div>
-                                        <div className="h-32 w-full bg-gray-100 rounded-t-xl mt-2 relative overflow-hidden flex items-end justify-center">
+                                        <div className="text-xl font-black text-blue-600 tracking-tight">+{(comparisonData.heekeun?.total_profit / 10000).toFixed(0)}만</div>
+
+                                        {/* Bar */}
+                                        <div className="h-32 w-full bg-gray-100 rounded-lg mt-2 relative overflow-hidden flex items-end justify-center border-2 border-gray-100">
                                             <div
-                                                className="w-full bg-blue-500 hover:bg-blue-600 transition-all rounded-t-xl relative group"
+                                                className="w-full bg-gradient-to-t from-blue-600 to-blue-400 hover:from-blue-500 hover:to-blue-300 transition-all rounded-b-md relative group"
                                                 style={{ height: `${(comparisonData.heekeun?.total_profit / Math.max(comparisonData.heekeun?.total_profit, comparisonData.geonkyung?.total_profit)) * 100}%` }}
                                             >
-                                                {comparisonData.heekeun?.total_profit > comparisonData.geonkyung?.total_profit && (
-                                                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 text-2xl animate-bounce">👑</div>
-                                                )}
                                             </div>
                                         </div>
                                     </div>
 
                                     {/* VS Badge */}
-                                    <div className="absolute left-1/2 bottom-12 -translate-x-1/2 z-10 bg-white rounded-full p-2 border-4 border-black shadow-xl">
-                                        <span className="text-xl font-black italic block leading-none">VS</span>
+                                    <div className="absolute left-1/2 bottom-12 -translate-x-1/2 z-10 bg-black text-white rounded-full p-3 border-4 border-white shadow-2xl transform hover:rotate-180 transition-transform duration-700">
+                                        <span className="text-2xl font-black italic block leading-none">VS</span>
                                     </div>
 
                                     {/* Player 2 (Red) */}
-                                    <div className="text-center w-1/2 pl-2">
-                                        <div className="text-4xl mb-2">👸</div>
+                                    <div className="text-center w-1/2 pl-2 relative">
+                                        <div className="text-5xl mb-2 filter drop-shadow-md transform hover:scale-110 transition-transform">👸</div>
+                                        {comparisonData.geonkyung?.total_profit > comparisonData.heekeun?.total_profit && (
+                                            <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-yellow-400 text-black text-[10px] font-black px-2 py-0.5 rounded shadow-lg animate-bounce whitespace-nowrap z-20">
+                                                WINNER!
+                                            </div>
+                                        )}
                                         <div className="text-sm font-black text-gray-400 uppercase tracking-widest mb-1">Geonkyung</div>
-                                        <div className="text-xl font-bold text-rose-600">+{(comparisonData.geonkyung?.total_profit / 10000).toFixed(0)}만</div>
-                                        <div className="h-32 w-full bg-gray-100 rounded-t-xl mt-2 relative overflow-hidden flex items-end justify-center">
+                                        <div className="text-xl font-black text-rose-600 tracking-tight">+{(comparisonData.geonkyung?.total_profit / 10000).toFixed(0)}만</div>
+
+                                        {/* Bar */}
+                                        <div className="h-32 w-full bg-gray-100 rounded-lg mt-2 relative overflow-hidden flex items-end justify-center border-2 border-gray-100">
                                             <div
-                                                className="w-full bg-rose-500 hover:bg-rose-600 transition-all rounded-t-xl relative group"
+                                                className="w-full bg-gradient-to-t from-rose-600 to-rose-400 hover:from-rose-500 hover:to-rose-300 transition-all rounded-b-md relative group"
                                                 style={{ height: `${(comparisonData.geonkyung?.total_profit / Math.max(comparisonData.heekeun?.total_profit, comparisonData.geonkyung?.total_profit)) * 100}%` }}
                                             >
-                                                {comparisonData.geonkyung?.total_profit > comparisonData.heekeun?.total_profit && (
-                                                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 text-2xl animate-bounce">👑</div>
-                                                )}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
+                                {/* Witty Commentary */}
+                                <div className="bg-gray-50 rounded-xl p-4 mb-4 border-2 border-dashed border-gray-200 text-center">
+                                    <h4 className="text-xs font-bold text-gray-400 uppercase mb-1">📢 AI Commentary</h4>
+                                    <p className="text-sm font-bold text-gray-800 italic">
+                                        {(() => {
+                                            const diff = comparisonData.heekeun?.total_profit - comparisonData.geonkyung?.total_profit;
+                                            if (diff > 0) {
+                                                return `Looks like Heekeun is buying dinner tonight! 🍣 (+${(diff / 10000).toFixed(0)}만 lead)`;
+                                            } else if (diff < 0) {
+                                                return `Geonkyung takes the crown! Bow down to the Queen! 👑 (+${(Math.abs(diff) / 10000).toFixed(0)}만 lead)`;
+                                            } else {
+                                                return "It's a tie! Incredible! What are the odds? 🤝";
+                                            }
+                                        })()}
+                                    </p>
+                                </div>
+
                                 {/* Stats Table */}
-                                <div className="space-y-2">
+                                <div className="space-y-2 mb-2">
                                     <div className="flex justify-between text-xs font-bold text-gray-400 uppercase border-b pb-1">
                                         <span>Initial Equity</span>
                                         <span>Total Profit</span>
                                     </div>
                                     <div className="flex justify-between items-center text-sm">
-                                        <div className="text-gray-600">₩{(comparisonData.heekeun?.total_equity - comparisonData.heekeun?.total_profit).toLocaleString()}</div>
-                                        <div className="font-extrabold text-green-600">+₩{comparisonData.heekeun?.total_profit.toLocaleString()}</div>
+                                        <div className="text-gray-500 font-medium">₩{(comparisonData.heekeun?.total_equity - comparisonData.heekeun?.total_profit).toLocaleString()}</div>
+                                        <div className="font-black text-blue-600">+₩{comparisonData.heekeun?.total_profit.toLocaleString()}</div>
                                     </div>
                                     <div className="flex justify-between items-center text-sm">
-                                        <div className="text-gray-600">₩{(comparisonData.geonkyung?.total_equity - comparisonData.geonkyung?.total_profit).toLocaleString()}</div>
-                                        <div className="font-extrabold text-green-600">+₩{comparisonData.geonkyung?.total_profit.toLocaleString()}</div>
+                                        <div className="text-gray-500 font-medium">₩{(comparisonData.geonkyung?.total_equity - comparisonData.geonkyung?.total_profit).toLocaleString()}</div>
+                                        <div className="font-black text-rose-600">+₩{comparisonData.geonkyung?.total_profit.toLocaleString()}</div>
                                     </div>
                                 </div>
 
-                                <button className="w-full mt-6 bg-gray-900 text-white py-3 rounded-xl font-bold" onClick={() => setShowComparison(false)}>Close Matchup</button>
+                                <button className="w-full mt-4 bg-black text-white py-3 rounded-xl font-bold uppercase tracking-wider transform active:scale-95 transition-transform shadow-lg" onClick={() => setShowComparison(false)}>Close Matchup</button>
                             </div>
                         </div>
                     </div>
