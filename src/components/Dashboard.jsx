@@ -38,25 +38,48 @@ const CountUp = ({ end, duration = 1000 }) => {
 const Dashboard = () => {
     const [activeUser, setActiveUser] = useState('heekeun') // 'heekeun' or 'geonkyung'
     const [data, setData] = useState(null)
+    const [comparisonData, setComparisonData] = useState({ heekeun: null, geonkyung: null }) // New state for comparison
+    const [showComparison, setShowComparison] = useState(false) // Modal state
     const [loading, setLoading] = useState(true)
     const [expandedDate, setExpandedDate] = useState(null)
 
     useEffect(() => {
         setLoading(true)
-        const fileName = activeUser === 'heekeun' ? 'history_heekeun.json' : 'history_geonkyung.json'
 
-        fetch(`./data/${fileName}`)
-            .then(res => res.json())
-            .then(data => {
-                setData(data)
+        // Fetch BOTH users' data for comparison capability
+        Promise.all([
+            fetch('./data/history_heekeun.json').then(res => res.json()),
+            fetch('./data/history_geonkyung.json').then(res => res.json())
+        ])
+            .then(([heekeunData, geonkyungData]) => {
+                setComparisonData({ heekeun: heekeunData, geonkyung: geonkyungData })
+
+                // Set active data based on current user selection
+                if (activeUser === 'heekeun') {
+                    setData(heekeunData)
+                } else {
+                    setData(geonkyungData)
+                }
                 setLoading(false)
-                setExpandedDate(null) // Reset expanded state when switching user
+                setExpandedDate(null)
             })
             .catch(err => {
                 console.error("Failed to load data", err)
                 setLoading(false)
             })
-    }, [activeUser])
+    }, []) // Run once on mount to fetch all, then handle active user switch via local state logic if needed or just simple switching
+
+    // Effect to switch active data without re-fetching if data is already loaded
+    useEffect(() => {
+        if (comparisonData.heekeun && comparisonData.geonkyung) {
+            setExpandedDate(null)
+            if (activeUser === 'heekeun') {
+                setData(comparisonData.heekeun)
+            } else {
+                setData(comparisonData.geonkyung)
+            }
+        }
+    }, [activeUser, comparisonData])
 
     if (loading) return <div className="flex h-screen items-center justify-center text-gray-400 bg-gray-50">Loading Profit Note...</div>
     if (!data) return <div className="flex h-screen items-center justify-center text-rose-500 bg-gray-50">Error loading data.</div>
@@ -258,8 +281,18 @@ const Dashboard = () => {
                     ))}
                 </div>
 
-                {/* 4. Share Report Button */}
-                <div className="px-6 mb-8 mt-4">
+                {/* Buttons Action Area */}
+                <div className="px-6 mb-8 mt-4 grid grid-cols-2 gap-3">
+                    {/* NEW: VS Analysis Button */}
+                    <button
+                        onClick={() => setShowComparison(true)}
+                        className="col-span-1 py-4 rounded-xl flex items-center justify-center gap-2 font-black text-sm uppercase italic tracking-widest shadow-lg transition-all active:scale-95 bg-black text-white hover:bg-gray-800 border-2 border-gray-700"
+                    >
+                        <span>⚔️</span>
+                        <span>VS Mode</span>
+                    </button>
+
+                    {/* Share Report Button */}
                     <button
                         onClick={() => {
                             // Helper: Get visual width (Korean=2, English=1)
@@ -357,16 +390,16 @@ const Dashboard = () => {
                                 });
                             }
                         }}
-                        className={`w-full py-4 rounded-xl flex items-center justify-center gap-2 font-bold text-lg shadow-lg transition-all active:scale-95 ${activeUser === 'heekeun'
+                        className={`col-span-1 py-4 rounded-xl flex items-center justify-center gap-2 font-bold text-sm shadow-lg transition-all active:scale-95 ${activeUser === 'heekeun'
                             ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-blue-200 hover:shadow-blue-300'
                             : 'bg-gradient-to-r from-rose-500 to-pink-600 text-white shadow-rose-200 hover:shadow-rose-300'
                             }`}
                     >
                         <span>📄</span>
-                        <span>Share Detailed Report</span>
+                        <span>Share</span>
                     </button>
-                    <p className="text-center text-xs text-gray-400 mt-2">
-                        Click to generate and share a text summary.
+                    <p className="col-span-2 text-center text-xs text-gray-400 mt-1">
+                        Compare performance or share weekly report.
                     </p>
                 </div>
 
@@ -376,6 +409,85 @@ const Dashboard = () => {
                         Engineered by Heekeun Lee <span className="mx-1 text-gray-300">|</span> Co-piloted by DeepMind AI
                     </p>
                 </div>
+
+                {/* VS COMPARISON MODAL */}
+                {showComparison && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-300" onClick={() => setShowComparison(false)}>
+                        <div className="bg-white w-full max-w-sm rounded-3xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-300" onClick={e => e.stopPropagation()}>
+
+                            {/* Header */}
+                            <div className="bg-black text-white p-4 text-center relative overflow-hidden">
+                                <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-purple-900 to-red-900 opacity-50"></div>
+                                <h2 className="relative z-10 text-3xl font-black italic tracking-tighter uppercase" style={{ fontFamily: 'Impact' }}>
+                                    January Matchup
+                                </h2>
+                                <button className="absolute top-4 right-4 text-white/50 hover:text-white" onClick={() => setShowComparison(false)}>✕</button>
+                            </div>
+
+                            {/* VS Content */}
+                            <div className="p-6">
+                                <div className="flex justify-between items-end mb-6 relative">
+                                    {/* Player 1 (Blue) */}
+                                    <div className="text-center w-1/2 pr-2">
+                                        <div className="text-4xl mb-2">🤴</div>
+                                        <div className="text-sm font-black text-gray-400 uppercase tracking-widest mb-1">Heekeun</div>
+                                        <div className="text-xl font-bold text-blue-600">+{(comparisonData.heekeun?.total_profit / 10000).toFixed(0)}만</div>
+                                        <div className="h-32 w-full bg-gray-100 rounded-t-xl mt-2 relative overflow-hidden flex items-end justify-center">
+                                            <div
+                                                className="w-full bg-blue-500 hover:bg-blue-600 transition-all rounded-t-xl relative group"
+                                                style={{ height: `${(comparisonData.heekeun?.total_profit / Math.max(comparisonData.heekeun?.total_profit, comparisonData.geonkyung?.total_profit)) * 100}%` }}
+                                            >
+                                                {comparisonData.heekeun?.total_profit > comparisonData.geonkyung?.total_profit && (
+                                                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 text-2xl animate-bounce">👑</div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* VS Badge */}
+                                    <div className="absolute left-1/2 bottom-12 -translate-x-1/2 z-10 bg-white rounded-full p-2 border-4 border-black shadow-xl">
+                                        <span className="text-xl font-black italic block leading-none">VS</span>
+                                    </div>
+
+                                    {/* Player 2 (Red) */}
+                                    <div className="text-center w-1/2 pl-2">
+                                        <div className="text-4xl mb-2">👸</div>
+                                        <div className="text-sm font-black text-gray-400 uppercase tracking-widest mb-1">Geonkyung</div>
+                                        <div className="text-xl font-bold text-rose-600">+{(comparisonData.geonkyung?.total_profit / 10000).toFixed(0)}만</div>
+                                        <div className="h-32 w-full bg-gray-100 rounded-t-xl mt-2 relative overflow-hidden flex items-end justify-center">
+                                            <div
+                                                className="w-full bg-rose-500 hover:bg-rose-600 transition-all rounded-t-xl relative group"
+                                                style={{ height: `${(comparisonData.geonkyung?.total_profit / Math.max(comparisonData.heekeun?.total_profit, comparisonData.geonkyung?.total_profit)) * 100}%` }}
+                                            >
+                                                {comparisonData.geonkyung?.total_profit > comparisonData.heekeun?.total_profit && (
+                                                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 text-2xl animate-bounce">👑</div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Stats Table */}
+                                <div className="space-y-2">
+                                    <div className="flex justify-between text-xs font-bold text-gray-400 uppercase border-b pb-1">
+                                        <span>Initial Equity</span>
+                                        <span>Total Profit</span>
+                                    </div>
+                                    <div className="flex justify-between items-center text-sm">
+                                        <div className="text-gray-600">₩{(comparisonData.heekeun?.total_equity - comparisonData.heekeun?.total_profit).toLocaleString()}</div>
+                                        <div className="font-extrabold text-green-600">+₩{comparisonData.heekeun?.total_profit.toLocaleString()}</div>
+                                    </div>
+                                    <div className="flex justify-between items-center text-sm">
+                                        <div className="text-gray-600">₩{(comparisonData.geonkyung?.total_equity - comparisonData.geonkyung?.total_profit).toLocaleString()}</div>
+                                        <div className="font-extrabold text-green-600">+₩{comparisonData.geonkyung?.total_profit.toLocaleString()}</div>
+                                    </div>
+                                </div>
+
+                                <button className="w-full mt-6 bg-gray-900 text-white py-3 rounded-xl font-bold" onClick={() => setShowComparison(false)}>Close Matchup</button>
+                            </div>
+                        </div>
+                    </div>
+                )}
 
             </div>
         </div>
