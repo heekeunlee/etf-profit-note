@@ -107,8 +107,8 @@ const Dashboard = () => {
     }
 
     return (
-        <div className={`min - h - screen transition - colors duration - 700 ease -in -out pb - 10 font - sans ${activeUser === 'heekeun' ? 'bg-blue-50/30' : 'bg-rose-50/30'} `}>
-            <div className={`max - w - md mx - auto sm: max - w - 2xl min - h - screen shadow - 2xl transition - colors duration - 700 ease -in -out ${activeUser === 'heekeun' ? 'bg-white shadow-blue-200/50' : 'bg-white shadow-rose-200/50'} `}>
+        <div className="min-h-screen bg-[#2e3547] flex items-start justify-center p-4 font-sans py-10">
+            <div className="w-full max-w-md bg-white rounded-3xl overflow-hidden shadow-2xl relative">
 
                 {/* 1. Header & Big Total Profit (Apple/Toss Style) */}
                 <div className={`relative pt - 6 pb - 6 px - 6 text - center sticky top - 0 z - 20 transition - all overflow - hidden duration - 700 ${activeUser === 'heekeun' ? 'bg-white/90 backdrop-blur-md' : 'bg-white/90 backdrop-blur-md'} `}>
