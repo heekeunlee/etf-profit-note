@@ -1,7 +1,14 @@
-```javascript
 import { useState, useEffect } from 'react'
 import { BarChart, Bar, Tooltip, ResponsiveContainer, XAxis } from 'recharts'
 import { ChevronDown, ChevronUp, ArrowRight } from 'lucide-react'
+import VsModal from './VsModal'
+
+// Utility Component for Number Animation
+const CountUp = ({ end, duration = 1000 }) => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        let startTime = null;
         let animationFrame;
 
         const animate = (timestamp) => {
@@ -100,11 +107,11 @@ const Dashboard = () => {
     }
 
     return (
-        <div className={`min - h - screen transition - colors duration - 700 ease -in -out pb - 10 font - sans ${ activeUser === 'heekeun' ? 'bg-blue-50/30' : 'bg-rose-50/30' } `}>
-            <div className={`max - w - md mx - auto sm: max - w - 2xl min - h - screen shadow - 2xl transition - colors duration - 700 ease -in -out ${ activeUser === 'heekeun' ? 'bg-white shadow-blue-200/50' : 'bg-white shadow-rose-200/50' } `}>
+        <div className={`min - h - screen transition - colors duration - 700 ease -in -out pb - 10 font - sans ${activeUser === 'heekeun' ? 'bg-blue-50/30' : 'bg-rose-50/30'} `}>
+            <div className={`max - w - md mx - auto sm: max - w - 2xl min - h - screen shadow - 2xl transition - colors duration - 700 ease -in -out ${activeUser === 'heekeun' ? 'bg-white shadow-blue-200/50' : 'bg-white shadow-rose-200/50'} `}>
 
                 {/* 1. Header & Big Total Profit (Apple/Toss Style) */}
-                <div className={`relative pt - 6 pb - 6 px - 6 text - center sticky top - 0 z - 20 transition - all overflow - hidden duration - 700 ${ activeUser === 'heekeun' ? 'bg-white/90 backdrop-blur-md' : 'bg-white/90 backdrop-blur-md' } `}>
+                <div className={`relative pt - 6 pb - 6 px - 6 text - center sticky top - 0 z - 20 transition - all overflow - hidden duration - 700 ${activeUser === 'heekeun' ? 'bg-white/90 backdrop-blur-md' : 'bg-white/90 backdrop-blur-md'} `}>
 
                     {/* Massive Emojis (Background/Side) */}
                     {activeUser === 'heekeun' && (
@@ -124,11 +131,10 @@ const Dashboard = () => {
                             {/* Player 1 Button */}
                             <button
                                 onClick={() => setActiveUser('heekeun')}
-                                className={`px - 4 py - 2 rounded - xl text - base font - black italic tracking - tighter transition - all transform duration - 300 border - 2 ${
-    activeUser === 'heekeun'
-        ? 'bg-blue-600 text-white border-blue-500 shadow-[0_0_15px_rgba(37,99,235,0.5)] scale-110 -rotate-2'
-        : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
-} `}
+                                className={`px - 4 py - 2 rounded - xl text - base font - black italic tracking - tighter transition - all transform duration - 300 border - 2 ${activeUser === 'heekeun'
+                                        ? 'bg-blue-600 text-white border-blue-500 shadow-[0_0_15px_rgba(37,99,235,0.5)] scale-110 -rotate-2'
+                                        : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
+                                    } `}
                             >
                                 이희근
                             </button>
@@ -143,11 +149,10 @@ const Dashboard = () => {
                             {/* Player 2 Button */}
                             <button
                                 onClick={() => setActiveUser('geonkyung')}
-                                className={`px - 4 py - 2 rounded - xl text - base font - black italic tracking - tighter transition - all transform duration - 300 border - 2 ${
-    activeUser === 'geonkyung'
-        ? 'bg-rose-600 text-white border-rose-500 shadow-[0_0_15px_rgba(225,29,72,0.5)] scale-110 rotate-2'
-        : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
-} `}
+                                className={`px - 4 py - 2 rounded - xl text - base font - black italic tracking - tighter transition - all transform duration - 300 border - 2 ${activeUser === 'geonkyung'
+                                        ? 'bg-rose-600 text-white border-rose-500 shadow-[0_0_15px_rgba(225,29,72,0.5)] scale-110 rotate-2'
+                                        : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
+                                    } `}
                             >
                                 이건경
                             </button>
@@ -183,7 +188,7 @@ const Dashboard = () => {
                                 contentStyle={{ backgroundColor: '#ffffff', borderColor: '#f43f5e', borderRadius: '12px', color: '#1f2937', fontSize: '13px', fontWeight: 'bold', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }}
                                 itemStyle={{ color: '#f43f5e' }}
                                 labelStyle={{ display: 'none' }}
-                                formatter={(value) => [`+₩${ value.toLocaleString() } `, 'Accumulated']}
+                                formatter={(value) => [`+₩${value.toLocaleString()} `, 'Accumulated']}
                             />
                             <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#9ca3af' }} />
                             <Bar
@@ -204,12 +209,12 @@ const Dashboard = () => {
 
                 <div className="space-y-4 px-4 pb-12">
                     {data.records.map((record, idx) => (
-                        <div key={idx} className={`border rounded - 2xl overflow - hidden transition - all duration - 300 ${ expandedDate === record.date ? 'border-rose-100 shadow-lg bg-white box-border' : 'border-gray-100 bg-white shadow-sm' } `}>
+                        <div key={idx} className={`border rounded - 2xl overflow - hidden transition - all duration - 300 ${expandedDate === record.date ? 'border-rose-100 shadow-lg bg-white box-border' : 'border-gray-100 bg-white shadow-sm'} `}>
 
                             {/* Card Header (Daily Summary) */}
                             <div
                                 onClick={() => toggleExpand(record.date)}
-                                className={`p - 5 flex items - center justify - between cursor - pointer select - none transition - colors ${ expandedDate === record.date ? 'bg-white' : 'hover:bg-amber-50' } `}
+                                className={`p - 5 flex items - center justify - between cursor - pointer select - none transition - colors ${expandedDate === record.date ? 'bg-white' : 'hover:bg-amber-50'} `}
                             >
                                 <div>
                                     <div className="text-blue-500 text-sm font-bold mb-0.5">{record.date}</div>
@@ -218,7 +223,7 @@ const Dashboard = () => {
                                     </div>
                                 </div>
                                 <div className="text-right flex flex-col items-end gap-1">
-                                    <div className={`text - xs font - bold px - 2 py - 1 rounded - md ${ record.daily_roi >= 0 ? 'bg-rose-50 text-rose-600' : 'bg-blue-50 text-blue-600' } `}>
+                                    <div className={`text - xs font - bold px - 2 py - 1 rounded - md ${record.daily_roi >= 0 ? 'bg-rose-50 text-rose-600' : 'bg-blue-50 text-blue-600'} `}>
                                         {record.daily_roi > 0 ? '+' : ''}{record.daily_roi}% ROI
                                     </div>
                                     {expandedDate === record.date ? <ChevronUp size={16} className="text-rose-400" /> : <ChevronDown size={16} className="text-gray-300" />}
@@ -322,16 +327,16 @@ const Dashboard = () => {
                             // 1. Generate Report Text
                             const userName = activeUser === 'heekeun' ? '이희근' : '이건경';
                             const now = new Date();
-                            const formattedDate = `${ now.getFullYear() }. ${ String(now.getMonth() + 1).padStart(2, '0') }. ${ String(now.getDate()).padStart(2, '0') }.`;
+                            const formattedDate = `${now.getFullYear()}. ${String(now.getMonth() + 1).padStart(2, '0')}. ${String(now.getDate()).padStart(2, '0')}.`;
 
                             let report = `📝 ETF 퀀트투자 실현손익 보고서\n`;
                             report += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-                            report += `👤 투자자: ${ userName } \n`;
-                            report += `🕒 기준일: ${ formattedDate } \n`;
+                            report += `👤 투자자: ${userName} \n`;
+                            report += `🕒 기준일: ${formattedDate} \n`;
                             report += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
 
                             report += `💰 1월 누적 실현손익\n`;
-                            report += `   + ${ data.total_profit.toLocaleString() } 원\n\n`;
+                            report += `   + ${data.total_profit.toLocaleString()} 원\n\n`;
 
                             report += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
                             report += `[일자별 상세 실현손익 ]\n\n`;
@@ -345,7 +350,7 @@ const Dashboard = () => {
                                 const numEmoji = index < 9 ? ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣'][index] : '#️⃣';
 
                                 // Date Header
-                                report += `${ numEmoji } ${ shortDate } (${ dayName }) | +${ record.daily_profit.toLocaleString() } 원(${ record.daily_roi } %) \n`;
+                                report += `${numEmoji} ${shortDate} (${dayName}) | +${record.daily_profit.toLocaleString()} 원(${record.daily_roi} %) \n`;
 
                                 // Trades
                                 const sortedTrades = [...record.trades].sort((a, b) => b.profit - a.profit);
@@ -362,9 +367,9 @@ const Dashboard = () => {
                                     const paddedName = padText(cleanName, 14);
 
                                     // Right-align profit (width ~10)
-                                    const profitStr = `+ ${ trade.profit.toLocaleString() } `.padStart(11, ' ');
+                                    const profitStr = `+ ${trade.profit.toLocaleString()} `.padStart(11, ' ');
 
-                                    report += `   ▪️ ${ paddedName } ${ profitStr } \n`;
+                                    report += `   ▪️ ${paddedName} ${profitStr} \n`;
                                 });
                                 report += `\n`;
                             });
@@ -375,7 +380,7 @@ const Dashboard = () => {
                             // 2. Share or Copy
                             if (navigator.share) {
                                 navigator.share({
-                                    title: `ETF Profit Report - ${ userName } `,
+                                    title: `ETF Profit Report - ${userName} `,
                                     text: report,
                                 }).catch(console.error);
                             } else {
@@ -386,11 +391,10 @@ const Dashboard = () => {
                                 });
                             }
                         }}
-                        className={`col - span - 1 py - 4 rounded - xl flex items - center justify - center gap - 2 font - bold text - sm shadow - lg transition - all active: scale - 95 ${
-    activeUser === 'heekeun'
-        ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-blue-200 hover:shadow-blue-300'
-        : 'bg-gradient-to-r from-rose-500 to-pink-600 text-white shadow-rose-200 hover:shadow-rose-300'
-} `}
+                        className={`col - span - 1 py - 4 rounded - xl flex items - center justify - center gap - 2 font - bold text - sm shadow - lg transition - all active: scale - 95 ${activeUser === 'heekeun'
+                                ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-blue-200 hover:shadow-blue-300'
+                                : 'bg-gradient-to-r from-rose-500 to-pink-600 text-white shadow-rose-200 hover:shadow-rose-300'
+                            } `}
                     >
                         <span>📄</span>
                         <span>Share</span>
@@ -410,9 +414,9 @@ const Dashboard = () => {
 
                 {/* VS COMPARISON MODAL */}
                 {showComparison && (
-                    <VsModal 
-                        comparisonData={comparisonData} 
-                        onClose={() => setShowComparison(false)} 
+                    <VsModal
+                        comparisonData={comparisonData}
+                        onClose={() => setShowComparison(false)}
                     />
                 )}
 
