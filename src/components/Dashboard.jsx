@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { BarChart, Bar, Tooltip, ResponsiveContainer, XAxis } from 'recharts'
+import { AreaChart, Area, Tooltip, ResponsiveContainer, XAxis } from 'recharts'
 import { ChevronDown, ChevronUp, ArrowRight } from 'lucide-react'
 import VsModal from './VsModal'
 
@@ -172,33 +172,50 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                {/* 2. Cumulative Profit Chart (Bar Visualization) */}
-                <div className="h-28 w-full mb-8 relative px-4">
-                    <div className="absolute top-0 left-6 text-xs text-gray-400 font-bold z-10">Accumulated Profit Steps</div>
+                {/* 2. Cumulative Profit Chart (Area Visualization) */}
+                <div className="h-32 w-full mb-8 relative px-4">
+                    <div className="absolute top-0 left-6 text-xs text-gray-400 font-bold z-10">Accumulated Profit Trend</div>
                     <ResponsiveContainer width="100%" height="100%">
-                        <BarChart data={chartData} margin={{ top: 20, right: 0, left: 0, bottom: 0 }}>
+                        <AreaChart data={chartData} margin={{ top: 20, right: 0, left: 0, bottom: 0 }}>
                             <defs>
-                                <linearGradient id="colorProfitBar" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%" stopColor="#f43f5e" stopOpacity={1} />
-                                    <stop offset="100%" stopColor="#fb7185" stopOpacity={0.8} />
+                                <linearGradient id="colorProfit" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="5%" stopColor={activeUser === 'heekeun' ? '#3b82f6' : '#f43f5e'} stopOpacity={0.8} />
+                                    <stop offset="95%" stopColor={activeUser === 'heekeun' ? '#bfdbfe' : '#fecdd3'} stopOpacity={0} />
                                 </linearGradient>
                             </defs>
                             <Tooltip
-                                cursor={{ fill: '#f1f5f9' }}
-                                contentStyle={{ backgroundColor: '#ffffff', borderColor: '#f43f5e', borderRadius: '12px', color: '#1f2937', fontSize: '13px', fontWeight: 'bold', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }}
-                                itemStyle={{ color: '#f43f5e' }}
+                                cursor={{ stroke: activeUser === 'heekeun' ? '#93c5fd' : '#fda4af', strokeWidth: 2, strokeDasharray: '5 5' }}
+                                contentStyle={{
+                                    backgroundColor: '#ffffff',
+                                    borderColor: activeUser === 'heekeun' ? '#3b82f6' : '#f43f5e',
+                                    borderRadius: '12px',
+                                    color: '#1f2937',
+                                    fontSize: '13px',
+                                    fontWeight: 'bold',
+                                    boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'
+                                }}
+                                itemStyle={{ color: activeUser === 'heekeun' ? '#2563eb' : '#e11d48' }}
                                 labelStyle={{ display: 'none' }}
-                                formatter={(value) => [`+₩${value.toLocaleString()} `, 'Accumulated']}
+                                formatter={(value) => [`+₩${value.toLocaleString()}`, 'Accumulated']}
                             />
-                            <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#9ca3af' }} />
-                            <Bar
+                            <XAxis
+                                dataKey="date"
+                                axisLine={false}
+                                tickLine={false}
+                                tick={{ fontSize: 10, fill: '#9ca3af' }}
+                                interval="preserveStartEnd"
+                                padding={{ left: 10, right: 10 }}
+                            />
+                            <Area
+                                type="monotone"
                                 dataKey="profit"
-                                fill="url(#colorProfitBar)"
-                                radius={[8, 8, 0, 0]}
-                                barSize={40}
+                                stroke={activeUser === 'heekeun' ? '#2563eb' : '#e11d48'}
+                                strokeWidth={3}
+                                fillOpacity={1}
+                                fill="url(#colorProfit)"
                                 animationDuration={1500}
                             />
-                        </BarChart>
+                        </AreaChart>
                     </ResponsiveContainer>
                 </div>
 
