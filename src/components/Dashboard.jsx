@@ -214,6 +214,8 @@ const Dashboard = () => {
                                 fillOpacity={1}
                                 fill="url(#colorProfit)"
                                 animationDuration={1500}
+                                dot={{ r: 4, strokeWidth: 2, stroke: '#fff', fill: activeUser === 'heekeun' ? '#2563eb' : '#e11d48' }}
+                                activeDot={{ r: 6, strokeWidth: 0, fill: activeUser === 'heekeun' ? '#2563eb' : '#e11d48' }}
                             />
                         </AreaChart>
                     </ResponsiveContainer>
