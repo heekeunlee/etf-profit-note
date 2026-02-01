@@ -98,6 +98,11 @@ const Dashboard = () => {
         };
     });
 
+    // Add Start Point (0) for better visualization
+    if (chartData.length > 0) {
+        chartData.unshift({ date: 'Start', profit: 0 });
+    }
+
     const toggleExpand = (date) => {
         if (expandedDate === date) {
             setExpandedDate(null)
