@@ -221,6 +221,11 @@ const Dashboard = () => {
                                 animationDuration={1500}
                                 dot={{ r: 4, strokeWidth: 2, stroke: '#fff', fill: activeUser === 'heekeun' ? '#2563eb' : '#e11d48' }}
                                 activeDot={{ r: 6, strokeWidth: 0, fill: activeUser === 'heekeun' ? '#2563eb' : '#e11d48' }}
+                                label={({ x, y, value, index }) => (
+                                    <text x={x} y={y - 10} fill={activeUser === 'heekeun' ? '#2563eb' : '#e11d48'} fontSize={9} fontWeight="bold" textAnchor="middle">
+                                        {index === 0 ? 'Start' : `+${(value / 10000).toFixed(0)}만`}
+                                    </text>
+                                )}
                             />
                         </AreaChart>
                     </ResponsiveContainer>
