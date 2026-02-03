@@ -1,0 +1,10 @@
+
+> etf_profit_note@0.0.0 dev
+> vite --port 5000
+
+
+  VITE v7.3.1  ready in 136 ms
+
+  ➜  Local:   http://localhost:5000/etf-profit-note/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help

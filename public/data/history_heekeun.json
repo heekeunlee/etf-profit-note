@@ -18,8 +18,8 @@
                     "roi": 1.86
                 },
                 {
-                    "name": "UNI... 류체... (기타)",
-                    "buy_amount": 23311500,
+                    "name": "UNID (유니드)",
+                    "buy_amount": 22981949,
                     "sell_amount": 23055145,
                     "avg_price": 0,
                     "profit": 73196,
@@ -35,7 +35,7 @@
             "trades": [
                 {
                     "name": "PLUS 한화그룹주",
-                    "buy_amount": 0,
+                    "buy_amount": 20562473,
                     "sell_amount": 20981005,
                     "avg_price": 33216,
                     "profit": 418532,
