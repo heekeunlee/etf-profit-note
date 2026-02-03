@@ -8,3 +8,109 @@
   ➜  Local:   http://localhost:5000/etf-profit-note/
   ➜  Network: use --host to expose
   ➜  press h + enter to show help
+
+> etf_profit_note@0.0.0 dev
+> vite --port 5002
+
+
+  VITE v7.3.1  ready in 104 ms
+
+  ➜  Local:   http://localhost:5002/etf-profit-note/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+11:01:36 PM [vite] Internal server error: /Users/dasepa/etf_profit_note/src/components/Dashboard.jsx: Missing semicolon. (393:29)
+
+  391 |                                     )}
+  392 |                                 </div>
+> 393 |                             ));
+      |                              ^
+  394 |                     })()}
+  395 |                 </div>
+  396 |
+  Plugin: vite:react-babel
+  File: /Users/dasepa/etf_profit_note/src/components/Dashboard.jsx:393:29
+  391 |                                      )}
+  392 |                                  </div>
+  393 |                              ));
+      |                               ^
+  394 |                      })()}
+  395 |                  </div>
+      at constructor (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:365:19)
+      at JSXParserMixin.raise (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:6599:19)
+      at JSXParserMixin.semicolon (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:6895:10)
+      at JSXParserMixin.parseReturnStatement (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:13133:12)
+      at JSXParserMixin.parseStatementContent (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:12788:21)
+      at JSXParserMixin.parseStatementLike (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:12757:17)
+      at JSXParserMixin.parseStatementListItem (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:12737:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:13306:61)
+      at JSXParserMixin.parseBlockBody (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:13299:10)
+      at JSXParserMixin.parseBlock (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:13287:10)
+      at JSXParserMixin.parseFunctionBody (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:12090:24)
+      at JSXParserMixin.parseArrowExpression (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:12065:10)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:11677:12)
+      at JSXParserMixin.parseExprAtom (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:11321:23)
+      at JSXParserMixin.parseExprAtom (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:4764:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:11071:23)
+      at JSXParserMixin.parseUpdate (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:11056:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:11036:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:10889:61)
+      at JSXParserMixin.parseExprOps (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:10894:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:10871:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:10821:21)
+      at /Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:10790:39
+      at JSXParserMixin.allowInAnd (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:12416:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:10790:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:12483:17)
+      at JSXParserMixin.parseExprListItem (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:12165:18)
+      at JSXParserMixin.parseCallExpressionArguments (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:11242:22)
+      at JSXParserMixin.parseCoverCallAndAsyncArrowHead (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:11176:29)
+      at JSXParserMixin.parseSubscript (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:11110:19)
+      at JSXParserMixin.parseSubscripts (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:11084:19)
+      at JSXParserMixin.parseExprSubscripts (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:11075:17)
+      at JSXParserMixin.parseUpdate (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:11056:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:11036:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:10889:61)
+      at JSXParserMixin.parseExprOps (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:10894:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:10871:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:10821:21)
+      at JSXParserMixin.parseExpressionBase (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:10774:23)
+      at /Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:10770:39
+      at JSXParserMixin.allowInAnd (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:12411:16)
+      at JSXParserMixin.parseExpression (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:10770:17)
+      at JSXParserMixin.parseReturnStatement (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:13132:28)
+      at JSXParserMixin.parseStatementContent (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:12788:21)
+      at JSXParserMixin.parseStatementLike (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:12757:17)
+      at JSXParserMixin.parseStatementListItem (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:12737:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:13306:61)
+      at JSXParserMixin.parseBlockBody (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:13299:10)
+      at JSXParserMixin.parseBlock (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:13287:10)
+      at JSXParserMixin.parseFunctionBody (/Users/dasepa/etf_profit_note/node_modules/@babel/parser/lib/index.js:12090:24)
+11:01:36 PM [vite] (client) Pre-transform error: /Users/dasepa/etf_profit_note/src/components/Dashboard.jsx: Missing semicolon. (393:29)
+
+  391 |                                     )}
+  392 |                                 </div>
+> 393 |                             ));
+      |                              ^
+  394 |                     })()}
+  395 |                 </div>
+  396 |
+  Plugin: vite:react-babel
+  File: /Users/dasepa/etf_profit_note/src/components/Dashboard.jsx:393:29
+  391 |                                      )}
+  392 |                                  </div>
+  393 |                              ));
+      |                               ^
+  394 |                      })()}
+  395 |                  </div>
+11:02:37 PM [vite] (client) hmr update /src/index.css
+
+> etf_profit_note@0.0.0 dev
+> vite --port 5003
+
+
+  VITE v7.3.1  ready in 119 ms
+
+  ➜  Local:   http://localhost:5003/etf-profit-note/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+11:21:39 PM [vite] (client) hmr update /src/components/Dashboard.jsx, /src/index.css

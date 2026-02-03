@@ -42,7 +42,7 @@ const Dashboard = () => {
     const [comparisonData, setComparisonData] = useState({ heekeun: null, geonkyung: null }) // New state for comparison
     const [showComparison, setShowComparison] = useState(false) // Modal state
     const [loading, setLoading] = useState(true)
-    const [expandedDate, setExpandedDate] = useState(null)
+    const [expandedMonths, setExpandedMonths] = useState([])
 
     useEffect(() => {
         setLoading(true)
@@ -62,18 +62,16 @@ const Dashboard = () => {
                     setData(geonkyungData)
                 }
                 setLoading(false)
-                setExpandedDate(null)
             })
             .catch(err => {
                 console.error("Failed to load data", err)
                 setLoading(false)
             })
-    }, []) // Run once on mount to fetch all, then handle active user switch via local state logic if needed or just simple switching
+    }, [])
 
     // Effect to switch active data without re-fetching if data is already loaded
     useEffect(() => {
         if (comparisonData.heekeun && comparisonData.geonkyung) {
-            setExpandedDate(null)
             if (activeUser === 'heekeun') {
                 setData(comparisonData.heekeun)
             } else {
@@ -82,15 +80,37 @@ const Dashboard = () => {
         }
     }, [activeUser, comparisonData])
 
+    // Effect to set default expanded month when data changes
+    useEffect(() => {
+        if (data && data.records && data.records.length > 0) {
+            // Assume records are chronological, so last one is newest? 
+            // Existing code used reverse(), so let's verify sort. 
+            // Safest to sort by date descending to find latest.
+            const sorted = [...data.records].sort((a, b) => new Date(b.date) - new Date(a.date));
+            if (sorted.length > 0) {
+                const latestDate = new Date(sorted[0].date);
+                const latestKey = `${latestDate.getFullYear()}-${String(latestDate.getMonth() + 1).padStart(2, '0')}`;
+                setExpandedMonths([latestKey]);
+            }
+        }
+    }, [data])
+
     if (loading) return <div className="flex h-screen items-center justify-center text-gray-400 bg-gray-50">Loading Profit Note...</div>
     if (!data) return <div className="flex h-screen items-center justify-center text-rose-500 bg-gray-50">Error loading data.</div>
 
     // Prepare chart data: Calculate Cumulative Profit
     // 1. Sort records chronologically (oldest first)
-    const sortedRecords = [...data.records].reverse();
+    // IMPORTANT: The original code used reverse(), assuming input was oldest->newest.
+    // Let's stick to explicit sort for safety in chart, but reverse for list display.
+
+    // Sort for List (Newest First)
+    const sortedRecords = [...data.records].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // Sort for Chart (Oldest First)
+    const chartSortedRecords = [...data.records].sort((a, b) => new Date(a.date) - new Date(b.date));
 
     let runningTotal = 0;
-    const chartData = sortedRecords.map(record => {
+    const chartData = chartSortedRecords.map(record => {
         runningTotal += record.daily_profit;
         return {
             date: record.date.slice(5), // "MM-DD"
@@ -109,6 +129,14 @@ const Dashboard = () => {
         } else {
             setExpandedDate(date)
         }
+    }
+
+    const toggleMonth = (monthKey) => {
+        setExpandedMonths(prev =>
+            prev.includes(monthKey)
+                ? prev.filter(m => m !== monthKey)
+                : [...prev, monthKey]
+        );
     }
 
     return (
@@ -236,7 +264,7 @@ const Dashboard = () => {
                     <h3 className="text-lg font-bold text-gray-900 border-b-2 border-gray-100 pb-2 mb-4">Trading History</h3>
                 </div>
 
-                <div className="space-y-8 px-4 pb-12">
+                <div className="space-y-6 px-4 pb-12">
                     {(() => {
                         // Group records by month
                         const groups = sortedRecords.reduce((acc, record) => {
@@ -256,94 +284,112 @@ const Dashboard = () => {
                         }, {});
 
                         // Render each group
-                        return Object.values(groups).map((group) => (
-                            <div key={group.key} className="space-y-3">
-                                {/* Month Header */}
-                                <div className="flex items-center justify-between px-2 py-1 bg-gray-50/50 rounded-lg">
-                                    <h4 className="text-sm font-bold text-gray-500">{group.label}</h4>
-                                    <div className="text-sm font-bold text-gray-700">
-                                        <span className="text-xs text-gray-400 font-normal mr-1">월 수익</span>
-                                        +₩{group.totalProfit.toLocaleString()}
-                                    </div>
-                                </div>
+                        return Object.values(groups).map((group) => {
+                            const isExpanded = expandedMonths.includes(group.key);
 
-                                {/* Daily Cards */}
-                                <div className="space-y-4">
-                                    {group.records.map((record, idx) => (
-                                        <div key={idx} className={`border rounded-2xl overflow-hidden transition-all duration-300 ${expandedDate === record.date ? 'border-rose-100 shadow-lg bg-white box-border' : 'border-gray-100 bg-white shadow-sm'} `}>
-
-                                            {/* Card Header (Daily Summary) */}
-                                            <div
-                                                onClick={() => toggleExpand(record.date)}
-                                                className={`p-5 flex items-center justify-between cursor-pointer select-none transition-colors ${expandedDate === record.date ? 'bg-white' : 'hover:bg-amber-50'} `}
-                                            >
-                                                <div>
-                                                    <div className="text-blue-500 text-sm font-bold mb-0.5">{record.date}</div>
-                                                    <div className="text-gray-900 font-bold text-lg">
-                                                        +₩{record.daily_profit.toLocaleString()}
-                                                    </div>
-                                                </div>
-                                                <div className="text-right flex flex-col items-end gap-1">
-                                                    <div className={`text-xs font-bold px-2 py-1 rounded-md ${record.daily_roi >= 0 ? 'bg-rose-50 text-rose-600' : 'bg-blue-50 text-blue-600'} `}>
-                                                        {record.daily_roi > 0 ? '+' : ''}{record.daily_roi}% ROI
-                                                    </div>
-                                                    {expandedDate === record.date ? <ChevronUp size={16} className="text-rose-400" /> : <ChevronDown size={16} className="text-gray-300" />}
-                                                </div>
+                            return (
+                                <div key={group.key} className="space-y-3">
+                                    {/* Month Header (Clickable) */}
+                                    <button
+                                        onClick={() => toggleMonth(group.key)}
+                                        className={`w-full flex items-center justify-between px-4 py-3 rounded-2xl transition-all duration-300 group border
+                                            ${isExpanded
+                                                ? 'bg-gray-50 border-gray-200 shadow-sm'
+                                                : 'bg-white border-gray-100 shadow-sm hover:shadow-md hover:border-gray-300'
+                                            }`}
+                                    >
+                                        <h4 className={`text-base font-bold transition-colors ${isExpanded ? 'text-gray-900' : 'text-gray-500 group-hover:text-gray-700'}`}>
+                                            {group.label}
+                                        </h4>
+                                        <div className="flex items-center gap-3">
+                                            <div className={`text-sm font-bold transition-colors ${isExpanded ? 'text-gray-900' : 'text-gray-700'}`}>
+                                                <span className="text-xs text-gray-400 font-normal mr-2">월 수익</span>
+                                                +₩{group.totalProfit.toLocaleString()}
                                             </div>
-
-                                            {/* Card Body (Detailed Trades) */}
-                                            {expandedDate === record.date && (
-                                                <div className="bg-indigo-50/40 px-4 py-6 border-t border-rose-100 animate-in slide-in-from-top-1 duration-200">
-                                                    <div className="relative ml-2 pl-5 border-l-2 border-indigo-200 space-y-4">
-                                                        {/* Visual node for better connection */}
-                                                        <div className="absolute -left-[5px] -top-0 w-2 h-2 rounded-full bg-indigo-300"></div>
-
-                                                        {record.trades.map((trade, tIdx) => (
-                                                            <div key={tIdx} className="bg-white border border-indigo-100 rounded-xl p-4 shadow-sm relative hover:border-indigo-300 transition-colors">
-                                                                {/* Little connector line item */}
-                                                                <div className="absolute -left-[22px] top-6 w-5 h-[2px] bg-indigo-200"></div>
-
-                                                                {/* Trade Header: Name & Profit */}
-                                                                <div className="flex justify-between items-start mb-4 border-b border-gray-100 pb-2">
-                                                                    <span className="text-gray-900 font-bold text-sm tracking-tight">{trade.name}</span>
-                                                                    <div className="text-right">
-                                                                        <div className="text-rose-500 font-bold text-sm">+₩{trade.profit.toLocaleString()}</div>
-                                                                        <div className="text-rose-500/80 text-[10px] font-medium bg-rose-50 px-1.5 py-0.5 rounded inline-block mt-0.5">
-                                                                            +{trade.roi}%
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                {/* Trade Details Flow (Buy -> Sell) */}
-                                                                <div className="relative">
-                                                                    <div className="text-[10px] text-gray-400 mb-2 font-medium">Avg Price: ₩{trade.avg_price.toLocaleString()}</div>
-
-                                                                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-100">
-                                                                        <div className="flex flex-col">
-                                                                            <span className="text-[10px] text-gray-400 uppercase font-semibold">Buy Amount</span>
-                                                                            <span className="text-xs font-medium text-gray-600">₩{trade.buy_amount.toLocaleString()}</span>
-                                                                        </div>
-
-                                                                        <ArrowRight size={14} className="text-indigo-300" />
-
-                                                                        <div className="flex flex-col items-end">
-                                                                            <span className="text-[10px] text-rose-500 font-bold uppercase">Sell Amount</span>
-                                                                            <span className="text-sm font-bold text-gray-900">₩{trade.sell_amount.toLocaleString()}</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            )}
-
+                                            {isExpanded ? <ChevronUp size={20} className="text-gray-400" /> : <ChevronDown size={20} className="text-gray-400" />}
                                         </div>
-                                    ))}
+                                    </button>
+
+                                    {/* Daily Cards (Conditional Render) */}
+                                    {isExpanded && (
+                                        <div className="space-y-4 animate-in slide-in-from-top-2 duration-300">
+                                            {group.records.map((record, idx) => (
+                                                <div key={idx} className={`border rounded-2xl overflow-hidden transition-all duration-300 ${expandedDate === record.date ? 'border-rose-100 shadow-lg bg-white box-border' : 'border-gray-100 bg-white shadow-sm'} `}>
+
+                                                    {/* Card Header (Daily Summary) */}
+                                                    <div
+                                                        onClick={() => toggleExpand(record.date)}
+                                                        className={`p-5 flex items-center justify-between cursor-pointer select-none transition-colors ${expandedDate === record.date ? 'bg-white' : 'hover:bg-amber-50'} `}
+                                                    >
+                                                        <div>
+                                                            <div className="text-blue-500 text-sm font-bold mb-0.5">{record.date}</div>
+                                                            <div className="text-gray-900 font-bold text-lg">
+                                                                +₩{record.daily_profit.toLocaleString()}
+                                                            </div>
+                                                        </div>
+                                                        <div className="text-right flex flex-col items-end gap-1">
+                                                            <div className={`text-xs font-bold px-2 py-1 rounded-md ${record.daily_roi >= 0 ? 'bg-rose-50 text-rose-600' : 'bg-blue-50 text-blue-600'} `}>
+                                                                {record.daily_roi > 0 ? '+' : ''}{record.daily_roi}% ROI
+                                                            </div>
+                                                            {expandedDate === record.date ? <ChevronUp size={16} className="text-rose-400" /> : <ChevronDown size={16} className="text-gray-300" />}
+                                                        </div>
+                                                    </div>
+
+                                                    {/* Card Body (Detailed Trades) */}
+                                                    {expandedDate === record.date && (
+                                                        <div className="bg-indigo-50/40 px-4 py-6 border-t border-rose-100 animate-in slide-in-from-top-1 duration-200">
+                                                            <div className="relative ml-2 pl-5 border-l-2 border-indigo-200 space-y-4">
+                                                                {/* Visual node for better connection */}
+                                                                <div className="absolute -left-[5px] -top-0 w-2 h-2 rounded-full bg-indigo-300"></div>
+
+                                                                {record.trades.map((trade, tIdx) => (
+                                                                    <div key={tIdx} className="bg-white border border-indigo-100 rounded-xl p-4 shadow-sm relative hover:border-indigo-300 transition-colors">
+                                                                        {/* Little connector line item */}
+                                                                        <div className="absolute -left-[22px] top-6 w-5 h-[2px] bg-indigo-200"></div>
+
+                                                                        {/* Trade Header: Name & Profit */}
+                                                                        <div className="flex justify-between items-start mb-4 border-b border-gray-100 pb-2">
+                                                                            <span className="text-gray-900 font-bold text-sm tracking-tight">{trade.name}</span>
+                                                                            <div className="text-right">
+                                                                                <div className="text-rose-500 font-bold text-sm">+₩{trade.profit.toLocaleString()}</div>
+                                                                                <div className="text-rose-500/80 text-[10px] font-medium bg-rose-50 px-1.5 py-0.5 rounded inline-block mt-0.5">
+                                                                                    +{trade.roi}%
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        {/* Trade Details Flow (Buy -> Sell) */}
+                                                                        <div className="relative">
+                                                                            <div className="text-[10px] text-gray-400 mb-2 font-medium">Avg Price: ₩{trade.avg_price.toLocaleString()}</div>
+
+                                                                            <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-100">
+                                                                                <div className="flex flex-col">
+                                                                                    <span className="text-[10px] text-gray-400 uppercase font-semibold">Buy Amount</span>
+                                                                                    <span className="text-xs font-medium text-gray-600">₩{trade.buy_amount.toLocaleString()}</span>
+                                                                                </div>
+
+                                                                                <ArrowRight size={14} className="text-indigo-300" />
+
+                                                                                <div className="flex flex-col items-end">
+                                                                                    <span className="text-[10px] text-rose-500 font-bold uppercase">Sell Amount</span>
+                                                                                    <span className="text-sm font-bold text-gray-900">₩{trade.sell_amount.toLocaleString()}</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    )}
+
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
-                            </div>
-                        ));
+                            );
+                        });
                     })()}
                 </div>
 
