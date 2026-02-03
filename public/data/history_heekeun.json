@@ -1,8 +1,48 @@
 {
-    "last_updated": "2026-01-30T15:45:00",
-    "total_equity": 32881748,
-    "total_profit": 12005145,
+    "last_updated": "2026-02-03T22:30:00",
+    "total_equity": 33656614,
+    "total_profit": 12780011,
     "records": [
+        {
+            "date": "2026-02-03",
+            "equity": 33656614,
+            "daily_profit": 356334,
+            "daily_roi": 0.93,
+            "trades": [
+                {
+                    "name": "KODEX 로봇액티브",
+                    "buy_amount": 14328500,
+                    "sell_amount": 15474750,
+                    "avg_price": 35818,
+                    "profit": 283138,
+                    "roi": 1.86
+                },
+                {
+                    "name": "UNI... 류체... (기타)",
+                    "buy_amount": 23311500,
+                    "sell_amount": 23055145,
+                    "avg_price": 0,
+                    "profit": 73196,
+                    "roi": 0.32
+                }
+            ]
+        },
+        {
+            "date": "2026-02-02",
+            "equity": 33300280,
+            "daily_profit": 418532,
+            "daily_roi": 2.04,
+            "trades": [
+                {
+                    "name": "PLUS 한화그룹주",
+                    "buy_amount": 0,
+                    "sell_amount": 20981005,
+                    "avg_price": 33216,
+                    "profit": 418532,
+                    "roi": 2.04
+                }
+            ]
+        },
         {
             "date": "2026-01-30",
             "equity": 32881748,
@@ -210,6 +250,6 @@
                     "roi": 7.25
                 }
             ]
-        }
+        },
     ]
 }
