@@ -94,18 +94,9 @@ const Dashboard = () => {
     }, [activeUser, comparisonData])
 
     // Effect to set default expanded month when data changes
+    // Effect to set default expanded month when data changes - DISABLED as per user request (collapsed by default)
     useEffect(() => {
-        if (data && data.records && data.records.length > 0) {
-            // Assume records are chronological, so last one is newest? 
-            // Existing code used reverse(), so let's verify sort. 
-            // Safest to sort by date descending to find latest.
-            const sorted = [...data.records].sort((a, b) => new Date(b.date) - new Date(a.date));
-            if (sorted.length > 0) {
-                const latestDate = new Date(sorted[0].date);
-                const latestKey = `${latestDate.getFullYear()}-${String(latestDate.getMonth() + 1).padStart(2, '0')}`;
-                setExpandedMonths([latestKey]);
-            }
-        }
+        // Auto-expand logic removed to keep default view collapsed
     }, [data])
 
     if (loading) return <div className="flex h-screen items-center justify-center text-gray-400 bg-gray-50">Loading Profit Note...</div>
