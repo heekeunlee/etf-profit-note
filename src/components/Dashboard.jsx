@@ -296,25 +296,17 @@ const Dashboard = () => {
                             return acc;
                         }, {});
 
-                        // Define pastel color palette (cycling)
+                        // Define pastel color palette (cycling) - Prioritizing soothing tones
                         const pastelColors = [
-                            'bg-red-50 hover:bg-red-100 border-red-100',
-                            'bg-orange-50 hover:bg-orange-100 border-orange-100',
-                            'bg-amber-50 hover:bg-amber-100 border-amber-100',
-                            'bg-yellow-50 hover:bg-yellow-100 border-yellow-100',
-                            'bg-lime-50 hover:bg-lime-100 border-lime-100',
-                            'bg-green-50 hover:bg-green-100 border-green-100',
-                            'bg-emerald-50 hover:bg-emerald-100 border-emerald-100',
-                            'bg-teal-50 hover:bg-teal-100 border-teal-100',
-                            'bg-cyan-50 hover:bg-cyan-100 border-cyan-100',
-                            'bg-sky-50 hover:bg-sky-100 border-sky-100',
                             'bg-blue-50 hover:bg-blue-100 border-blue-100',
                             'bg-indigo-50 hover:bg-indigo-100 border-indigo-100',
+                            'bg-teal-50 hover:bg-teal-100 border-teal-100',
+                            'bg-emerald-50 hover:bg-emerald-100 border-emerald-100',
                             'bg-violet-50 hover:bg-violet-100 border-violet-100',
-                            'bg-purple-50 hover:bg-purple-100 border-purple-100',
                             'bg-fuchsia-50 hover:bg-fuchsia-100 border-fuchsia-100',
-                            'bg-pink-50 hover:bg-pink-100 border-pink-100',
-                            'bg-rose-50 hover:bg-rose-100 border-rose-100'
+                            'bg-rose-50 hover:bg-rose-100 border-rose-100',
+                            'bg-amber-50 hover:bg-amber-100 border-amber-100',
+                            'bg-cyan-50 hover:bg-cyan-100 border-cyan-100',
                         ];
 
                         // Render each group
