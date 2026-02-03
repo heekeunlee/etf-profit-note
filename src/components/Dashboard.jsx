@@ -43,6 +43,7 @@ const Dashboard = () => {
     const [showComparison, setShowComparison] = useState(false) // Modal state
     const [loading, setLoading] = useState(true)
     const [expandedMonths, setExpandedMonths] = useState([])
+    const [expandedDate, setExpandedDate] = useState(null)
 
     useEffect(() => {
         setLoading(true)
