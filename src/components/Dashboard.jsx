@@ -296,9 +296,32 @@ const Dashboard = () => {
                             return acc;
                         }, {});
 
+                        // Define pastel color palette (cycling)
+                        const pastelColors = [
+                            'bg-red-50 hover:bg-red-100 border-red-100',
+                            'bg-orange-50 hover:bg-orange-100 border-orange-100',
+                            'bg-amber-50 hover:bg-amber-100 border-amber-100',
+                            'bg-yellow-50 hover:bg-yellow-100 border-yellow-100',
+                            'bg-lime-50 hover:bg-lime-100 border-lime-100',
+                            'bg-green-50 hover:bg-green-100 border-green-100',
+                            'bg-emerald-50 hover:bg-emerald-100 border-emerald-100',
+                            'bg-teal-50 hover:bg-teal-100 border-teal-100',
+                            'bg-cyan-50 hover:bg-cyan-100 border-cyan-100',
+                            'bg-sky-50 hover:bg-sky-100 border-sky-100',
+                            'bg-blue-50 hover:bg-blue-100 border-blue-100',
+                            'bg-indigo-50 hover:bg-indigo-100 border-indigo-100',
+                            'bg-violet-50 hover:bg-violet-100 border-violet-100',
+                            'bg-purple-50 hover:bg-purple-100 border-purple-100',
+                            'bg-fuchsia-50 hover:bg-fuchsia-100 border-fuchsia-100',
+                            'bg-pink-50 hover:bg-pink-100 border-pink-100',
+                            'bg-rose-50 hover:bg-rose-100 border-rose-100'
+                        ];
+
                         // Render each group
-                        return Object.values(groups).map((group) => {
+                        return Object.values(groups).map((group, index) => {
                             const isExpanded = expandedMonths.includes(group.key);
+                            // Assign specific color based on index
+                            const colorClass = pastelColors[index % pastelColors.length];
 
                             return (
                                 <div key={group.key} className="space-y-3">
@@ -307,8 +330,8 @@ const Dashboard = () => {
                                         onClick={() => toggleMonth(group.key)}
                                         className={`w-full flex items-center justify-between px-4 py-3 rounded-2xl transition-all duration-300 group border
                                             ${isExpanded
-                                                ? 'bg-gray-50 border-gray-200 shadow-sm'
-                                                : 'bg-white border-gray-100 shadow-sm hover:shadow-md hover:border-gray-300'
+                                                ? `${colorClass} shadow-sm ring-1 ring-black/5`
+                                                : `${colorClass} shadow-sm hover:shadow-md border-transparent`
                                             }`}
                                     >
                                         <h4 className={`text-base font-bold transition-colors ${isExpanded ? 'text-gray-900' : 'text-gray-500 group-hover:text-gray-700'}`}>
