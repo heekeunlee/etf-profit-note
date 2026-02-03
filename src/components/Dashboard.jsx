@@ -48,10 +48,21 @@ const Dashboard = () => {
     useEffect(() => {
         setLoading(true)
 
+        // Robust path resolution for GitHub Pages
+        const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+            ? import.meta.env.BASE_URL
+            : `${import.meta.env.BASE_URL}/`;
+
         // Fetch BOTH users' data for comparison capability
         Promise.all([
-            fetch('./data/history_heekeun.json').then(res => res.json()),
-            fetch('./data/history_geonkyung.json').then(res => res.json())
+            fetch(`${baseUrl}data/history_heekeun.json`).then(res => {
+                if (!res.ok) throw new Error(`Failed to load heekeun data: ${res.status}`);
+                return res.json();
+            }),
+            fetch(`${baseUrl}data/history_geonkyung.json`).then(res => {
+                if (!res.ok) throw new Error(`Failed to load geonkyung data: ${res.status}`);
+                return res.json();
+            })
         ])
             .then(([heekeunData, geonkyungData]) => {
                 setComparisonData({ heekeun: heekeunData, geonkyung: geonkyungData })
@@ -67,6 +78,7 @@ const Dashboard = () => {
             .catch(err => {
                 console.error("Failed to load data", err)
                 setLoading(false)
+                // Rethrow to let ErrorBoundary catch it if needed, or handle gracefullly state
             })
     }, [])
 
