@@ -1,8 +1,32 @@
 {
-    "last_updated": "2026-02-04T22:00:00",
-    "total_equity": 13885432,
-    "total_profit": 13894438,
+    "last_updated": "2026-02-12T11:00:00",
+    "total_equity": 30279359,
+    "total_profit": 15415313,
     "records": [
+        {
+            "date": "2026-02-12",
+            "equity": 30279359,
+            "daily_profit": 1520875,
+            "daily_roi": 5.27,
+            "trades": [
+                {
+                    "name": "PLUS 글로벌HBM반도체",
+                    "buy_amount": 16896738,
+                    "sell_amount": 17572230,
+                    "avg_price": 56506,
+                    "profit": 675492,
+                    "roi": 4.00
+                },
+                {
+                    "name": "KODEX 미국AI전력핵심인프라",
+                    "buy_amount": 11935922,
+                    "sell_amount": 12781305,
+                    "avg_price": 18001,
+                    "profit": 845383,
+                    "roi": 7.08
+                }
+            ]
+        },
         {
             "date": "2026-02-04",
             "equity": 13885432,
