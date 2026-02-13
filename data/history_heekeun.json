@@ -1,8 +1,32 @@
 {
-    "last_updated": "2026-02-12T11:00:00",
-    "total_equity": 30279359,
-    "total_profit": 15415313,
+    "last_updated": "2026-02-13T18:30:00",
+    "total_equity": 20869164,
+    "total_profit": 16493796,
     "records": [
+        {
+            "date": "2026-02-13",
+            "equity": 20869164,
+            "daily_profit": 1078483,
+            "daily_roi": 3.20,
+            "trades": [
+                {
+                    "name": "HANARO 원자력iSelect",
+                    "buy_amount": 16203134,
+                    "sell_amount": 16724500,
+                    "avg_price": 62315,
+                    "profit": 521366,
+                    "roi": 3.22
+                },
+                {
+                    "name": "UNICORN SK하이닉스밸류체인액티브",
+                    "buy_amount": 17484633,
+                    "sell_amount": 18041750,
+                    "avg_price": 29138,
+                    "profit": 557117,
+                    "roi": 3.19
+                }
+            ]
+        },
         {
             "date": "2026-02-12",
             "equity": 30279359,
