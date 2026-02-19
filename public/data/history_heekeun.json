@@ -1,8 +1,32 @@
 {
-    "last_updated": "2026-02-13T18:30:00",
-    "total_equity": 20869164,
-    "total_profit": 16493796,
+    "last_updated": "2026-02-20T08:33:15",
+    "total_equity": 21247557,
+    "total_profit": 16872189,
     "records": [
+        {
+            "date": "2026-02-19",
+            "equity": 21247557,
+            "daily_profit": 378393,
+            "daily_roi": 2.80,
+            "trades": [
+                {
+                    "name": "UNICORN SK하이닉스밸류체인액티브",
+                    "buy_amount": 10483244,
+                    "sell_amount": 10764250,
+                    "avg_price": 30780,
+                    "profit": 281006,
+                    "roi": 2.68
+                },
+                {
+                    "name": "PLUS 한화그룹주",
+                    "buy_amount": 3032738,
+                    "sell_amount": 3130125,
+                    "avg_price": 35676,
+                    "profit": 97387,
+                    "roi": 3.21
+                }
+            ]
+        },
         {
             "date": "2026-02-13",
             "equity": 20869164,
