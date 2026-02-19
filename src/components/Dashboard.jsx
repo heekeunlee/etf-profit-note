@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { AreaChart, Area, Tooltip, ResponsiveContainer, XAxis } from 'recharts'
 import { ChevronDown, ChevronUp, ArrowRight } from 'lucide-react'
-import VsModal from './VsModal'
 
 // Utility Component for Number Animation
 const CountUp = ({ end, duration = 1000 }) => {
@@ -40,7 +39,6 @@ const Dashboard = () => {
     const [activeUser, setActiveUser] = useState('heekeun') // 'heekeun' or 'geonkyung'
     const [data, setData] = useState(null)
     const [comparisonData, setComparisonData] = useState({ heekeun: null, geonkyung: null }) // New state for comparison
-    const [showComparison, setShowComparison] = useState(false) // Modal state
     const [loading, setLoading] = useState(true)
     const [expandedMonths, setExpandedMonths] = useState([])
     const [expandedDate, setExpandedDate] = useState(null)
@@ -53,13 +51,14 @@ const Dashboard = () => {
             ? import.meta.env.BASE_URL
             : `${import.meta.env.BASE_URL}/`;
 
-        // Fetch BOTH users' data for comparison capability
+        // Fetch BOTH users' data for comparison capability - with cache busting
+        const timestamp = new Date().getTime();
         Promise.all([
-            fetch(`${baseUrl}data/history_heekeun.json`).then(res => {
+            fetch(`${baseUrl}data/history_heekeun.json?t=${timestamp}`).then(res => {
                 if (!res.ok) throw new Error(`Failed to load heekeun data: ${res.status}`);
                 return res.json();
             }),
-            fetch(`${baseUrl}data/history_geonkyung.json`).then(res => {
+            fetch(`${baseUrl}data/history_geonkyung.json?t=${timestamp}`).then(res => {
                 if (!res.ok) throw new Error(`Failed to load geonkyung data: ${res.status}`);
                 return res.json();
             })
@@ -150,54 +149,8 @@ const Dashboard = () => {
                 {/* 1. Header & Big Total Profit (Apple/Toss Style) */}
                 <div className={`relative pt-6 pb-6 px-6 text-center sticky top-0 z-20 transition-all overflow-hidden duration-700 ${activeUser === 'heekeun' ? 'bg-white/90 backdrop-blur-md' : 'bg-white/90 backdrop-blur-md'} `}>
 
-                    {/* Massive Emojis (Background/Side) */}
-                    {activeUser === 'heekeun' && (
-                        <div className="absolute left-[-10px] top-1/2 -translate-y-1/2 text-[500%] leading-none filter drop-shadow-xl animate-in slide-in-from-left duration-500 hover:scale-110 transition-transform cursor-default z-0">
-                            🤴
-                        </div>
-                    )}
-                    {activeUser === 'geonkyung' && (
-                        <div className="absolute right-[-10px] top-1/2 -translate-y-1/2 text-[500%] leading-none filter drop-shadow-xl animate-in slide-in-from-right duration-500 hover:scale-110 transition-transform cursor-default z-0">
-                            👸
-                        </div>
-                    )}
-
-                    {/* User Tab Navigation - FIGHTING GAME STYLE (Mini Version) */}
-                    <div className="relative z-10 flex justify-center items-center mb-6 pt-2">
-                        <div className="flex items-center gap-4 scale-75 origin-top">
-                            {/* Player 1 Button */}
-                            <button
-                                onClick={() => setActiveUser('heekeun')}
-                                className={`px-4 py-2 rounded-xl text-base font-black italic tracking-tighter transition-all transform duration-300 border-2 ${activeUser === 'heekeun'
-                                    ? 'bg-blue-600 text-white border-blue-500 shadow-[0_0_15px_rgba(37,99,235,0.5)] scale-110 -rotate-2'
-                                    : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
-                                    } `}
-                            >
-                                이희근
-                            </button>
-
-                            {/* THE FIERY VS */}
-                            <div className="relative mx-2">
-                                <span className="text-5xl font-[900] italic leading-none text-gray-800 tracking-tighter cursor-default select-none transition-transform hover:scale-110" style={{ fontFamily: 'Impact, sans-serif' }}>
-                                    VS.
-                                </span>
-                            </div>
-
-                            {/* Player 2 Button */}
-                            <button
-                                onClick={() => setActiveUser('geonkyung')}
-                                className={`px-4 py-2 rounded-xl text-base font-black italic tracking-tighter transition-all transform duration-300 border-2 ${activeUser === 'geonkyung'
-                                    ? 'bg-rose-600 text-white border-rose-500 shadow-[0_0_15px_rgba(225,29,72,0.5)] scale-110 rotate-2'
-                                    : 'bg-white text-gray-300 border-gray-200 hover:scale-105 hover:bg-gray-50'
-                                    } `}
-                            >
-                                이건경
-                            </button>
-                        </div>
-                    </div>
-
-                    <h1 className="relative z-10 text-base font-bold text-gray-600 mb-2 uppercase tracking-wide">
-                        {activeUser === 'heekeun' ? 'ETF 퀀트투자 실현손익 현황' : '주식투자 실현손익 현황'}
+                    <h1 className="relative z-10 text-base font-bold text-gray-600 mb-2 uppercase tracking-wide mt-2">
+                        {activeUser === 'heekeun' ? '📈 이희근 실현손익 현황 (ETF 퀀트)' : '📈 이건경 실현손익 현황 (주식투자)'}
                     </h1>
                     <div className="relative z-10 text-4xl font-extrabold text-gray-900 tracking-tight flex items-center justify-center gap-1">
                         <span className="text-2xl text-gray-400 font-bold self-start mt-1">₩</span>
@@ -413,16 +366,7 @@ const Dashboard = () => {
                 </div>
 
                 {/* Buttons Action Area */}
-                <div className="px-6 mb-8 mt-4 grid grid-cols-2 gap-3">
-                    {/* NEW: VS Analysis Button */}
-                    <button
-                        onClick={() => setShowComparison(true)}
-                        className="col-span-1 py-4 rounded-xl flex items-center justify-center gap-2 font-black text-sm uppercase italic tracking-widest shadow-lg transition-all active:scale-95 bg-black text-white hover:bg-gray-800 border-2 border-gray-700"
-                    >
-                        <span>⚔️</span>
-                        <span>VS Mode</span>
-                    </button>
-
+                <div className="px-6 mb-8 mt-4 flex flex-col gap-3">
                     {/* Share Report Button */}
                     <button
                         onClick={() => {
@@ -521,16 +465,25 @@ const Dashboard = () => {
                                 });
                             }
                         }}
-                        className={`col-span-1 py-4 rounded-xl flex items-center justify-center gap-2 font-bold text-sm shadow-lg transition-all active:scale-95 ${activeUser === 'heekeun'
+                        className={`w-full py-4 rounded-xl flex items-center justify-center gap-2 font-bold text-sm shadow-lg transition-all active:scale-95 ${activeUser === 'heekeun'
                             ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-blue-200 hover:shadow-blue-300'
                             : 'bg-gradient-to-r from-rose-500 to-pink-600 text-white shadow-rose-200 hover:shadow-rose-300'
                             } `}
                     >
                         <span>📄</span>
-                        <span>Share</span>
+                        <span>리포트 공유하기</span>
                     </button>
-                    <p className="col-span-2 text-center text-xs text-gray-400 mt-1">
-                        Compare performance or share weekly report.
+
+                    {/* Geonkyung Toggle Button */}
+                    <button
+                        onClick={() => setActiveUser(activeUser === 'heekeun' ? 'geonkyung' : 'heekeun')}
+                        className={`w-full py-4 rounded-xl flex items-center justify-center gap-2 font-bold text-sm shadow-sm transition-all active:scale-95 border ${activeUser === 'heekeun' ? 'bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100' : 'bg-gray-800 text-white border-gray-900 hover:bg-gray-700'}`}
+                    >
+                        <span>{activeUser === 'heekeun' ? '👩 이건경 실현손익 보기' : '👨 이희근 실현손익으로 돌아가기'}</span>
+                    </button>
+
+                    <p className="w-full text-center text-xs text-gray-400 mt-1">
+                        터치하여 실현손익 리포트를 공유해보세요.
                     </p>
                 </div>
 
@@ -541,14 +494,6 @@ const Dashboard = () => {
                     </p>
                 </div>
 
-
-                {/* VS COMPARISON MODAL */}
-                {showComparison && (
-                    <VsModal
-                        comparisonData={comparisonData}
-                        onClose={() => setShowComparison(false)}
-                    />
-                )}
 
             </div>
         </div>
