@@ -101,29 +101,63 @@ const Dashboard = () => {
     if (loading) return <div className="flex h-screen items-center justify-center text-gray-400 bg-gray-50">Loading Profit Note...</div>
     if (!data) return <div className="flex h-screen items-center justify-center text-rose-500 bg-gray-50">Error loading data.</div>
 
-    // Prepare chart data: Calculate Cumulative Profit
-    // 1. Sort records chronologically (oldest first)
-    // IMPORTANT: The original code used reverse(), assuming input was oldest->newest.
-    // Let's stick to explicit sort for safety in chart, but reverse for list display.
-
-    // Sort for List (Newest First)
+    // Prepare chart data & grouped data
     const sortedRecords = [...data.records].sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    // Sort for Chart (Oldest First)
-    const chartSortedRecords = [...data.records].sort((a, b) => new Date(a.date) - new Date(b.date));
+    // Group records by month (to find current and previous month)
+    const monthGroups = sortedRecords.reduce((acc, record) => {
+        const dateObj = new Date(record.date);
+        const monthKey = `${dateObj.getFullYear()}-${String(dateObj.getMonth() + 1).padStart(2, '0')}`;
+        if (!acc[monthKey]) {
+            acc[monthKey] = {
+                key: monthKey,
+                label: `${dateObj.getFullYear()}년 ${dateObj.getMonth() + 1}월`,
+                shortLabel: `${dateObj.getMonth() + 1}월`,
+                totalProfit: 0,
+                records: []
+            };
+        }
+        acc[monthKey].records.push(record);
+        acc[monthKey].totalProfit += record.daily_profit;
+        return acc;
+    }, {});
 
-    let runningTotal = 0;
-    const chartData = chartSortedRecords.map(record => {
-        runningTotal += record.daily_profit;
-        return {
-            date: record.date.slice(5), // "MM-DD"
-            profit: runningTotal
-        };
-    });
+    const monthKeys = Object.keys(monthGroups);
+    const currentMonthKey = monthKeys[0];
+    const previousMonthKey = monthKeys[1];
 
-    // Add Start Point (0) for better visualization
-    if (chartData.length > 0) {
-        chartData.unshift({ date: 'Start', profit: 0 });
+    const currentMonthGroup = monthGroups[currentMonthKey];
+    const currentMonthProfit = currentMonthGroup ? currentMonthGroup.totalProfit : 0;
+
+    const previousMonthGroup = monthGroups[previousMonthKey];
+    const previousMonthProfit = previousMonthGroup ? previousMonthGroup.totalProfit : 0;
+
+    // Build Chart Data (Current month details + single point for past)
+    let pastTotalProfit = 0;
+    for (let i = 1; i < monthKeys.length; i++) {
+        pastTotalProfit += monthGroups[monthKeys[i]].totalProfit;
+    }
+
+    const chartData = [];
+    if (monthKeys.length > 1) {
+        chartData.push({
+            date: previousMonthGroup ? `${previousMonthGroup.shortLabel} 누적` : '이전 누적',
+            profit: pastTotalProfit,
+        });
+    } else {
+        chartData.push({ date: 'Start', profit: 0 });
+    }
+
+    if (currentMonthGroup) {
+        const currentMonthRecords = [...currentMonthGroup.records].sort((a, b) => new Date(a.date) - new Date(b.date));
+        let runningTotal = pastTotalProfit;
+        currentMonthRecords.forEach(record => {
+            runningTotal += record.daily_profit;
+            chartData.push({
+                date: record.date.slice(5), // "MM-DD"
+                profit: runningTotal
+            });
+        });
     }
 
     const toggleExpand = (date) => {
@@ -146,19 +180,34 @@ const Dashboard = () => {
         <div className="min-h-screen bg-[#2e3547] flex items-start justify-center p-4 font-sans py-10">
             <div className="w-full max-w-md bg-white rounded-3xl overflow-hidden shadow-2xl relative">
 
-                {/* 1. Header & Big Total Profit (Apple/Toss Style) */}
+                {/* 1. Header & Big Total Profit */}
                 <div className={`relative pt-6 pb-6 px-6 text-center sticky top-0 z-20 transition-all overflow-hidden duration-700 ${activeUser === 'heekeun' ? 'bg-white/90 backdrop-blur-md' : 'bg-white/90 backdrop-blur-md'} `}>
 
-                    <h1 className="relative z-10 text-base font-bold text-gray-600 mb-2 uppercase tracking-wide mt-2">
-                        {activeUser === 'heekeun' ? '📈 이희근 실현손익 현황 (ETF 퀀트)' : '📈 이건경 실현손익 현황 (주식투자)'}
+                    <h1 className="relative z-10 text-base font-bold text-gray-600 mb-4 uppercase tracking-wide mt-2">
+                        {activeUser === 'heekeun' ? '📈 이희근 실현손익 현황' : '📈 이건경 실현손익 현황'}
                     </h1>
+
+                    {currentMonthGroup && (
+                        <div className="relative z-10 text-sm font-bold text-rose-500 mb-1">
+                            {currentMonthGroup.label} 수익금
+                        </div>
+                    )}
                     <div className="relative z-10 text-4xl font-extrabold text-gray-900 tracking-tight flex items-center justify-center gap-1">
                         <span className="text-2xl text-gray-400 font-bold self-start mt-1">₩</span>
-                        <CountUp end={data.total_profit} />
+                        <CountUp end={currentMonthProfit} />
                     </div>
 
-                    <div className="relative z-10 mt-2 inline-flex items-center px-3 py-1 rounded-full bg-rose-50 text-rose-600 text-xs font-bold">
-                        <span className="mr-1">🚀</span> Growing Wealth
+                    <div className="relative z-10 mt-4 flex flex-col items-center gap-1 opacity-90">
+                        {previousMonthGroup && (
+                            <div className="text-sm text-gray-600 font-medium bg-gray-50 px-4 py-2 rounded-xl w-full max-w-[260px] flex justify-between items-center shadow-sm">
+                                <span>{previousMonthGroup.label} 수익금</span>
+                                <span className="font-bold text-gray-800">₩{previousMonthProfit.toLocaleString()}</span>
+                            </div>
+                        )}
+                        <div className="text-sm text-blue-600 font-medium bg-blue-50/80 px-4 py-2 rounded-xl w-full max-w-[260px] flex justify-between items-center border border-blue-100 mt-1 shadow-sm">
+                            <span>연간 누적 수익금</span>
+                            <span className="font-bold text-blue-700">₩{data.total_profit.toLocaleString()}</span>
+                        </div>
                     </div>
                 </div>
 
@@ -223,22 +272,8 @@ const Dashboard = () => {
 
                 <div className="space-y-6 px-4 pb-12">
                     {(() => {
-                        // Group records by month
-                        const groups = sortedRecords.reduce((acc, record) => {
-                            const dateObj = new Date(record.date);
-                            const monthKey = `${dateObj.getFullYear()}-${String(dateObj.getMonth() + 1).padStart(2, '0')}`;
-                            if (!acc[monthKey]) {
-                                acc[monthKey] = {
-                                    key: monthKey,
-                                    label: `${dateObj.getFullYear()}년 ${dateObj.getMonth() + 1}월`,
-                                    totalProfit: 0,
-                                    records: []
-                                };
-                            }
-                            acc[monthKey].records.push(record);
-                            acc[monthKey].totalProfit += record.daily_profit;
-                            return acc;
-                        }, {});
+                        // Group records by month using the pre-calculated monthGroups
+                        const groups = monthGroups;
 
                         // Define pastel color palette (cycling) - Prioritizing soothing tones
                         const pastelColors = [
