@@ -1,13 +1,85 @@
 {
-    "last_updated": "2026-02-20T08:33:15",
-    "total_equity": 21247557,
-    "total_profit": 16872189,
+    "last_updated": "2026-02-20T19:02:27",
+    "total_equity": 44024814,
+    "total_profit": 17972225,
     "records": [
+        {
+            "date": "2026-02-20",
+            "equity": 44024814,
+            "daily_profit": 1100036,
+            "daily_roi": 1.84,
+            "trades": [
+                {
+                    "name": "KODEX 200",
+                    "buy_amount": 5042922,
+                    "sell_amount": 5164800,
+                    "avg_price": 84042,
+                    "profit": 121878,
+                    "roi": 2.42
+                },
+                {
+                    "name": "KODEX 우량주",
+                    "buy_amount": 6454825,
+                    "sell_amount": 6571500,
+                    "avg_price": 21514,
+                    "profit": 116675,
+                    "roi": 1.81
+                },
+                {
+                    "name": "TIGER 미국S&P500",
+                    "buy_amount": 12118321,
+                    "sell_amount": 12350000,
+                    "avg_price": 24152,
+                    "profit": 231679,
+                    "roi": 1.91
+                },
+                {
+                    "name": "HANARO 원자력iSelect",
+                    "buy_amount": 13000880,
+                    "sell_amount": 13347600,
+                    "avg_price": 66326,
+                    "profit": 346720,
+                    "roi": 2.67
+                },
+                {
+                    "name": "PLUS 글로벌HBM반도체",
+                    "buy_amount": 9815908,
+                    "sell_amount": 9854400,
+                    "avg_price": 61301,
+                    "profit": 38492,
+                    "roi": 0.39
+                },
+                {
+                    "name": "KODEX 친환경조선해운액티브",
+                    "buy_amount": 4772293,
+                    "sell_amount": 4884975,
+                    "avg_price": 35347,
+                    "profit": 112682,
+                    "roi": 2.36
+                },
+                {
+                    "name": "ACE 애플밸류체인액티브",
+                    "buy_amount": 3395444,
+                    "sell_amount": 3431000,
+                    "avg_price": 16976,
+                    "profit": 35556,
+                    "roi": 1.05
+                },
+                {
+                    "name": "UNICORN SK하이닉스밸류체인액티브",
+                    "buy_amount": 5233146,
+                    "sell_amount": 5329500,
+                    "avg_price": 30780,
+                    "profit": 96354,
+                    "roi": 1.84
+                }
+            ]
+        },
         {
             "date": "2026-02-19",
             "equity": 21247557,
             "daily_profit": 378393,
-            "daily_roi": 2.80,
+            "daily_roi": 2.8,
             "trades": [
                 {
                     "name": "UNICORN SK하이닉스밸류체인액티브",
@@ -31,7 +103,7 @@
             "date": "2026-02-13",
             "equity": 20869164,
             "daily_profit": 1078483,
-            "daily_roi": 3.20,
+            "daily_roi": 3.2,
             "trades": [
                 {
                     "name": "HANARO 원자력iSelect",
@@ -63,7 +135,7 @@
                     "sell_amount": 17572230,
                     "avg_price": 56506,
                     "profit": 675492,
-                    "roi": 4.00
+                    "roi": 4.0
                 },
                 {
                     "name": "KODEX 미국AI전력핵심인프라",
@@ -167,7 +239,7 @@
                     "sell_amount": 3702395,
                     "avg_price": 0,
                     "profit": 58440,
-                    "roi": 1.60
+                    "roi": 1.6
                 },
                 {
                     "name": "TIGER 2차전지TOP10",
@@ -239,7 +311,7 @@
                     "sell_amount": 4387000,
                     "avg_price": 36030,
                     "profit": 1404950,
-                    "roi": 47.20
+                    "roi": 47.2
                 }
             ]
         },
@@ -271,7 +343,7 @@
                     "sell_amount": 5005370,
                     "avg_price": 14762,
                     "profit": 1004284,
-                    "roi": 25.10
+                    "roi": 25.1
                 },
                 {
                     "name": "TIGER TDF2045",
