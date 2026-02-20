@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { AreaChart, Area, Tooltip, ResponsiveContainer, XAxis } from 'recharts'
+import { AreaChart, Area, Tooltip, ResponsiveContainer, XAxis, YAxis } from 'recharts'
 import { ChevronDown, ChevronUp, ArrowRight } from 'lucide-react'
 
 // Utility Component for Number Animation
@@ -160,6 +160,16 @@ const Dashboard = () => {
         });
     }
 
+    // Calculate dynamic Y-axis domain to make the slope steeper
+    const profitValues = chartData.map(d => d.profit);
+    const minVal = Math.min(...profitValues);
+    const maxVal = Math.max(...profitValues);
+    const paddingVal = (maxVal - minVal) * 0.1; // 10% padding
+
+    // Ensure we don't go below 0 if minVal is 0 or positive, unless there's a loss
+    const yAxisMin = Math.max(0, minVal - paddingVal);
+    const yAxisMax = maxVal + paddingVal;
+
     const toggleExpand = (date) => {
         if (expandedDate === date) {
             setExpandedDate(null)
@@ -244,6 +254,10 @@ const Dashboard = () => {
                                 tick={{ fontSize: 10, fill: '#9ca3af' }}
                                 interval="preserveStartEnd"
                                 padding={{ left: 10, right: 10 }}
+                            />
+                            <YAxis
+                                domain={[yAxisMin, yAxisMax]}
+                                hide={true} // Hide the axis visually
                             />
                             <Area
                                 type="monotone"
