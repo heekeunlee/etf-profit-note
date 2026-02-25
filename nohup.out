@@ -114,3 +114,23 @@
   ➜  Network: use --host to expose
   ➜  press h + enter to show help
 11:21:39 PM [vite] (client) hmr update /src/components/Dashboard.jsx, /src/index.css
+
+> etf_profit_note@0.0.0 dev
+> vite --port 5004
+
+
+  VITE v7.3.1  ready in 366 ms
+
+  ➜  Local:   http://localhost:5004/etf-profit-note/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+
+> etf_profit_note@0.0.0 dev
+> vite --port 5005
+
+
+  VITE v7.3.1  ready in 97 ms
+
+  ➜  Local:   http://localhost:5005/etf-profit-note/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
