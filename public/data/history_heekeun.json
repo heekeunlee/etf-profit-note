@@ -1,8 +1,32 @@
 {
-    "last_updated": "2026-02-25T19:57:46",
+    "last_updated": "2026-02-26T13:32:03",
     "total_equity": 11364768,
-    "total_profit": 18992709,
+    "total_profit": 20110221,
     "records": [
+        {
+            "date": "2026-02-26",
+            "equity": 11364768,
+            "daily_profit": 1117512,
+            "daily_roi": 14.83,
+            "trades": [
+                {
+                    "name": "TIGER 2차전지TOP10",
+                    "buy_amount": 2163130,
+                    "sell_amount": 2322330,
+                    "avg_price": 0,
+                    "profit": 150370,
+                    "roi": 6.95
+                },
+                {
+                    "name": "ACE AI반도체포커스",
+                    "buy_amount": 5372028,
+                    "sell_amount": 6362300,
+                    "avg_price": 0,
+                    "profit": 967142,
+                    "roi": 18.0
+                }
+            ]
+        },
         {
             "date": "2026-02-25",
             "equity": 11364768,
