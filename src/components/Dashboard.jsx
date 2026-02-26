@@ -187,8 +187,12 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="min-h-screen bg-[#2e3547] flex items-start justify-center p-4 font-sans py-10">
-            <div className="w-full max-w-md bg-white rounded-3xl overflow-hidden shadow-2xl relative">
+        <div className="min-h-screen flex items-start justify-center p-4 font-sans py-10" style={{ background: 'linear-gradient(135deg, #0f0c29 0%, #302b63 40%, #24243e 100%)', position: 'relative', overflow: 'hidden' }}>
+            {/* Decorative blobs */}
+            <div style={{ position: 'fixed', top: '-80px', left: '-80px', width: '320px', height: '320px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(120,80,255,0.18) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 }} />
+            <div style={{ position: 'fixed', bottom: '-60px', right: '-60px', width: '280px', height: '280px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(56,189,248,0.14) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 }} />
+            <div style={{ position: 'fixed', top: '50%', left: '60%', width: '200px', height: '200px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(244,63,94,0.1) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 }} />
+            <div className="w-full max-w-md bg-white rounded-3xl overflow-hidden shadow-2xl relative" style={{ zIndex: 1 }}>
 
                 {/* 1. Header & Big Total Profit */}
                 <div className={`relative pt-6 pb-6 px-6 text-center sticky top-0 z-20 transition-all overflow-hidden duration-700 ${activeUser === 'heekeun' ? 'bg-white/90 backdrop-blur-md' : 'bg-white/90 backdrop-blur-md'} `}>
@@ -198,12 +202,12 @@ const Dashboard = () => {
                     </h1>
 
                     {currentMonthGroup && (
-                        <div className="relative z-10 text-sm font-bold text-rose-500 mb-1">
+                        <div className="relative z-10 text-xl font-bold text-rose-500 mb-1">
                             {currentMonthGroup.label} 수익금
                         </div>
                     )}
                     <div className="relative z-10 text-4xl font-extrabold text-gray-900 tracking-tight flex items-center justify-center gap-1">
-                        <span className="text-2xl text-gray-400 font-bold self-start mt-1">₩</span>
+                        <span className="text-2xl text-gray-600 font-bold self-start mt-1">₩</span>
                         <CountUp end={currentMonthProfit} />
                     </div>
 
