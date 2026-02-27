@@ -1,8 +1,80 @@
 {
-    "last_updated": "2026-02-26T13:32:03",
-    "total_equity": 11364768,
-    "total_profit": 20110221,
+    "last_updated": "2026-02-27T19:17:54",
+    "total_equity": 12087511,
+    "total_profit": 21522234,
     "records": [
+        {
+            "date": "2026-02-27",
+            "equity": 12087511,
+            "daily_profit": 1412013,
+            "daily_roi": 3.18,
+            "trades": [
+                {
+                    "name": "PLUS 우주항공&UAM",
+                    "buy_amount": 0,
+                    "sell_amount": 18198000,
+                    "avg_price": 43316,
+                    "profit": 870047,
+                    "roi": 5.02
+                },
+                {
+                    "name": "HANARO 원자력iSelect",
+                    "buy_amount": 7211155,
+                    "sell_amount": 8359740,
+                    "avg_price": 72104,
+                    "profit": 239696,
+                    "roi": 2.95
+                },
+                {
+                    "name": "KODEX 로봇액티브",
+                    "buy_amount": 7906950,
+                    "sell_amount": 8317185,
+                    "avg_price": 37601,
+                    "profit": 194689,
+                    "roi": 2.40
+                },
+                {
+                    "name": "KODEX 우량주",
+                    "buy_amount": 498500,
+                    "sell_amount": 1450475,
+                    "avg_price": 23716,
+                    "profit": 51097,
+                    "roi": 3.65
+                },
+                {
+                    "name": "KODEX 미국30년국채액티브(H)",
+                    "buy_amount": 0,
+                    "sell_amount": 5112040,
+                    "avg_price": 9027,
+                    "profit": 29089,
+                    "roi": 0.57
+                },
+                {
+                    "name": "TIGER 미국S&P500",
+                    "buy_amount": 0,
+                    "sell_amount": 4191210,
+                    "avg_price": 24390,
+                    "profit": 16951,
+                    "roi": 0.41
+                },
+                {
+                    "name": "KODEX 200",
+                    "buy_amount": 0,
+                    "sell_amount": 94355,
+                    "avg_price": 0,
+                    "profit": 10307,
+                    "roi": 12.26
+                },
+                {
+                    "name": "RISE AI&로봇",
+                    "buy_amount": 0,
+                    "sell_amount": 52275,
+                    "avg_price": 0,
+                    "profit": 137,
+                    "roi": 0.26
+                }
+            ]
+        },
         {
             "date": "2026-02-26",
             "equity": 11364768,
