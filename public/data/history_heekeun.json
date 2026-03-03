@@ -1,8 +1,40 @@
 {
-    "last_updated": "2026-02-27T19:17:54",
-    "total_equity": 12087511,
-    "total_profit": 21522234,
+    "last_updated": "2026-03-03T11:04:27",
+    "total_equity": 6519127,
+    "total_profit": 22544232,
     "records": [
+        {
+            "date": "2026-03-03",
+            "equity": 6519127,
+            "daily_profit": 1021998,
+            "daily_roi": 15.68,
+            "trades": [
+                {
+                    "name": "PLUS 한화그룹주",
+                    "buy_amount": 0,
+                    "sell_amount": 427450,
+                    "avg_price": 38906,
+                    "profit": 38352,
+                    "roi": 9.86
+                },
+                {
+                    "name": "PLUS K방산",
+                    "buy_amount": 4170000,
+                    "sell_amount": 9971010,
+                    "avg_price": 76304,
+                    "profit": 890123,
+                    "roi": 9.8
+                },
+                {
+                    "name": "KODEX 미국AI전력핵심인프라",
+                    "buy_amount": 0,
+                    "sell_amount": 6373600,
+                    "avg_price": 20201,
+                    "profit": 93523,
+                    "roi": 1.49
+                }
+            ]
+        },
         {
             "date": "2026-02-27",
             "equity": 12087511,
