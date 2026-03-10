@@ -11,7 +11,7 @@
             "trades": [
                 {
                     "name": "두산에너빌리티",
-                    "buy_amount": 0,
+                    "buy_amount": 26183888,
                     "sell_amount": 27170000,
                     "avg_price": 100491,
                     "profit": 986112,
@@ -19,7 +19,7 @@
                 },
                 {
                     "name": "PLUS 우주항공&UAM",
-                    "buy_amount": 0,
+                    "buy_amount": 6983301,
                     "sell_amount": 7039500,
                     "avg_price": 46551,
                     "profit": 56199,
@@ -59,7 +59,7 @@
             "trades": [
                 {
                     "name": "PLUS K방산",
-                    "buy_amount": 16870500,
+                    "buy_amount": 14472908,
                     "sell_amount": 14785200,
                     "avg_price": 80336,
                     "profit": 312292,
@@ -107,7 +107,7 @@
             "trades": [
                 {
                     "name": "PLUS 우주항공&UAM",
-                    "buy_amount": 6984750,
+                    "buy_amount": 11394317,
                     "sell_amount": 11526860,
                     "avg_price": 46551,
                     "profit": 132543,
@@ -115,7 +115,7 @@
                 },
                 {
                     "name": "PLUS K방산",
-                    "buy_amount": 26416250,
+                    "buy_amount": 12166595,
                     "sell_amount": 12221640,
                     "avg_price": 80399,
                     "profit": 55045,
@@ -163,8 +163,8 @@
             "trades": [
                 {
                     "name": "PLUS K방산",
-                    "buy_amount": 0,
-                    "sell_amount": 0,
+                    "buy_amount": 12874237,
+                    "sell_amount": 13026153,
                     "avg_price": 85980,
                     "profit": 151916,
                     "roi": 1.18
