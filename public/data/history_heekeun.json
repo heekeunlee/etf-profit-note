@@ -1,8 +1,176 @@
 {
-    "last_updated": "2026-03-03T11:04:27",
-    "total_equity": 6519127,
-    "total_profit": 22544232,
+    "last_updated": "2026-03-10T14:38:36.406521",
+    "total_equity": 2559665,
+    "total_profit": 24238339,
     "records": [
+        {
+            "date": "2026-03-10",
+            "equity": 2559665,
+            "daily_profit": 1042311,
+            "daily_roi": 3.14,
+            "trades": [
+                {
+                    "name": "두산에너빌리티",
+                    "buy_amount": 0,
+                    "sell_amount": 27170000,
+                    "avg_price": 100491,
+                    "profit": 986112,
+                    "roi": 3.77
+                },
+                {
+                    "name": "PLUS 우주항공&UAM",
+                    "buy_amount": 0,
+                    "sell_amount": 7039500,
+                    "avg_price": 46551,
+                    "profit": 56199,
+                    "roi": 0.8
+                },
+                {
+                    "name": "PLUS 글로벌HBM반도체",
+                    "buy_amount": 5973250,
+                    "sell_amount": 0,
+                    "avg_price": 61815,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "KODEX 친환경조선해운액티브",
+                    "buy_amount": 826080,
+                    "sell_amount": 0,
+                    "avg_price": 34939,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "PLUS K방산",
+                    "buy_amount": 3860000,
+                    "sell_amount": 0,
+                    "avg_price": 79740,
+                    "profit": 0,
+                    "roi": 0.0
+                }
+            ]
+        },
+        {
+            "date": "2026-03-09",
+            "equity": 26053108,
+            "daily_profit": 312292,
+            "daily_roi": 2.16,
+            "trades": [
+                {
+                    "name": "PLUS K방산",
+                    "buy_amount": 16870500,
+                    "sell_amount": 14785200,
+                    "avg_price": 80336,
+                    "profit": 312292,
+                    "roi": 2.16
+                },
+                {
+                    "name": "HANARO 원자력iSelect",
+                    "buy_amount": 61400,
+                    "sell_amount": 0,
+                    "avg_price": 68934,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "KODEX 로봇액티브",
+                    "buy_amount": 94815,
+                    "sell_amount": 0,
+                    "avg_price": 33776,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "ACE 애플밸류체인액티브",
+                    "buy_amount": 79575,
+                    "sell_amount": 0,
+                    "avg_price": 17929,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "UNICORN SK하이닉스밸류체인액티브",
+                    "buy_amount": 301750,
+                    "sell_amount": 0,
+                    "avg_price": 32532,
+                    "profit": 0,
+                    "roi": 0.0
+                }
+            ]
+        },
+        {
+            "date": "2026-03-06",
+            "equity": 23429206,
+            "daily_profit": 187588,
+            "daily_roi": 0.8,
+            "trades": [
+                {
+                    "name": "PLUS 우주항공&UAM",
+                    "buy_amount": 6984750,
+                    "sell_amount": 11526860,
+                    "avg_price": 46551,
+                    "profit": 132543,
+                    "roi": 1.16
+                },
+                {
+                    "name": "PLUS K방산",
+                    "buy_amount": 26416250,
+                    "sell_amount": 12221640,
+                    "avg_price": 80399,
+                    "profit": 55045,
+                    "roi": 0.45
+                },
+                {
+                    "name": "PLUS 한화그룹주",
+                    "buy_amount": 85260,
+                    "sell_amount": 0,
+                    "avg_price": 41388,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "SOL 전고체배터리&실리콘음극재",
+                    "buy_amount": 951500,
+                    "sell_amount": 0,
+                    "avg_price": 19620,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "HANARO 원자력iSelect",
+                    "buy_amount": 505720,
+                    "sell_amount": 0,
+                    "avg_price": 68959,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "KODEX 로봇액티브",
+                    "buy_amount": 471740,
+                    "sell_amount": 0,
+                    "avg_price": 34183,
+                    "profit": 0,
+                    "roi": 0.0
+                }
+            ]
+        },
+        {
+            "date": "2026-03-04",
+            "equity": 11760765,
+            "daily_profit": 151916,
+            "daily_roi": 1.18,
+            "trades": [
+                {
+                    "name": "PLUS K방산",
+                    "buy_amount": 0,
+                    "sell_amount": 0,
+                    "avg_price": 85980,
+                    "profit": 151916,
+                    "roi": 1.18
+                }
+            ]
+        },
         {
             "date": "2026-03-03",
             "equity": 6519127,
@@ -63,7 +231,7 @@
                     "sell_amount": 8317185,
                     "avg_price": 37601,
                     "profit": 194689,
-                    "roi": 2.40
+                    "roi": 2.4
                 },
                 {
                     "name": "KODEX 우량주",
