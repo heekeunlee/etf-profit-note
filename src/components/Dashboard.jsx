@@ -367,7 +367,7 @@ const Dashboard = () => {
                                                                 {/* Visual node for better connection */}
                                                                 <div className="absolute -left-[5px] -top-0 w-2 h-2 rounded-full bg-indigo-300"></div>
 
-                                                                {record.trades.map((trade, tIdx) => (
+                                                                {record.trades.filter(t => t.profit !== 0).map((trade, tIdx) => (
                                                                     <div key={tIdx} className="bg-white border border-indigo-100 rounded-xl p-4 shadow-sm relative hover:border-indigo-300 transition-colors">
                                                                         {/* Little connector line item */}
                                                                         <div className="absolute -left-[22px] top-6 w-5 h-[2px] bg-indigo-200"></div>
@@ -480,7 +480,7 @@ const Dashboard = () => {
                                 report += `${numEmoji} ${shortDate} (${dayName}) | +${record.daily_profit.toLocaleString()} 원(${record.daily_roi} %) \n`;
 
                                 // Trades
-                                const sortedTrades = [...record.trades].sort((a, b) => b.profit - a.profit);
+                                const sortedTrades = [...record.trades].filter(t => t.profit !== 0).sort((a, b) => b.profit - a.profit);
                                 sortedTrades.forEach(trade => {
                                     let cleanName = trade.name.replace('PLUS ', '').replace('KODEX ', '').replace('TIGER ', '').replace('ACE ', '').replace('HANARO ', '');
 
