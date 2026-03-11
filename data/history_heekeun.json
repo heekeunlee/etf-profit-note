@@ -1,8 +1,144 @@
 {
-    "last_updated": "2026-03-10T14:38:36.406521",
-    "total_equity": 2559665,
-    "total_profit": 24238339,
+    "last_updated": "2026-03-11T16:09:41.946588",
+    "total_equity": 55435757,
+    "total_profit": 24421277,
     "records": [
+        {
+            "date": "2026-03-11",
+            "equity": 55435757,
+            "daily_profit": 182938,
+            "daily_roi": 0.33,
+            "trades": [
+                {
+                    "name": "PLUS 한화그룹주",
+                    "buy_amount": 15214555,
+                    "sell_amount": 12765010,
+                    "avg_price": 41846,
+                    "profit": 19860,
+                    "roi": 0.16
+                },
+                {
+                    "name": "SOL 전고체배터리&실리콘음극재",
+                    "buy_amount": 1882000,
+                    "sell_amount": 0,
+                    "avg_price": 19266,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "두산에너빌리티",
+                    "buy_amount": 12485000,
+                    "sell_amount": 12517200,
+                    "avg_price": 102500,
+                    "profit": 10448,
+                    "roi": 0.08
+                },
+                {
+                    "name": "TIGER 증권",
+                    "buy_amount": 116230,
+                    "sell_amount": 0,
+                    "avg_price": 19862,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "KODEX 우량주",
+                    "buy_amount": 45020,
+                    "sell_amount": 0,
+                    "avg_price": 23113,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "TIGER 미국S&P500",
+                    "buy_amount": 0,
+                    "sell_amount": 24790,
+                    "avg_price": 24390,
+                    "profit": 399,
+                    "roi": 1.64
+                },
+                {
+                    "name": "TIGER 2차전지TOP10",
+                    "buy_amount": 115440,
+                    "sell_amount": 0,
+                    "avg_price": 10578,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "KODEX 미국나스닥100",
+                    "buy_amount": 0,
+                    "sell_amount": 24415,
+                    "avg_price": 23925,
+                    "profit": 490,
+                    "roi": 2.05
+                },
+                {
+                    "name": "PLUS 우주항공&UAM",
+                    "buy_amount": 10225500,
+                    "sell_amount": 9796520,
+                    "avg_price": 49101,
+                    "profit": 66420,
+                    "roi": 0.68
+                },
+                {
+                    "name": "PLUS 글로벌HBM반도체",
+                    "buy_amount": 3096000,
+                    "sell_amount": 0,
+                    "avg_price": 61835,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "KODEX 친환경조선해운액티브",
+                    "buy_amount": 7423314,
+                    "sell_amount": 8303000,
+                    "avg_price": 35824,
+                    "profit": 47629,
+                    "roi": 0.58
+                },
+                {
+                    "name": "KODEX 로봇액티브",
+                    "buy_amount": 1728000,
+                    "sell_amount": 2306475,
+                    "avg_price": 34344,
+                    "profit": 5241,
+                    "roi": 0.23
+                },
+                {
+                    "name": "PLUS K방산",
+                    "buy_amount": 8026200,
+                    "sell_amount": 0,
+                    "avg_price": 79013,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "KODEX 미국30년국채액티브(H)",
+                    "buy_amount": 8900,
+                    "sell_amount": 0,
+                    "avg_price": 8963,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "KODEX 미국AI전력핵심인프라",
+                    "buy_amount": 3269800,
+                    "sell_amount": 3679200,
+                    "avg_price": 20412,
+                    "profit": 4729,
+                    "roi": 0.13
+                },
+                {
+                    "name": "UNICORN SK하이닉스밸류체인액티브",
+                    "buy_amount": 4296910,
+                    "sell_amount": 6232000,
+                    "avg_price": 32923,
+                    "profit": 27722,
+                    "roi": 0.45
+                }
+            ]
+        },
         {
             "date": "2026-03-10",
             "equity": 2559665,
