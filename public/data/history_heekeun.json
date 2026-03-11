@@ -1,12 +1,12 @@
 {
-    "last_updated": "2026-03-11T16:09:41.946588",
+    "last_updated": "2026-03-11T16:13:39.299407",
     "total_equity": 55435757,
-    "total_profit": 24421277,
+    "total_profit": 24482737,
     "records": [
         {
             "date": "2026-03-11",
             "equity": 55435757,
-            "daily_profit": 182938,
+            "daily_profit": 244398,
             "daily_roi": 0.33,
             "trades": [
                 {
@@ -136,6 +136,70 @@
                     "avg_price": 32923,
                     "profit": 27722,
                     "roi": 0.45
+                },
+                {
+                    "name": "PLUS 한화그룹주",
+                    "buy_amount": 2109500,
+                    "sell_amount": 0,
+                    "avg_price": 0,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "TIGER 삼성그룹",
+                    "buy_amount": 1284250,
+                    "sell_amount": 1279000,
+                    "avg_price": 0,
+                    "profit": -800,
+                    "roi": -0.06
+                },
+                {
+                    "name": "TIGER 삼성그룹",
+                    "buy_amount": 1279000,
+                    "sell_amount": 0,
+                    "avg_price": 0,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "TIGER 구리실물",
+                    "buy_amount": 15785,
+                    "sell_amount": 0,
+                    "avg_price": 0,
+                    "profit": 1515,
+                    "roi": 9.6
+                },
+                {
+                    "name": "KODEX 미국S&P500",
+                    "buy_amount": 2888615,
+                    "sell_amount": 2815590,
+                    "avg_price": 0,
+                    "profit": 50895,
+                    "roi": 1.76
+                },
+                {
+                    "name": "PLUS 글로벌희토류&전략자원생산기업",
+                    "buy_amount": 9750,
+                    "sell_amount": 6813,
+                    "avg_price": 0,
+                    "profit": 1917,
+                    "roi": 19.66
+                },
+                {
+                    "name": "ACE AI반도체TOP3+",
+                    "buy_amount": 47465,
+                    "sell_amount": 38372,
+                    "avg_price": 0,
+                    "profit": 7933,
+                    "roi": 16.71
+                },
+                {
+                    "name": "KODEX AI전력핵심설비",
+                    "buy_amount": 319000,
+                    "sell_amount": 0,
+                    "avg_price": 0,
+                    "profit": 0,
+                    "roi": 0.0
                 }
             ]
         },
