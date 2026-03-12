@@ -1,8 +1,24 @@
 {
-    "last_updated": "2026-01-30T15:45:00",
-    "total_equity": 31591250,
-    "total_profit": 10714647,
+    "last_updated": "2026-03-12T21:51:00",
+    "total_equity": 33499507,
+    "total_profit": 12622904,
     "records": [
+        {
+            "date": "2026-03-12",
+            "equity": 33499507,
+            "daily_profit": 1908257,
+            "daily_roi": 6.04,
+            "trades": [
+                {
+                    "name": "유진투자증권 예수금 (D+2)",
+                    "buy_amount": 0,
+                    "sell_amount": 1908257,
+                    "avg_price": 0,
+                    "profit": 1908257,
+                    "roi": 0
+                }
+            ]
+        },
         {
             "date": "2026-01-30",
             "equity": 31591250,
