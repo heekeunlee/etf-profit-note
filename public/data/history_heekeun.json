@@ -1,13 +1,13 @@
 {
-    "last_updated": "2026-03-12T21:51:00",
-    "total_equity": 57344014,
-    "total_profit": 26390994,
+    "last_updated": "2026-03-13T14:12:20",
+    "total_equity": 57678613,
+    "total_profit": 26725593,
     "records": [
         {
-            "date": "2026-03-12",
-            "equity": 57344014,
-            "daily_profit": 1908257,
-            "daily_roi": 3.45,
+            "date": "2026-03-13",
+            "equity": 57678613,
+            "daily_profit": 2242856,
+            "daily_roi": 4.05,
             "trades": [
                 {
                     "name": "유진투자증권",
@@ -16,6 +16,22 @@
                     "avg_price": 0,
                     "profit": 1908257,
                     "roi": 0
+                },
+                {
+                    "name": "두산에너빌리티",
+                    "buy_amount": 0,
+                    "sell_amount": 9648000,
+                    "avg_price": 103260,
+                    "profit": 334599,
+                    "roi": 3.59
+                },
+                {
+                    "name": "UNICORN SK하이닉스밸류체인액티브",
+                    "buy_amount": 155325,
+                    "sell_amount": 0,
+                    "avg_price": 32672,
+                    "profit": 0,
+                    "roi": 0.0
                 }
             ]
         },
