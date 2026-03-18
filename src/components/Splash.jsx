@@ -1,27 +1,40 @@
 import PropTypes from 'prop-types'
 
 export default function Splash({ isFading }) {
+  const title = '돈쭐노트'
+
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-slate-900 transition-opacity duration-300 ${
+      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white transition-opacity duration-300 ${
         isFading ? 'opacity-0' : 'opacity-100'
       }`}
       aria-label="Splash screen"
       role="img"
     >
-      <div className="flex flex-col items-center gap-7">
-        <div className="relative isolate">
-          <div className="absolute -inset-6 rounded-full bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 blur-2xl opacity-25 animate-[splashGlow_1.8s_ease-in-out_infinite]" />
+      <div className="flex flex-col items-center gap-6">
+        <div className="relative">
           <img
             src={`${import.meta.env.BASE_URL}saltbae.png`}
             alt="돈쭐노트 로고"
-            className="relative w-44 h-44 md:w-60 md:h-60 object-contain drop-shadow-2xl mix-blend-multiply animate-[splashPop_650ms_cubic-bezier(.2,.9,.2,1)_both,splashFloat_2.6s_ease-in-out_700ms_infinite]"
+            className="w-44 h-44 md:w-60 md:h-60 object-contain drop-shadow-[0_18px_40px_rgba(0,0,0,0.18)] animate-[splashPop_650ms_cubic-bezier(.2,.9,.2,1)_both]"
           />
         </div>
 
         <div className="text-center">
-          <div className="text-5xl md:text-6xl font-black tracking-tight text-white font-sans">
-            돈쭐노트
+          <div
+            className="text-5xl md:text-6xl font-black tracking-tight text-slate-900 font-sans"
+            aria-label={title}
+          >
+            {Array.from(title).map((ch, i) => (
+              <span
+                // eslint-disable-next-line react/no-array-index-key
+                key={`${ch}-${i}`}
+                className="inline-block opacity-0 animate-[splashType_900ms_steps(1,end)_forwards]"
+                style={{ animationDelay: `${350 + i * 120}ms` }}
+              >
+                {ch}
+              </span>
+            ))}
           </div>
         </div>
       </div>
@@ -32,14 +45,9 @@ export default function Splash({ isFading }) {
           60% { transform: translateY(0px) scale(1.05); opacity: 1; }
           100% { transform: translateY(0px) scale(1); opacity: 1; }
         }
-        @keyframes splashFloat {
-          0% { transform: translateY(0px); }
-          50% { transform: translateY(-8px); }
-          100% { transform: translateY(0px); }
-        }
-        @keyframes splashGlow {
-          0%, 100% { opacity: 0.22; transform: scale(0.98); }
-          50% { opacity: 0.34; transform: scale(1.02); }
+        @keyframes splashType {
+          0% { opacity: 0; transform: translateY(6px); filter: blur(1.5px); }
+          100% { opacity: 1; transform: translateY(0px); filter: blur(0px); }
         }
       `}</style>
     </div>
