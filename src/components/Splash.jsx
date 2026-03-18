@@ -13,7 +13,7 @@ export default function Splash({ isFading }) {
         <div className="relative">
           <div className="absolute -inset-6 rounded-full bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 blur-2xl opacity-25 animate-[splashGlow_1.8s_ease-in-out_infinite]" />
           <img
-            src="/saltbae.png"
+            src={`${import.meta.env.BASE_URL}saltbae.png`}
             alt="돈쭐노트 로고"
             className="relative w-44 h-44 md:w-60 md:h-60 object-contain drop-shadow-2xl animate-[splashPop_650ms_cubic-bezier(.2,.9,.2,1)_both,splashFloat_2.6s_ease-in-out_700ms_infinite]"
           />
