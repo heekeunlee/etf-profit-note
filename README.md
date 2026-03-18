@@ -1,16 +1,21 @@
-# React + Vite
+# 📈 ETF Profit Note
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ETF 퀀트투자 실현손익 기록 및 시각화 대시보드입니다.
 
-Currently, two official plugins are available:
+## 🚀 실시간 현황 확인
+**[배포 사이트 바로가기](https://heekeunlee.github.io/etf-profit-note/)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ 주요 기능
+- **실현손익 자동 집계**: 일자별, 종목별 실현손익 기록
+- **시각화 차트**: 누적 수익 현황을 그래프로 시각화
+- **리포트 공유**: 일일 결산 리포트 생성 및 공유 기능
+- **다중 계정 지원**: 투자자별 데이터 분리 관리
 
-## React Compiler
+## 🛠 기술 스택
+- **Frontend**: React, Vite, Tailwind CSS
+- **Visualization**: Recharts, Lucide React
+- **Hosting**: GitHub Pages
+- **Automation**: GitHub Actions
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+*Engineered by Heekeun Lee | Co-piloted by DeepMind AI*

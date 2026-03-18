@@ -1,8 +1,88 @@
 {
-    "last_updated": "2026-03-13T14:12:20",
-    "total_equity": 57678613,
-    "total_profit": 26725593,
+    "last_updated": "2026-03-18T12:45:00",
+    "total_equity": 59558269,
+    "total_profit": 28605249,
     "records": [
+        {
+            "date": "2026-03-18",
+            "equity": 59558269,
+            "daily_profit": 1691628,
+            "daily_roi": 1.19,
+            "trades": [
+                {
+                    "name": "KB증권(수익)",
+                    "buy_amount": 0,
+                    "sell_amount": 723789,
+                    "avg_price": 0,
+                    "profit": 723789,
+                    "roi": 0
+                },
+                {
+                    "name": "두산에너빌리티",
+                    "buy_amount": 20255241,
+                    "sell_amount": 20425000,
+                    "avg_price": 106384,
+                    "profit": 169759,
+                    "roi": 0.84
+                },
+                {
+                    "name": "TIGER 반도체TOP10",
+                    "buy_amount": 30605000,
+                    "sell_amount": 30752000,
+                    "avg_price": 34003,
+                    "profit": 146307,
+                    "roi": 0.48
+                },
+                {
+                    "name": "HANARO 원자력iSelect",
+                    "buy_amount": 26678490,
+                    "sell_amount": 27222000,
+                    "avg_price": 68401,
+                    "profit": 543510,
+                    "roi": 2.04
+                },
+                {
+                    "name": "UNICORN SK하이닉스밸류체인액티브",
+                    "buy_amount": 3316890,
+                    "sell_amount": 3419000,
+                    "avg_price": 33166,
+                    "profit": 102110,
+                    "roi": 3.08
+                },
+                {
+                    "name": "대우건설",
+                    "buy_amount": 0,
+                    "sell_amount": 6153,
+                    "avg_price": 0,
+                    "profit": 6153,
+                    "roi": 80.0
+                }
+            ]
+        },
+        {
+            "date": "2026-03-16",
+            "equity": 57866641,
+            "daily_profit": 188028,
+            "daily_roi": 1.03,
+            "trades": [
+                {
+                    "name": "PLUS 글로벌HBM반도체",
+                    "buy_amount": 16165649,
+                    "sell_amount": 16305200,
+                    "avg_price": 61835,
+                    "profit": 139551,
+                    "roi": 0.86
+                },
+                {
+                    "name": "UNICORN SK하이닉스밸류체인액티브",
+                    "buy_amount": 2132828,
+                    "sell_amount": 2181305,
+                    "avg_price": 32313,
+                    "profit": 48477,
+                    "roi": 2.27
+                }
+            ]
+        },
         {
             "date": "2026-03-13",
             "equity": 57678613,
