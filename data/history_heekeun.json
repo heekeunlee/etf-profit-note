@@ -1,8 +1,24 @@
 {
-    "last_updated": "2026-03-18T12:45:00",
-    "total_equity": 59558269,
-    "total_profit": 28605249,
+    "last_updated": "2026-04-02T14:10:00",
+    "total_equity": 60019618,
+    "total_profit": 29066598,
     "records": [
+        {
+            "date": "2026-04-02",
+            "equity": 60019618,
+            "daily_profit": 461349,
+            "daily_roi": 0.77,
+            "trades": [
+                {
+                    "name": "TIGER 2차전지 TOP10",
+                    "buy_amount": 0,
+                    "sell_amount": 0,
+                    "avg_price": 0,
+                    "profit": 461349,
+                    "roi": 0.77
+                }
+            ]
+        },
         {
             "date": "2026-03-18",
             "equity": 59558269,
