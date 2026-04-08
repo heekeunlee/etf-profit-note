@@ -1,8 +1,128 @@
 {
-    "last_updated": "2026-04-02T14:10:00",
-    "total_equity": 60019618,
-    "total_profit": 29066598,
+    "last_updated": "2026-04-08T16:50:17",
+    "total_equity": 60692931,
+    "total_profit": 29739911,
     "records": [
+        {
+            "date": "2026-04-08",
+            "equity": 60692931,
+            "daily_profit": 673313,
+            "daily_roi": 1.12,
+            "trades": [
+                {
+                    "name": "SOL 전고체배터리&실리콘음극재",
+                    "buy_amount": 0,
+                    "sell_amount": 10977060,
+                    "avg_price": 0,
+                    "profit": 141885,
+                    "roi": 1.31
+                },
+                {
+                    "name": "삼아알미늄",
+                    "buy_amount": 0,
+                    "sell_amount": 3960000,
+                    "avg_price": 0,
+                    "profit": 71032,
+                    "roi": 1.83
+                },
+                {
+                    "name": "KODEX 국고채3년",
+                    "buy_amount": 0,
+                    "sell_amount": 12178540,
+                    "avg_price": 0,
+                    "profit": 11961,
+                    "roi": 0.10
+                },
+                {
+                    "name": "KODEX 우량주",
+                    "buy_amount": 0,
+                    "sell_amount": 69285,
+                    "avg_price": 0,
+                    "profit": 1559,
+                    "roi": 2.30
+                },
+                {
+                    "name": "TIGER 2차전지TOP10",
+                    "buy_amount": 0,
+                    "sell_amount": 2230095,
+                    "avg_price": 0,
+                    "profit": 26035,
+                    "roi": 1.18
+                },
+                {
+                    "name": "TIGER 반도체TOP10",
+                    "buy_amount": 0,
+                    "sell_amount": 1259295,
+                    "avg_price": 0,
+                    "profit": 62212,
+                    "roi": 5.20
+                },
+                {
+                    "name": "PLUS 글로벌HBM반도체",
+                    "buy_amount": 0,
+                    "sell_amount": 3526325,
+                    "avg_price": 0,
+                    "profit": 176753,
+                    "roi": 5.28
+                },
+                {
+                    "name": "ACE 구글밸류체인액티브",
+                    "buy_amount": 0,
+                    "sell_amount": 18795,
+                    "avg_price": 0,
+                    "profit": 2015,
+                    "roi": 12.01
+                },
+                {
+                    "name": "ACE 애플밸류체인액티브",
+                    "buy_amount": 0,
+                    "sell_amount": 10398010,
+                    "avg_price": 0,
+                    "profit": 101065,
+                    "roi": 0.98
+                },
+                {
+                    "name": "UNICORN SK하이닉스밸류체인액티브",
+                    "buy_amount": 0,
+                    "sell_amount": 365090,
+                    "avg_price": 0,
+                    "profit": 22282,
+                    "roi": 6.50
+                },
+                {
+                    "name": "PLUS 우주항공&UAM",
+                    "buy_amount": 4532109,
+                    "sell_amount": 0,
+                    "avg_price": 0,
+                    "profit": 0,
+                    "roi": 0
+                },
+                {
+                    "name": "HANARO 원자력iSelect",
+                    "buy_amount": 3431100,
+                    "sell_amount": 0,
+                    "avg_price": 0,
+                    "profit": 0,
+                    "roi": 0
+                },
+                {
+                    "name": "TIGER 게임TOP10",
+                    "buy_amount": 10760,
+                    "sell_amount": 0,
+                    "avg_price": 0,
+                    "profit": 0,
+                    "roi": 0
+                },
+                {
+                    "name": "키움증권(수익)",
+                    "buy_amount": 0,
+                    "sell_amount": 0,
+                    "avg_price": 0,
+                    "profit": 56514,
+                    "roi": 0
+                }
+            ]
+        },
         {
             "date": "2026-04-02",
             "equity": 60019618,
