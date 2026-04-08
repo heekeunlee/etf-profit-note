@@ -1,13 +1,13 @@
 {
-    "last_updated": "2026-04-08T16:50:17",
-    "total_equity": 34172820,
-    "total_profit": 13296217,
+    "last_updated": "2026-04-08T16:57:37",
+    "total_equity": 34634169,
+    "total_profit": 13757566,
     "records": [
         {
             "date": "2026-04-08",
-            "equity": 34172820,
-            "daily_profit": 673313,
-            "daily_roi": 2.01,
+            "equity": 34634169,
+            "daily_profit": 1134662,
+            "daily_roi": 3.39,
             "trades": [
                 {
                     "name": "SOL 전고체배터리&실리콘음극재",
@@ -46,7 +46,7 @@
                     "buy_amount": 0,
                     "sell_amount": 2230095,
                     "avg_price": 0,
-                    "profit": 26035,
+                    "profit": 487384,
                     "roi": 1.18
                 },
                 {
