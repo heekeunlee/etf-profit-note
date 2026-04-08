@@ -6,8 +6,8 @@
         {
             "date": "2026-04-08",
             "equity": 60692931,
-            "daily_profit": 673313,
-            "daily_roi": 1.12,
+            "daily_profit": 1134662,
+            "daily_roi": 1.91,
             "trades": [
                 {
                     "name": "SOL 전고체배터리&실리콘음극재",
@@ -46,7 +46,7 @@
                     "buy_amount": 0,
                     "sell_amount": 2230095,
                     "avg_price": 0,
-                    "profit": 26035,
+                    "profit": 487384,
                     "roi": 1.18
                 },
                 {
@@ -120,22 +120,6 @@
                     "avg_price": 0,
                     "profit": 56514,
                     "roi": 0
-                }
-            ]
-        },
-        {
-            "date": "2026-04-02",
-            "equity": 60019618,
-            "daily_profit": 461349,
-            "daily_roi": 0.77,
-            "trades": [
-                {
-                    "name": "TIGER 2차전지 TOP10",
-                    "buy_amount": 0,
-                    "sell_amount": 0,
-                    "avg_price": 0,
-                    "profit": 461349,
-                    "roi": 0.77
                 }
             ]
         },
