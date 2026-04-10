@@ -212,9 +212,9 @@ const Dashboard = () => {
                     </div>
 
                     <div className="relative z-10 mt-4 flex flex-col items-center gap-1 opacity-90">
-                        <div className="text-base text-blue-600 font-medium bg-blue-50/80 px-4 py-2 rounded-xl w-full max-w-[260px] flex justify-between items-center border border-blue-100 mt-1 shadow-sm">
-                            <span>2026년 누적수익금</span>
-                            <span className="font-bold text-blue-700">₩{data.total_profit.toLocaleString()}</span>
+                        <div className="text-base text-blue-600 font-medium bg-blue-50/80 px-4 py-2 rounded-xl w-full max-w-[300px] flex justify-between items-center border border-blue-100 mt-1 shadow-sm">
+                            <span className="whitespace-nowrap">2026년 누적수익금</span>
+                            <span className="font-bold text-blue-700 whitespace-nowrap">₩{data.total_profit.toLocaleString()}</span>
                         </div>
                     </div>
                 </div>
