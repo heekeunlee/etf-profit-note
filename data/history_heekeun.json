@@ -1,8 +1,24 @@
 {
-    "last_updated": "2026-04-08T16:50:17",
-    "total_equity": 60692931,
-    "total_profit": 29739911,
+    "last_updated": "2026-04-10T20:46:28",
+    "total_equity": 60952502,
+    "total_profit": 29999482,
     "records": [
+        {
+            "date": "2026-04-10",
+            "equity": 60952502,
+            "daily_profit": 259571,
+            "daily_roi": 0.43,
+            "trades": [
+                {
+                    "name": "PLUS K방산",
+                    "buy_amount": 34275989,
+                    "sell_amount": 34535560,
+                    "avg_price": 0,
+                    "profit": 259571,
+                    "roi": 0.76
+                }
+            ]
+        },
         {
             "date": "2026-04-08",
             "equity": 60692931,
