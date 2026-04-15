@@ -1,8 +1,72 @@
- {
-    "last_updated": "2026-04-10T20:50:51",
-    "total_equity": 35493740,
-    "total_profit": 14617137,
+{
+    "last_updated": "2026-04-15T22:27:18",
+    "total_equity": 36760882,
+    "total_profit": 15884279,
     "records": [
+        {
+            "date": "2026-04-15",
+            "equity": 36760882,
+            "daily_profit": 1267142,
+            "daily_roi": 3.57,
+            "trades": [
+                {
+                    "name": "HANARO 원자력iSelect",
+                    "buy_amount": 0,
+                    "sell_amount": 21692000,
+                    "avg_price": 70836,
+                    "profit": 1147738,
+                    "roi": 5.59
+                },
+                {
+                    "name": "TIME K신재생에너지액티브",
+                    "buy_amount": 2637500,
+                    "sell_amount": 2446000,
+                    "avg_price": 24357,
+                    "profit": 52380,
+                    "roi": 2.19
+                },
+                {
+                    "name": "대우건설",
+                    "buy_amount": 0,
+                    "sell_amount": 55000,
+                    "avg_price": 24850,
+                    "profit": 5188,
+                    "roi": 10.42
+                },
+                {
+                    "name": "TIGER 반도체TOP10",
+                    "buy_amount": 3467500,
+                    "sell_amount": 3499970,
+                    "avg_price": 34651,
+                    "profit": 34518,
+                    "roi": 1.0
+                },
+                {
+                    "name": "KODEX 로봇액티브",
+                    "buy_amount": 1555250,
+                    "sell_amount": 2766600,
+                    "avg_price": 31483,
+                    "profit": 27318,
+                    "roi": 1.0
+                },
+                {
+                    "name": "TIGER K방산&우주",
+                    "buy_amount": 7665250,
+                    "sell_amount": 0,
+                    "avg_price": 51095,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "KODEX 친환경조선해운액티브",
+                    "buy_amount": 3446000,
+                    "sell_amount": 0,
+                    "avg_price": 34782,
+                    "profit": 0,
+                    "roi": 0.0
+                }
+            ]
+        },
         {
             "date": "2026-04-10",
             "equity": 35493740,
@@ -55,7 +119,7 @@
                     "sell_amount": 1259295,
                     "avg_price": 0,
                     "profit": 62212,
-                    "roi": 5.20
+                    "roi": 5.2
                 },
                 {
                     "name": "PLUS 글로벌HBM반도체",
@@ -87,7 +151,7 @@
                     "sell_amount": 12631710,
                     "avg_price": 0,
                     "profit": 37817,
-                    "roi": 0.30
+                    "roi": 0.3
                 },
                 {
                     "name": "PLUS 우주항공&UAM",
@@ -167,7 +231,7 @@
                     "sell_amount": 3702395,
                     "avg_price": 0,
                     "profit": 58440,
-                    "roi": 1.60
+                    "roi": 1.6
                 },
                 {
                     "name": "TIGER 2차전지TOP10",
@@ -223,7 +287,7 @@
                     "sell_amount": 4387000,
                     "avg_price": 36030,
                     "profit": 1404950,
-                    "roi": 47.20
+                    "roi": 47.2
                 }
             ]
         },
@@ -255,7 +319,7 @@
                     "sell_amount": 5005370,
                     "avg_price": 14762,
                     "profit": 1004284,
-                    "roi": 25.10
+                    "roi": 25.1
                 },
                 {
                     "name": "TIGER TDF2045",
