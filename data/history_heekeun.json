@@ -11,7 +11,7 @@
             "trades": [
                 {
                     "name": "PLUS 한화그룹주",
-                    "buy_amount": 0,
+                    "buy_amount": 13493063,
                     "sell_amount": 13561570,
                     "avg_price": 39566,
                     "profit": 68507,
@@ -19,7 +19,7 @@
                 },
                 {
                     "name": "SOL 전고체배터리&실리콘음극재",
-                    "buy_amount": 0,
+                    "buy_amount": 442794,
                     "sell_amount": 468280,
                     "avg_price": 19250,
                     "profit": 25486,
@@ -27,7 +27,7 @@
                 },
                 {
                     "name": "두산에너빌리티",
-                    "buy_amount": 0,
+                    "buy_amount": 23664903,
                     "sell_amount": 24720300,
                     "avg_price": 104026,
                     "profit": 1055397,
@@ -67,7 +67,7 @@
             "trades": [
                 {
                     "name": "HANARO 원자력iSelect",
-                    "buy_amount": 0,
+                    "buy_amount": 20544262,
                     "sell_amount": 21692000,
                     "avg_price": 70836,
                     "profit": 1147738,
@@ -83,7 +83,7 @@
                 },
                 {
                     "name": "대우건설",
-                    "buy_amount": 0,
+                    "buy_amount": 49812,
                     "sell_amount": 55000,
                     "avg_price": 24850,
                     "profit": 5188,
@@ -331,7 +331,7 @@
                 },
                 {
                     "name": "두산에너빌리티",
-                    "buy_amount": 0,
+                    "buy_amount": 9313401,
                     "sell_amount": 9648000,
                     "avg_price": 103260,
                     "profit": 334599,
@@ -395,7 +395,7 @@
                 },
                 {
                     "name": "TIGER 미국S&P500",
-                    "buy_amount": 0,
+                    "buy_amount": 24391,
                     "sell_amount": 24790,
                     "avg_price": 24390,
                     "profit": 399,
@@ -411,7 +411,7 @@
                 },
                 {
                     "name": "KODEX 미국나스닥100",
-                    "buy_amount": 0,
+                    "buy_amount": 23925,
                     "sell_amount": 24415,
                     "avg_price": 23925,
                     "profit": 490,
@@ -723,7 +723,7 @@
             "trades": [
                 {
                     "name": "PLUS 한화그룹주",
-                    "buy_amount": 0,
+                    "buy_amount": 389098,
                     "sell_amount": 427450,
                     "avg_price": 38906,
                     "profit": 38352,
@@ -739,7 +739,7 @@
                 },
                 {
                     "name": "KODEX 미국AI전력핵심인프라",
-                    "buy_amount": 0,
+                    "buy_amount": 6280077,
                     "sell_amount": 6373600,
                     "avg_price": 20201,
                     "profit": 93523,
@@ -755,7 +755,7 @@
             "trades": [
                 {
                     "name": "PLUS 우주항공&UAM",
-                    "buy_amount": 0,
+                    "buy_amount": 17327953,
                     "sell_amount": 18198000,
                     "avg_price": 43316,
                     "profit": 870047,
@@ -787,7 +787,7 @@
                 },
                 {
                     "name": "KODEX 미국30년국채액티브(H)",
-                    "buy_amount": 0,
+                    "buy_amount": 5082951,
                     "sell_amount": 5112040,
                     "avg_price": 9027,
                     "profit": 29089,
@@ -795,7 +795,7 @@
                 },
                 {
                     "name": "TIGER 미국S&P500",
-                    "buy_amount": 0,
+                    "buy_amount": 4174259,
                     "sell_amount": 4191210,
                     "avg_price": 24390,
                     "profit": 16951,
@@ -803,7 +803,7 @@
                 },
                 {
                     "name": "KODEX 200",
-                    "buy_amount": 0,
+                    "buy_amount": 84048,
                     "sell_amount": 94355,
                     "avg_price": 0,
                     "profit": 10307,
@@ -811,7 +811,7 @@
                 },
                 {
                     "name": "RISE AI&로봇",
-                    "buy_amount": 0,
+                    "buy_amount": 52138,
                     "sell_amount": 52275,
                     "avg_price": 0,
                     "profit": 137,
@@ -851,7 +851,7 @@
             "trades": [
                 {
                     "name": "KODEX 로봇액티브",
-                    "buy_amount": 0,
+                    "buy_amount": 22845986,
                     "sell_amount": 23866470,
                     "avg_price": 35362,
                     "profit": 1020484,

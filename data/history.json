@@ -11,7 +11,7 @@
             "trades": [
                 {
                     "name": "PLUS 한화그룹주",
-                    "buy_amount": 0,
+                    "buy_amount": 13493063,
                     "sell_amount": 13561570,
                     "avg_price": 39566,
                     "profit": 68507,
@@ -19,7 +19,7 @@
                 },
                 {
                     "name": "SOL 전고체배터리&실리콘음극재",
-                    "buy_amount": 0,
+                    "buy_amount": 442794,
                     "sell_amount": 468280,
                     "avg_price": 19250,
                     "profit": 25486,
@@ -27,7 +27,7 @@
                 },
                 {
                     "name": "두산에너빌리티",
-                    "buy_amount": 0,
+                    "buy_amount": 23664903,
                     "sell_amount": 24720300,
                     "avg_price": 104026,
                     "profit": 1055397,
@@ -67,7 +67,7 @@
             "trades": [
                 {
                     "name": "HANARO 원자력iSelect",
-                    "buy_amount": 0,
+                    "buy_amount": 20544262,
                     "sell_amount": 21692000,
                     "avg_price": 70836,
                     "profit": 1147738,
@@ -83,7 +83,7 @@
                 },
                 {
                     "name": "대우건설",
-                    "buy_amount": 0,
+                    "buy_amount": 49812,
                     "sell_amount": 55000,
                     "avg_price": 24850,
                     "profit": 5188,
