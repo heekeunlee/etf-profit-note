@@ -4,6 +4,7 @@ import { Lock, Smartphone, ChevronRight } from 'lucide-react';
 const PasswordScreen = ({ onAuthenticated }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
+  const inputRef = useRef(null);
   const correctPassword = '0001';
 
   const handleChange = (e) => {
@@ -44,8 +45,11 @@ const PasswordScreen = ({ onAuthenticated }) => {
           <p className="text-slate-400 text-sm">Enter the 4-digit passcode</p>
         </div>
 
-        {/* Password Dots */}
-        <div className={`flex space-x-4 ${error ? 'animate-shake' : ''}`}>
+        {/* Interactive Area with Password Dots */}
+        <div 
+          onClick={() => inputRef.current?.focus()}
+          className={`flex space-x-4 cursor-pointer p-8 rounded-2xl transition-all duration-300 hover:bg-white/5 ${error ? 'animate-shake' : ''}`}
+        >
           {[0, 1, 2, 3].map((i) => (
             <div
               key={i}
@@ -60,21 +64,15 @@ const PasswordScreen = ({ onAuthenticated }) => {
 
         {/* Invisible Input for Keyboard focus */}
         <input
+          ref={inputRef}
           type="tel"
           pattern="[0-9]*"
           inputMode="numeric"
           autoFocus
           value={password}
           onChange={handleChange}
-          className="absolute opacity-0 pointer-events-none"
+          className="absolute opacity-0 w-0 h-0 pointer-events-none"
         />
-
-        <button 
-          onClick={() => document.querySelector('input').focus()}
-          className="mt-4 text-xs text-indigo-400 font-medium hover:text-indigo-300 transition-colors"
-        >
-          Open Keyboard
-        </button>
       </div>
 
       {/* Footer Info */}
