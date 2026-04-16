@@ -1,8 +1,64 @@
 {
-    "last_updated": "2026-04-15T22:27:18",
-    "total_equity": 36760882,
-    "total_profit": 15884279,
+    "last_updated": "2026-04-16T17:15:00",
+    "total_equity": 37910272,
+    "total_profit": 17033669,
     "records": [
+        {
+            "date": "2026-04-16",
+            "equity": 37910272,
+            "daily_profit": 1149390,
+            "daily_roi": 3.06,
+            "trades": [
+                {
+                    "name": "PLUS 한화그룹주",
+                    "buy_amount": 0,
+                    "sell_amount": 13561570,
+                    "avg_price": 39566,
+                    "profit": 68507,
+                    "roi": 0.51
+                },
+                {
+                    "name": "SOL 전고체배터리&실리콘음극재",
+                    "buy_amount": 0,
+                    "sell_amount": 468280,
+                    "avg_price": 19250,
+                    "profit": 25486,
+                    "roi": 5.76
+                },
+                {
+                    "name": "두산에너빌리티",
+                    "buy_amount": 0,
+                    "sell_amount": 24720300,
+                    "avg_price": 104026,
+                    "profit": 1055397,
+                    "roi": 4.46
+                },
+                {
+                    "name": "PLUS 글로벌HBM반도체",
+                    "buy_amount": 70100,
+                    "sell_amount": 0,
+                    "avg_price": 65463,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "KODEX 로봇액티브",
+                    "buy_amount": 1679750,
+                    "sell_amount": 0,
+                    "avg_price": 33553,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "TIGER K방산&우주",
+                    "buy_amount": 2532000,
+                    "sell_amount": 0,
+                    "avg_price": 50982,
+                    "profit": 0,
+                    "roi": 0.0
+                }
+            ]
+        },
         {
             "date": "2026-04-15",
             "equity": 36760882,
