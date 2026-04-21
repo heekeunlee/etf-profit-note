@@ -1,8 +1,40 @@
 {
-    "last_updated": "2026-04-17T10:23:00",
-    "total_equity": 66288419,
-    "total_profit": 34068257,
+    "last_updated": "2026-04-21T10:26:00",
+    "total_equity": 67318206,
+    "total_profit": 35098044,
     "records": [
+        {
+            "date": "2026-04-20",
+            "equity": 67318206,
+            "daily_profit": 1029787,
+            "daily_roi": 5.98,
+            "trades": [
+                {
+                    "name": "KODEX 친환경조선해운액티브",
+                    "buy_amount": 17218388,
+                    "sell_amount": 18248175,
+                    "avg_price": 34782,
+                    "profit": 1029787,
+                    "roi": 5.98
+                },
+                {
+                    "name": "PLUS 한화그룹주",
+                    "buy_amount": 3966000,
+                    "sell_amount": 0,
+                    "avg_price": 39659,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "TIGER 코리아밸류업",
+                    "buy_amount": 27795,
+                    "sell_amount": 0,
+                    "avg_price": 27795,
+                    "profit": 0,
+                    "roi": 0.0
+                }
+            ]
+        },
         {
             "date": "2026-04-17",
             "equity": 66288419,
