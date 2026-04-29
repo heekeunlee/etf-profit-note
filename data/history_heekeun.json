@@ -1,8 +1,80 @@
 {
-    "last_updated": "2026-04-21T10:26:00",
-    "total_equity": 67318206,
-    "total_profit": 35098044,
+    "last_updated": "2026-04-29T15:53:17",
+    "total_equity": 6826637,
+    "total_profit": 36106674,
     "records": [
+        {
+            "date": "2026-04-29",
+            "equity": 6826637,
+            "daily_profit": 680443,
+            "daily_roi": 9.1,
+            "trades": [
+                {
+                    "name": "삼성전자",
+                    "buy_amount": 0,
+                    "sell_amount": 6820000,
+                    "avg_price": 198690,
+                    "profit": 646522,
+                    "roi": 10.47
+                },
+                {
+                    "name": "미래에셋증권",
+                    "buy_amount": 67700,
+                    "sell_amount": 0,
+                    "avg_price": 67875,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "KODEX 우량주",
+                    "buy_amount": 0,
+                    "sell_amount": 1338500,
+                    "avg_price": 26089,
+                    "profit": 33921,
+                    "roi": 2.6
+                },
+                {
+                    "name": "HPSP",
+                    "buy_amount": 532000,
+                    "sell_amount": 0,
+                    "avg_price": 52528,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "KODEX 로봇액티브",
+                    "buy_amount": 718000,
+                    "sell_amount": 0,
+                    "avg_price": 35866,
+                    "profit": 0,
+                    "roi": 0.0
+                }
+            ]
+        },
+        {
+            "date": "2026-04-28",
+            "equity": 6719049,
+            "daily_profit": 328187,
+            "daily_roi": 3.54,
+            "trades": [
+                {
+                    "name": "풍산홀딩스",
+                    "buy_amount": 0,
+                    "sell_amount": 4747000,
+                    "avg_price": 44744,
+                    "profit": 217967,
+                    "roi": 4.81
+                },
+                {
+                    "name": "KODEX 로봇액티브",
+                    "buy_amount": 2879800,
+                    "sell_amount": 4862025,
+                    "avg_price": 35195,
+                    "profit": 110220,
+                    "roi": 2.32
+                }
+            ]
+        },
         {
             "date": "2026-04-20",
             "equity": 67318206,
