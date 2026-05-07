@@ -1,8 +1,120 @@
 {
-    "last_updated": "2026-04-29T15:53:17",
-    "total_equity": 6826637,
-    "total_profit": 36106674,
+    "last_updated": "2026-05-07T20:44:59",
+    "total_equity": 18432448,
+    "total_profit": 39295936,
     "records": [
+        {
+            "date": "2026-05-07",
+            "equity": 18432448,
+            "daily_profit": 180638,
+            "daily_roi": 0.98,
+            "trades": [
+                {
+                    "name": "삼성전자",
+                    "buy_amount": 35815000,
+                    "sell_amount": 0,
+                    "avg_price": 275141,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "1Q 미국우주항공테크",
+                    "buy_amount": 631000,
+                    "sell_amount": 0,
+                    "avg_price": 12720,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "TIME K신재생에너지액티브",
+                    "buy_amount": 4503500,
+                    "sell_amount": 10824615,
+                    "avg_price": 29061,
+                    "profit": 100223,
+                    "roi": 0.93
+                },
+                {
+                    "name": "HANARO 원자력iSelect",
+                    "buy_amount": 4809150,
+                    "sell_amount": 0,
+                    "avg_price": 94965,
+                    "profit": 0,
+                    "roi": 0.0
+                },
+                {
+                    "name": "PLUS 글로벌HBM반도체",
+                    "buy_amount": 0,
+                    "sell_amount": 4521750,
+                    "avg_price": 88753,
+                    "profit": 70906,
+                    "roi": 1.59
+                },
+                {
+                    "name": "KODEX 로봇액티브",
+                    "buy_amount": 0,
+                    "sell_amount": 3271750,
+                    "avg_price": 36244,
+                    "profit": 9509,
+                    "roi": 0.29
+                }
+            ]
+        },
+        {
+            "date": "2026-05-06",
+            "equity": 51962417,
+            "daily_profit": 3008624,
+            "daily_roi": 5.79,
+            "trades": [
+                {
+                    "name": "삼성전자",
+                    "buy_amount": 7580000,
+                    "sell_amount": 39772500,
+                    "avg_price": 251864,
+                    "profit": 2773072,
+                    "roi": 7.49
+                },
+                {
+                    "name": "미래에셋증권",
+                    "buy_amount": 2978000,
+                    "sell_amount": 3960000,
+                    "avg_price": 72675,
+                    "profit": 318080,
+                    "roi": 8.73
+                },
+                {
+                    "name": "두산에너빌리티",
+                    "buy_amount": 0,
+                    "sell_amount": 10160000,
+                    "avg_price": 129099,
+                    "profit": -188867,
+                    "roi": -1.83
+                },
+                {
+                    "name": "TIGER 증권",
+                    "buy_amount": 0,
+                    "sell_amount": 156170,
+                    "avg_price": 19665,
+                    "profit": 18506,
+                    "roi": 13.44
+                },
+                {
+                    "name": "TIGER 반도체TOP10",
+                    "buy_amount": 0,
+                    "sell_amount": 892800,
+                    "avg_price": 40245,
+                    "profit": 87833,
+                    "roi": 10.91
+                },
+                {
+                    "name": "HANARO 원자력iSelect",
+                    "buy_amount": 917645,
+                    "sell_amount": 0,
+                    "avg_price": 89892,
+                    "profit": 0,
+                    "roi": 0.0
+                }
+            ]
+        },
         {
             "date": "2026-04-29",
             "equity": 6826637,
