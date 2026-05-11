@@ -1,12 +1,12 @@
 {
-    "last_updated": "2026-05-11T09:59:00",
+    "last_updated": "2026-05-11T10:29:10",
     "total_equity": 18432448,
     "total_profit": 41724452,
     "records": [
         {
             "date": "2026-05-11",
             "equity": 18432448,
-            "daily_profit": 1535164,
+            "daily_profit": 2428516,
             "daily_roi": 8.33,
             "trades": [
                 {
@@ -24,15 +24,7 @@
                     "avg_price": 284241,
                     "profit": 1366589,
                     "roi": 3.58
-                }
-            ]
-        },
-        {
-            "date": "2026-05-08",
-            "equity": 18432448,
-            "daily_profit": 893352,
-            "daily_roi": 0.0,
-            "trades": [
+                },
                 {
                     "name": "KB증권",
                     "buy_amount": 0,
