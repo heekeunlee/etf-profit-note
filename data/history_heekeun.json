@@ -1,8 +1,72 @@
 {
-    "last_updated": "2026-05-11T11:51:41",
-    "total_equity": 18432448,
-    "total_profit": 41781872,
+    "last_updated": "2026-05-12T11:41:57",
+    "total_equity": 32880114,
+    "total_profit": 42643331,
     "records": [
+        {
+            "date": "2026-05-12",
+            "equity": 32880114,
+            "daily_profit": 861459,
+            "daily_roi": 2.62,
+            "trades": [
+                {
+                    "name": "삼성전자",
+                    "buy_amount": 2900000,
+                    "sell_amount": 6111000,
+                    "avg_price": 285986,
+                    "profit": 92734,
+                    "roi": 1.54
+                },
+                {
+                    "name": "미래에셋증권",
+                    "buy_amount": 24265000,
+                    "sell_amount": 16460000,
+                    "avg_price": 80238,
+                    "profit": 111954,
+                    "roi": 0.68
+                },
+                {
+                    "name": "두산에너빌리티",
+                    "buy_amount": 0,
+                    "sell_amount": 1839600,
+                    "avg_price": 127646,
+                    "profit": 48742,
+                    "roi": 2.72
+                },
+                {
+                    "name": "스피어",
+                    "buy_amount": 6568200,
+                    "sell_amount": 2026500,
+                    "avg_price": 46007,
+                    "profit": 56768,
+                    "roi": 2.88
+                },
+                {
+                    "name": "HPSP",
+                    "buy_amount": 2244000,
+                    "sell_amount": 1156000,
+                    "avg_price": 56032,
+                    "profit": 87120,
+                    "roi": 8.15
+                },
+                {
+                    "name": "PLUS 우주항공&UAM",
+                    "buy_amount": 0,
+                    "sell_amount": 4075110,
+                    "avg_price": 47216,
+                    "profit": 250322,
+                    "roi": 6.54
+                },
+                {
+                    "name": "KODEX 로봇액티브",
+                    "buy_amount": 0,
+                    "sell_amount": 2055360,
+                    "avg_price": 38362,
+                    "profit": 213819,
+                    "roi": 11.61
+                }
+            ]
+        },
         {
             "date": "2026-05-11",
             "equity": 18432448,
