@@ -1,8 +1,56 @@
 {
-    "last_updated": "2026-05-12T11:41:57",
+    "last_updated": "2026-05-14T16:24:51",
     "total_equity": 32880114,
-    "total_profit": 42643331,
+    "total_profit": 43458127,
     "records": [
+        {
+            "date": "2026-05-14",
+            "equity": 32880114,
+            "daily_profit": 814796,
+            "daily_roi": 2.48,
+            "trades": [
+                {
+                    "name": "TIGER 코리아밸류업",
+                    "buy_amount": 0,
+                    "sell_amount": 3684500,
+                    "avg_price": 36513,
+                    "profit": 32899,
+                    "roi": 0.9
+                },
+                {
+                    "name": "제룡전기",
+                    "buy_amount": 0,
+                    "sell_amount": 906400,
+                    "avg_price": 77716,
+                    "profit": 49653,
+                    "roi": 5.8
+                },
+                {
+                    "name": "삼성전자",
+                    "buy_amount": 2980000,
+                    "sell_amount": 10867000,
+                    "avg_price": 293311,
+                    "profit": 523372,
+                    "roi": 5.06
+                },
+                {
+                    "name": "HPSP",
+                    "buy_amount": 0,
+                    "sell_amount": 4313400,
+                    "avg_price": 54263,
+                    "profit": 17666,
+                    "roi": 0.41
+                },
+                {
+                    "name": "KODEX 미국나스닥100",
+                    "buy_amount": 0,
+                    "sell_amount": 5248800,
+                    "avg_price": 27902,
+                    "profit": 191206,
+                    "roi": 3.78
+                }
+            ]
+        },
         {
             "date": "2026-05-12",
             "equity": 32880114,
