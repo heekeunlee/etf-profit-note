@@ -1,8 +1,32 @@
 {
-    "last_updated": "2026-05-14T16:24:51",
+    "last_updated": "2026-05-18T12:37:52",
     "total_equity": 32880114,
-    "total_profit": 43458127,
+    "total_profit": 44589245,
     "records": [
+        {
+            "date": "2026-05-18",
+            "equity": 32880114,
+            "daily_profit": 1131118,
+            "daily_roi": 3.44,
+            "trades": [
+                {
+                    "name": "HPSP",
+                    "buy_amount": 5040000,
+                    "sell_amount": 5231800,
+                    "avg_price": 51800,
+                    "profit": 122912,
+                    "roi": 2.41
+                },
+                {
+                    "name": "스피어",
+                    "buy_amount": 29920000,
+                    "sell_amount": 44180000,
+                    "avg_price": 44180,
+                    "profit": 1008206,
+                    "roi": 2.34
+                }
+            ]
+        },
         {
             "date": "2026-05-14",
             "equity": 32880114,
