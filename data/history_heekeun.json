@@ -1,8 +1,24 @@
 {
-    "last_updated": "2026-05-18T12:37:52",
+    "last_updated": "2026-05-19T13:37:34",
     "total_equity": 32880114,
-    "total_profit": 44589245,
+    "total_profit": 44740400,
     "records": [
+        {
+            "date": "2026-05-19",
+            "equity": 32880114,
+            "daily_profit": 151155,
+            "daily_roi": 0.46,
+            "trades": [
+                {
+                    "name": "스피어",
+                    "buy_amount": 9350000,
+                    "sell_amount": 4995500,
+                    "avg_price": 48500,
+                    "profit": 151155,
+                    "roi": 3.12
+                }
+            ]
+        },
         {
             "date": "2026-05-18",
             "equity": 32880114,
