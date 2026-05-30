@@ -243,7 +243,7 @@ const Dashboard = () => {
                                 }}
                                 itemStyle={{ color: activeUser === 'heekeun' ? '#2563eb' : '#e11d48' }}
                                 labelStyle={{ display: 'none' }}
-                                formatter={(value) => [`+₩${value.toLocaleString()}`, 'Accumulated']}
+                                formatter={(value) => [`${value >= 0 ? '+' : '-'}₩${Math.abs(value).toLocaleString()}`, 'Accumulated']}
                             />
                             <XAxis
                                 dataKey="date"
@@ -269,7 +269,7 @@ const Dashboard = () => {
                                 activeDot={{ r: 6, strokeWidth: 0, fill: activeUser === 'heekeun' ? '#2563eb' : '#e11d48' }}
                                 label={({ x, y, value, index }) => (
                                     <text x={x} y={y - 10} fill={activeUser === 'heekeun' ? '#2563eb' : '#e11d48'} fontSize={9} fontWeight="bold" textAnchor="middle">
-                                        {index === 0 ? 'Start' : `+${(value / 10000).toFixed(0)}만`}
+                                        {index === 0 ? 'Start' : `${value >= 0 ? '+' : '-'}${Math.abs(value / 10000).toFixed(0)}만`}
                                     </text>
                                 )}
                             />
@@ -323,7 +323,7 @@ const Dashboard = () => {
                                         <div className="flex items-center gap-3">
                                             <div className={`text-sm font-bold transition-colors ${isExpanded ? 'text-gray-900' : 'text-gray-700'}`}>
                                                 <span className="text-xs text-gray-400 font-normal mr-2">월 수익</span>
-                                                +₩{group.totalProfit.toLocaleString()}
+                                                {group.totalProfit >= 0 ? '+' : '-'}₩{Math.abs(group.totalProfit).toLocaleString()}
                                             </div>
                                             {isExpanded ? <ChevronUp size={20} className="text-gray-400" /> : <ChevronDown size={20} className="text-gray-400" />}
                                         </div>
@@ -343,7 +343,7 @@ const Dashboard = () => {
                                                         <div>
                                                             <div className="text-blue-500 text-sm font-bold mb-0.5">{record.date}</div>
                                                             <div className="text-gray-900 font-bold text-lg">
-                                                                +₩{record.daily_profit.toLocaleString()}
+                                                                {record.daily_profit >= 0 ? '+' : '-'}₩{Math.abs(record.daily_profit).toLocaleString()}
                                                             </div>
                                                         </div>
                                                         <div className="text-right flex flex-col items-end gap-1">
@@ -370,9 +370,11 @@ const Dashboard = () => {
                                                                         <div className="flex justify-between items-start mb-4 border-b border-gray-100 pb-2">
                                                                             <span className="text-gray-900 font-bold text-sm tracking-tight">{trade.name}</span>
                                                                             <div className="text-right">
-                                                                                <div className="text-rose-500 font-bold text-sm">+₩{trade.profit.toLocaleString()}</div>
-                                                                                <div className="text-rose-500/80 text-[10px] font-medium bg-rose-50 px-1.5 py-0.5 rounded inline-block mt-0.5">
-                                                                                    +{trade.roi}%
+                                                                                <div className={`font-bold text-sm ${trade.profit >= 0 ? 'text-rose-500' : 'text-blue-500'}`}>
+                                                                                    {trade.profit >= 0 ? '+' : '-'}₩{Math.abs(trade.profit).toLocaleString()}
+                                                                                </div>
+                                                                                <div className={`text-[10px] font-medium px-1.5 py-0.5 rounded inline-block mt-0.5 ${trade.profit >= 0 ? 'text-rose-500/80 bg-rose-50' : 'text-blue-500/80 bg-blue-50'}`}>
+                                                                                    {trade.roi >= 0 ? '+' : ''}{trade.roi}%
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -456,8 +458,8 @@ const Dashboard = () => {
                             report += `🕒 기준일: ${formattedDate} \n`;
                             report += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
 
-                            report += `💰 1월 누적 실현손익\n`;
-                            report += `   + ${data.total_profit.toLocaleString()} 원\n\n`;
+                            report += `💰 누적 실현손익\n`;
+                            report += `   ${data.total_profit >= 0 ? '+' : '-'} ${Math.abs(data.total_profit).toLocaleString()} 원\n\n`;
 
                             report += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
                             report += `[일자별 상세 실현손익 ]\n\n`;
@@ -471,7 +473,7 @@ const Dashboard = () => {
                                 const numEmoji = index < 9 ? ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣'][index] : '#️⃣';
 
                                 // Date Header
-                                report += `${numEmoji} ${shortDate} (${dayName}) | +${record.daily_profit.toLocaleString()} 원(${record.daily_roi} %) \n`;
+                                report += `${numEmoji} ${shortDate} (${dayName}) | ${record.daily_profit >= 0 ? '+' : '-'}${Math.abs(record.daily_profit).toLocaleString()} 원(${record.daily_roi > 0 ? '+' : ''}${record.daily_roi} %) \n`;
 
                                 // Trades
                                 const sortedTrades = [...record.trades].filter(t => t.profit !== 0).sort((a, b) => b.profit - a.profit);
@@ -488,7 +490,8 @@ const Dashboard = () => {
                                     const paddedName = padText(cleanName, 14);
 
                                     // Right-align profit (width ~10)
-                                    const profitStr = `+ ${trade.profit.toLocaleString()} `.padStart(11, ' ');
+                                    const sign = trade.profit >= 0 ? '+' : '-';
+                                    const profitStr = `${sign} ${Math.abs(trade.profit).toLocaleString()} `.padStart(11, ' ');
 
                                     report += `   ▪️ ${paddedName} ${profitStr} \n`;
                                 });
