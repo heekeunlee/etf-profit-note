@@ -1,5 +1,5 @@
 {
-    "last_updated": "2026-05-30T09:06:17",
+    "last_updated": "2026-05-30T09:14:12",
     "total_equity": 32880114,
     "total_profit": 44960932,
     "records": [
@@ -11,7 +11,7 @@
             "trades": [
                 {
                     "name": "1Q 미국우주항공테크",
-                    "buy_amount": 0,
+                    "buy_amount": 4516547,
                     "sell_amount": 4803000,
                     "avg_price": 14887,
                     "profit": 286453,
@@ -19,7 +19,7 @@
                 },
                 {
                     "name": "KODEX 친환경조선해운액티브",
-                    "buy_amount": 0,
+                    "buy_amount": 7299921,
                     "sell_amount": 7234000,
                     "avg_price": 36496,
                     "profit": -65921,

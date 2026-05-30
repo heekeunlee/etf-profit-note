@@ -11,7 +11,7 @@ current_equity = data.get('total_equity', 32880114)
 trades = [
     {
         "name": "1Q 미국우주항공테크",
-        "buy_amount": 0,
+        "buy_amount": 4516547,
         "sell_amount": 4803000,
         "avg_price": 14887,
         "profit": 286453,
@@ -19,7 +19,7 @@ trades = [
     },
     {
         "name": "KODEX 친환경조선해운액티브",
-        "buy_amount": 0,
+        "buy_amount": 7299921,
         "sell_amount": 7234000,
         "avg_price": 36496,
         "profit": -65921,
