@@ -1,8 +1,56 @@
 {
-    "last_updated": "2026-05-30T09:14:12",
+    "last_updated": "2026-05-30T09:21:26",
     "total_equity": 32880114,
-    "total_profit": 44960932,
+    "total_profit": 45972542,
     "records": [
+        {
+            "date": "2026-05-30",
+            "equity": 32880114,
+            "daily_profit": 1011610,
+            "daily_roi": 3.08,
+            "trades": [
+                {
+                    "name": "RISE 현대차고정피지컬AI",
+                    "buy_amount": 23673233,
+                    "sell_amount": 24439200,
+                    "avg_price": 13172,
+                    "profit": 765967,
+                    "roi": 3.24
+                },
+                {
+                    "name": "KODEX 미국나스닥100",
+                    "buy_amount": 5843447,
+                    "sell_amount": 6010000,
+                    "avg_price": 29078,
+                    "profit": 166553,
+                    "roi": 2.85
+                },
+                {
+                    "name": "KODEX 로봇액티브",
+                    "buy_amount": 5831862,
+                    "sell_amount": 6010200,
+                    "avg_price": 41653,
+                    "profit": 178338,
+                    "roi": 3.06
+                },
+                {
+                    "name": "KODEX 친환경조선해운액티브",
+                    "buy_amount": 3649958,
+                    "sell_amount": 3551000,
+                    "avg_price": 36496,
+                    "profit": -98958,
+                    "roi": -2.71
+                },
+                {
+                    "name": "SOL 화장품TOP3플러스",
+                    "buy_amount": 14260,
+                    "sell_amount": 13970,
+                    "avg_price": 14260,
+                    "profit": -290,
+                    "roi": -2.03
+                }
+            ]
+        },
         {
             "date": "2026-05-28",
             "equity": 32880114,
