@@ -1,8 +1,40 @@
 {
-    "last_updated": "2026-05-30T09:21:26",
+    "last_updated": "2026-06-01T12:53:05",
     "total_equity": 32880114,
-    "total_profit": 45972542,
+    "total_profit": 48449359,
     "records": [
+        {
+            "date": "2026-06-01",
+            "equity": 32880114,
+            "daily_profit": 2476817,
+            "daily_roi": 7.53,
+            "trades": [
+                {
+                    "name": "RISE 현대차고정피지컬AI",
+                    "buy_amount": 26019000,
+                    "sell_amount": 26987500,
+                    "avg_price": 15301,
+                    "profit": 972959,
+                    "roi": 3.74
+                },
+                {
+                    "name": "KODEX 미국우주항공",
+                    "buy_amount": 7285000,
+                    "sell_amount": 29165000,
+                    "avg_price": 14337,
+                    "profit": 1388058,
+                    "roi": 5.0
+                },
+                {
+                    "name": "삼성전자",
+                    "buy_amount": 579700,
+                    "sell_amount": 695500,
+                    "avg_price": 289137,
+                    "profit": 115800,
+                    "roi": 19.98
+                }
+            ]
+        },
         {
             "date": "2026-05-30",
             "equity": 32880114,
